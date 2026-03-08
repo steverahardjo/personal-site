@@ -6,6 +6,7 @@
     --muted: #666;
     --border: #e0e0e0;
     --red: #dc2626;
+    --blue-hue: rgba(59, 130, 246, 0.08);
 }
 
 [data-theme="dark"] {
@@ -14,6 +15,7 @@
     --muted: #888;
     --border: #333;
     --red: #ef4444;
+    --blue-hue: rgba(59, 130, 246, 0.15);
 }
 
 html { font-size: 16px; scroll-behavior: smooth; }
@@ -25,12 +27,42 @@ body {
     color: var(--text);
     background: var(--bg);
     transition: background 0.3s, color 0.3s;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Animated Blue Hue - Home Page Only */
+.blue-hue {
+    position: fixed;
+    top: -50%;
+    right: -50%;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, var(--blue-hue) 0%, transparent 70%);
+    animation: hueFloat 8s ease-in-out infinite;
+    pointer-events: none;
+    z-index: 0;
+}
+
+@keyframes hueFloat {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    25% { transform: translate(-2%, 2%) scale(1.05); }
+    50% { transform: translate(2%, -2%) scale(1.1); }
+    75% { transform: translate(-2%, -2%) scale(1.05); }
 }
 
 .container {
     max-width: 680px;
     margin: 0 auto;
     padding: 0 1.5rem 3rem;
+    flex: 1;
+    position: relative;
+    z-index: 1;
+}
+
+.container.page {
+    padding-top: 2rem;
 }
 
 /* Header */
@@ -60,7 +92,7 @@ body {
     transition: color 0.2s;
 }
 
-.nav-link:hover { color: var(--text); }
+.nav-link:hover, .nav-link.active { color: var(--text); }
 
 /* Theme Toggle */
 .theme-toggle {
@@ -84,19 +116,12 @@ body {
 
 .theme-toggle:hover { border-color: var(--text); }
 
-/* Sections */
-.section {
-    padding: 4rem 0;
-    border-bottom: 1px solid var(--border);
-}
-
-.section:last-of-type { border-bottom: none; }
-
-.section-title {
+/* Page Title */
+.page-title {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    font-size: 1.5rem;
+    font-size: 2rem;
     font-weight: 700;
-    margin-bottom: 1.5rem;
+    margin-bottom: 2rem;
     letter-spacing: -0.02em;
 }
 
@@ -105,6 +130,7 @@ body {
     display: grid;
     grid-template-columns: 1fr 200px;
     gap: 2rem;
+    padding: 3rem 0;
 }
 
 .name {
@@ -210,7 +236,7 @@ body {
 
 .status span { color: var(--text); font-weight: 500; }
 
-/* About Section */
+/* About Page */
 .text {
     font-size: 1rem;
     line-height: 1.7;
@@ -219,8 +245,14 @@ body {
 
 .text strong { font-weight: 500; }
 
+.section-subtitle {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin: 2rem 0 1rem;
+}
+
 .skills {
-    margin-top: 1.5rem;
     display: flex;
     flex-direction: column;
     gap: 0.75rem;
@@ -247,40 +279,65 @@ body {
     color: var(--text);
 }
 
-/* Projects Section */
+.education {
+    margin-top: 1rem;
+}
+
+.education-item {
+    padding: 1rem;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+}
+
+.education-title {
+    font-size: 1rem;
+    font-weight: 500;
+    margin-bottom: 0.25rem;
+}
+
+.education-school {
+    color: var(--muted);
+    margin-bottom: 0.25rem;
+}
+
+.education-year {
+    font-size: 0.85rem;
+    color: var(--muted);
+}
+
+/* Projects Page */
 .project {
-    padding: 1.25rem 0;
+    padding: 1.5rem 0;
     border-top: 1px solid var(--border);
 }
 
 .project:first-child { border-top: none; }
 
-.project:last-child { border-bottom: 1px solid var(--border); }
-
 .project-title {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    font-size: 1rem;
+    font-size: 1.25rem;
     font-weight: 700;
-    margin-bottom: 0.4rem;
+    margin-bottom: 0.5rem;
 }
 
 .project-desc {
-    font-size: 0.9rem;
+    font-size: 0.95rem;
     color: var(--muted);
-    line-height: 1.6;
-    margin-bottom: 0.6rem;
+    line-height: 1.7;
+    margin-bottom: 0.75rem;
 }
 
 .tags {
     display: flex;
     gap: 0.4rem;
     flex-wrap: wrap;
-    margin-bottom: 0.6rem;
+    margin-bottom: 0.75rem;
 }
 
 .tag {
     font-size: 0.75rem;
-    padding: 0.2rem 0.5rem;
+    padding: 0.2rem 0.6rem;
     background: var(--bg);
     border: 1px solid var(--border);
     border-radius: 100px;
@@ -296,38 +353,41 @@ body {
 
 .project-link:hover { text-decoration: underline; }
 
-/* Writing Section - Times New Roman */
-#writing {
+/* Writing Page - All Times New Roman */
+.writing-page {
     font-family: 'Times New Roman', Times, serif;
 }
 
-#writing .section-title {
+.writing-page .page-title {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     font-weight: 700;
 }
 
+.writing-page .nav-link {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
 .writing {
-    padding: 1.25rem 0;
+    padding: 1.5rem 0;
     border-top: 1px solid var(--border);
 }
 
 .writing:first-child { border-top: none; }
 
-.writing:last-child { border-bottom: 1px solid var(--border); }
-
 .writing-title {
     font-family: 'Times New Roman', Times, serif;
-    font-size: 1.1rem;
+    font-size: 1.25rem;
     font-weight: 400;
     font-style: italic;
-    margin-bottom: 0.4rem;
+    margin-bottom: 0.5rem;
+    line-height: 1.4;
 }
 
 .writing-meta {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     font-size: 0.8rem;
     color: var(--muted);
-    margin-bottom: 0.6rem;
+    margin-bottom: 0.75rem;
 }
 
 .writing-excerpt {
@@ -335,7 +395,7 @@ body {
     font-size: 1rem;
     line-height: 1.7;
     color: var(--text);
-    margin-bottom: 0.6rem;
+    margin-bottom: 0.75rem;
 }
 
 .writing-link {
@@ -352,6 +412,8 @@ body {
 .footer {
     padding: 2rem 0;
     text-align: center;
+    border-top: 1px solid var(--border);
+    margin-top: auto;
 }
 
 .footer-links {
@@ -402,4 +464,6 @@ body {
         font-size: 0.8rem;
         white-space: nowrap;
     }
+    
+    .blue-hue { display: none; }
 }

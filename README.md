@@ -1,27 +1,29 @@
 # Personal Website
 
-Minimalist single-page personal website.
+Minimalist multi-page personal website.
 
 ## Structure
 
 ```
 personal-website/
-├── index.html      # Single page (hero, projects, contact)
-├── styles.css      # ~250 lines CSS
-├── script.js       # Theme toggle + jokes
-├── resume.pdf      # Add your CV here
-└── README.md
+├── index.html          # Home page with animated blue hue
+├── about.html          # About page
+├── projects.html       # Projects page
+├── writing.html        # Writing page (Times New Roman)
+├── styles.css          # Styles
+├── script.js           # Theme toggle + jokes
+└── resume.pdf          # Add your CV
 ```
 
 ## Features
 
-- Single page, no routing
+- Separate pages: Home, About, Projects, Writing
+- Animated blue hue on home page
 - Dark/light mode toggle
+- Times New Roman for Writing section
+- Helvetica Bold for headings
 - Red Resume button
-- Right-aligned image box
 - Programmer jokes rotator
-- "current: sleep deprived" status
-- ~250 lines CSS, ~30 lines JS
 
 ## Run
 
@@ -35,7 +37,7 @@ Visit `http://localhost:8000`
 
 - Add `resume.pdf` to root
 - Replace `[Photo]` with `<img src="your-photo.jpg">`
-- Update email/GitHub links in `index.html`
+- Update email/GitHub links
 
 ## Deploy
 

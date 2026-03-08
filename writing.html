@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Writing | Holy Knight</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="writing-page">
+    <div class="theme-toggle" id="themeToggle">◐</div>
+
+    <header class="header">
+        <nav class="nav">
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="about.html" class="nav-link">About</a>
+            <a href="projects.html" class="nav-link">Projects</a>
+            <a href="writing.html" class="nav-link active">Writing</a>
+        </nav>
+    </header>
+
+    <main class="container page">
+        <h1 class="page-title">Writing</h1>
+        
+        <article class="writing">
+            <h2 class="writing-title">Understanding Entropy in Secret Detection</h2>
+            <p class="writing-meta">March 2026 · 5 min read</p>
+            <p class="writing-excerpt">
+                When building GitAegis, one of the key challenges was detecting secrets without 
+                relying solely on regex patterns. This is where Shannon entropy comes in.
+            </p>
+            <p class="writing-excerpt">
+                Shannon entropy measures the randomness or unpredictability in a string. 
+                High entropy strings are often secrets, API keys, or tokens. The formula 
+                calculates the average information content per character.
+            </p>
+            <a href="#" class="writing-link">Read more →</a>
+        </article>
+
+        <article class="writing">
+            <h2 class="writing-title">Building CLI Tools with Go</h2>
+            <p class="writing-meta">February 2026 · 8 min read</p>
+            <p class="writing-excerpt">
+                Go's standard library provides everything you need to build powerful CLI tools. 
+                From flag parsing to file I/O, the batteries-included approach means fewer 
+                dependencies and faster compilation.
+            </p>
+            <p class="writing-excerpt">
+                This guide covers the essentials: argument parsing with the flag package, 
+                concurrent processing with goroutines, and graceful error handling patterns.
+            </p>
+            <a href="#" class="writing-link">Read more →</a>
+        </article>
+
+        <article class="writing">
+            <h2 class="writing-title">Why I Chose Go for Security Tools</h2>
+            <p class="writing-meta">January 2026 · 6 min read</p>
+            <p class="writing-excerpt">
+                Go offers unique advantages for security-focused developer tools: static binaries 
+                for easy deployment, cross-compilation for multiple platforms, and excellent 
+                standard library support for cryptography and networking.
+            </p>
+            <p class="writing-excerpt">
+                The strong type system and built-in concurrency make it ideal for scanning 
+                large codebases efficiently while maintaining correctness.
+            </p>
+            <a href="#" class="writing-link">Read more →</a>
+        </article>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-links">
+            <a href="https://github.com/holyknight101" class="footer-link">GitHub</a>
+            <a href="https://linkedin.com/in/holyknight101" class="footer-link">LinkedIn</a>
+            <a href="mailto:holyknight101@example.com" class="footer-link">Email</a>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
