@@ -3,51 +3,81 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Holy Knight | Software Engineer</title>
+    <title>Holy Knight</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="theme-toggle-container">
-        <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
-            <span class="toggle-icon light-icon">☀️</span>
-            <span class="toggle-icon dark-icon">🌙</span>
-        </button>
+    <div class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+        <span class="toggle-icon">◐</span>
     </div>
 
-    <div class="container">
-        <div class="hero-landing">
-            <div class="hero-content-landing">
-                <h1 class="hero-name">Holy Knight</h1>
-                <p class="hero-title">Software Engineer & AI Developer</p>
+    <main class="container">
+        <div class="content">
+            <div class="text-section">
+                <h1 class="name">Holy Knight</h1>
+                <p class="title">Software Engineer</p>
+                <p class="bio">
+                    Building backend systems and AI tools. 
+                    Studying at Monash University.
+                </p>
                 
-                <nav class="hero-nav">
-                    <a href="about.html" class="hero-nav-link">About</a>
-                    <a href="projects.html" class="hero-nav-link">Projects</a>
-                    <a href="blog.html" class="hero-nav-link">Blog</a>
-                    <a href="resume.html" class="hero-nav-link hero-nav-link-red">Resume</a>
-                    <a href="contact.html" class="hero-nav-link">Contact</a>
+                <nav class="links">
+                    <a href="resume.pdf" class="link link-red">Resume</a>
+                    <a href="https://github.com/holyknight101" class="link">GitHub</a>
+                    <a href="mailto:holyknight101@example.com" class="link">Email</a>
                 </nav>
             </div>
 
-            <div class="hero-image-wrapper">
+            <div class="image-section">
                 <div class="image-box">
-                    <div class="image-placeholder">
-                        <span class="placeholder-text">[Your Photo Here]</span>
-                    </div>
+                    <div class="image-placeholder">[Photo]</div>
                 </div>
-                <p class="joke" id="joke">Why do programmers prefer dark mode? Because light attracts bugs. 🐛</p>
-                <p class="current-status">current: <span class="status-sleep">sleep deprived</span> 😴</p>
+                <p class="joke" id="joke"></p>
+                <p class="status">current: <span>sleep deprived</span></p>
             </div>
         </div>
 
+        <section class="projects">
+            <h2 class="section-title">Projects</h2>
+            
+            <article class="project">
+                <h3 class="project-title">GitAegis</h3>
+                <p class="project-desc">Secret detection CLI in Go using entropy analysis and AST parsing.</p>
+                <div class="tags">
+                    <span class="tag">Go</span>
+                    <span class="tag">Security</span>
+                </div>
+                <a href="https://github.com/steverahardjo/gitaegis" class="project-link">View →</a>
+            </article>
+
+            <article class="project">
+                <h3 class="project-title">Patent Analyzer</h3>
+                <p class="project-desc">AI-powered patent analysis with vector search and LLM Q&A.</p>
+                <div class="tags">
+                    <span class="tag">Python</span>
+                    <span class="tag">NLP</span>
+                </div>
+                <a href="#" class="project-link">View →</a>
+            </article>
+
+            <article class="project">
+                <h3 class="project-title">Expense Tracker</h3>
+                <p class="project-desc">Intelligent expense tracking with Google ADK agents.</p>
+                <div class="tags">
+                    <span class="tag">Python</span>
+                    <span class="tag">AI</span>
+                </div>
+                <a href="#" class="project-link">View →</a>
+            </article>
+        </section>
+
         <footer class="footer">
-            <div class="separator"></div>
-            <p class="copyright">&copy; 2026 Holy Knight. All rights reserved.</p>
+            <p>&copy; 2026</p>
         </footer>
-    </div>
+    </main>
 
     <script src="script.js"></script>
 </body>

@@ -1,65 +1,28 @@
-// Theme Toggle Functionality
+// Theme Toggle
 (function() {
-    const themeToggle = document.getElementById('themeToggle');
+    const btn = document.getElementById('themeToggle');
     const html = document.documentElement;
+    const saved = localStorage.getItem('theme') || 'light';
+    html.setAttribute('data-theme', saved);
     
-    if (!themeToggle) return;
-    
-    // Check for saved theme preference or default to light
-    const savedTheme = localStorage.getItem('theme') || 'light';
-    html.setAttribute('data-theme', savedTheme);
-    
-    themeToggle.addEventListener('click', function() {
-        const currentTheme = html.getAttribute('data-theme');
-        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-        
-        html.setAttribute('data-theme', newTheme);
-        localStorage.setItem('theme', newTheme);
+    btn?.addEventListener('click', () => {
+        const current = html.getAttribute('data-theme');
+        const next = current === 'dark' ? 'light' : 'dark';
+        html.setAttribute('data-theme', next);
+        localStorage.setItem('theme', next);
     });
 })();
 
 // Joke Rotator
 const jokes = [
-    "Why do programmers prefer dark mode? Because light attracts bugs. 🐛",
-    "Why do Java developers wear glasses? Because they don't C#. 👓",
-    "How many programmers does it take to change a light bulb? None, that's a hardware problem. 💡",
-    "Why did the developer go broke? Because he used up all his cache. 💸",
-    "I would tell you a UDP joke, but you might not get it. 📦",
-    "Why do programmers hate nature? It has too many bugs. 🌿",
-    "What's a programmer's favorite hangout place? The Foo Bar. 🍺",
-    "Why did the function break up with the variable? It had too many issues. 💔",
-    "Sleep is just a blocking call with an indefinite timeout. 😴",
-    "My code doesn't work, I have no idea why. My code works, I have no idea why. 🤷",
+    "Why do programmers prefer dark mode? Light attracts bugs. 🐛",
     "Arrays start at 0, not 1. Fight me. 🥊",
-    "I don't always test my code, but when I do, it's in production. 🚀",
-    "Debugging is like being a detective in a crime movie where you're also the murderer. 🔍",
-    "The code worked and I don't know why. The code doesn't work and I don't know why. 🎲"
+    "Sleep is a blocking call with indefinite timeout. 😴",
+    "My code works, I have no idea why. 🤷",
+    "Debugging: being detective and murderer in the same story. 🔍"
 ];
 
-const jokeElement = document.getElementById('joke');
-
-if (jokeElement) {
-    // Change joke on each page load
-    const randomIndex = Math.floor(Math.random() * jokes.length);
-    jokeElement.textContent = jokes[randomIndex];
+const jokeEl = document.getElementById('joke');
+if (jokeEl) {
+    jokeEl.textContent = jokes[Math.floor(Math.random() * jokes.length)];
 }
-
-// Code Copy Functionality
-document.querySelectorAll('.code-copy-btn').forEach(function(btn) {
-    btn.addEventListener('click', function() {
-        const codeBlock = this.closest('.code-snippet').querySelector('pre');
-        const codeText = codeBlock.textContent;
-        
-        navigator.clipboard.writeText(codeText).then(function() {
-            const originalText = btn.textContent;
-            btn.textContent = 'Copied!';
-            
-            setTimeout(function() {
-                btn.textContent = originalText;
-            }, 2000);
-        }).catch(function(err) {
-            console.error('Failed to copy:', err);
-            btn.textContent = 'Failed';
-        });
-    });
-});
