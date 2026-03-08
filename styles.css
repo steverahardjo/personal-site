@@ -89,10 +89,22 @@ body {
     text-decoration: none;
     text-transform: uppercase;
     letter-spacing: 0.05em;
-    transition: color 0.2s;
+    padding: 0.4rem 0.6rem;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    transition: all 0.2s;
 }
 
-.nav-link:hover, .nav-link.active { color: var(--text); }
+.nav-link:hover {
+    color: var(--text);
+    border-color: var(--border);
+    background: var(--bg);
+}
+
+.nav-link.active {
+    color: var(--text);
+    border-color: var(--text);
+}
 
 /* Theme Toggle */
 .theme-toggle {
