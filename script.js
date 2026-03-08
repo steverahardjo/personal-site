@@ -26,3 +26,80 @@ const jokeEl = document.getElementById('joke');
 if (jokeEl) {
     jokeEl.textContent = jokes[Math.floor(Math.random() * jokes.length)];
 }
+
+// Active Nav Link Highlight on Scroll (for home page sections)
+(function() {
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-link');
+    
+    if (sections.length === 0 || !window.location.pathname.endsWith('index.html') && window.location.pathname !== '/') return;
+    
+    const observerOptions = {
+        root: null,
+        rootMargin: '-100px 0px -60% 0px',
+        threshold: 0
+    };
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === `#${entry.target.id}`) {
+                        link.classList.add('active');
+                    }
+                });
+            }
+        });
+    }, observerOptions);
+    
+    sections.forEach(section => observer.observe(section));
+})();
+
+// Reading Progress Bar (for writing page)
+(function() {
+    const writingPage = document.querySelector('.writing-page');
+    if (!writingPage) return;
+    
+    const progressBar = document.createElement('div');
+    progressBar.className = 'progress-bar';
+    document.body.appendChild(progressBar);
+    
+    window.addEventListener('scroll', () => {
+        const windowHeight = window.innerHeight;
+        const documentHeight = document.documentElement.scrollHeight - windowHeight;
+        const scrolled = window.scrollY;
+        const progress = (scrolled / documentHeight) * 100;
+        
+        progressBar.style.width = `${progress}%`;
+    });
+})();
+
+// Copy Email on Click
+(function() {
+    const emailLinks = document.querySelectorAll('a[href^="mailto:"]');
+    
+    emailLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            const email = link.getAttribute('href').replace('mailto:', '');
+            
+            navigator.clipboard.writeText(email).then(() => {
+                const originalText = link.textContent;
+                link.textContent = 'Copied!';
+                link.style.color = 'var(--red)';
+                
+                setTimeout(() => {
+                    link.textContent = originalText;
+                    link.style.color = '';
+                }, 1500);
+            }).catch(() => {
+                // Fallback: let default mailto behavior happen
+            });
+        });
+    });
+})();
+
+// Page fade-in on load
+window.addEventListener('load', () => {
+    document.body.classList.add('loaded');
+});
