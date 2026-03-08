@@ -5,42 +5,76 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Holy Knight</title>
     <link rel="stylesheet" href="styles.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
-        <span class="toggle-icon">◐</span>
-    </div>
+    <div class="theme-toggle" id="themeToggle" aria-label="Toggle theme">◐</div>
+
+    <header class="header">
+        <nav class="nav">
+            <a href="#home" class="nav-link">Home</a>
+            <a href="#about" class="nav-link">About</a>
+            <a href="#projects" class="nav-link">Projects</a>
+            <a href="#writing" class="nav-link">Writing</a>
+        </nav>
+    </header>
 
     <main class="container">
-        <div class="content">
-            <div class="text-section">
-                <h1 class="name">Holy Knight</h1>
-                <p class="title">Software Engineer</p>
-                <p class="bio">
-                    Building backend systems and AI tools. 
-                    Studying at Monash University.
-                </p>
-                
-                <nav class="links">
-                    <a href="resume.pdf" class="link link-red">Resume</a>
-                    <a href="https://github.com/holyknight101" class="link">GitHub</a>
-                    <a href="mailto:holyknight101@example.com" class="link">Email</a>
-                </nav>
-            </div>
-
-            <div class="image-section">
-                <div class="image-box">
-                    <div class="image-placeholder">[Photo]</div>
+        <section id="home" class="section">
+            <div class="content">
+                <div class="text-section">
+                    <h1 class="name">Holy Knight</h1>
+                    <p class="title">Software Engineer</p>
+                    <p class="bio">
+                        Building backend systems and AI tools. 
+                        Studying at Monash University.
+                    </p>
+                    
+                    <div class="links">
+                        <a href="resume.pdf" class="link link-red">Resume</a>
+                        <a href="https://github.com/holyknight101" class="link">GitHub</a>
+                        <a href="mailto:holyknight101@example.com" class="link">Email</a>
+                    </div>
                 </div>
-                <p class="joke" id="joke"></p>
-                <p class="status">current: <span>sleep deprived</span></p>
-            </div>
-        </div>
 
-        <section class="projects">
+                <div class="image-section">
+                    <div class="image-box">
+                        <div class="image-placeholder">[Photo]</div>
+                    </div>
+                    <p class="joke" id="joke"></p>
+                    <p class="status">current: <span>sleep deprived</span></p>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="section">
+            <h2 class="section-title">About</h2>
+            <p class="text">
+                I am a software engineering student at <strong>Monash University</strong>, 
+                Faculty of Information Technology. My interests lie in building robust backend systems, 
+                exploring AI/ML applications, and creating tools that enhance developer workflows.
+            </p>
+            <p class="text">
+                I focus on writing clean, efficient code and designing systems that are both 
+                scalable and maintainable. My work spans across Go, Python, and modern web technologies.
+            </p>
+            
+            <div class="skills">
+                <div class="skill-item">
+                    <span class="skill-label">Languages</span>
+                    <span class="skill-value">Go, Python, JavaScript, SQL</span>
+                </div>
+                <div class="skill-item">
+                    <span class="skill-label">Technologies</span>
+                    <span class="skill-value">Docker, FastAPI, PostgreSQL, Git</span>
+                </div>
+                <div class="skill-item">
+                    <span class="skill-label">Interests</span>
+                    <span class="skill-value">Backend Systems, AI/ML, Security</span>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" class="section">
             <h2 class="section-title">Projects</h2>
             
             <article class="project">
@@ -74,10 +108,46 @@
             </article>
         </section>
 
-        <footer class="footer">
-            <p>&copy; 2026</p>
-        </footer>
+        <section id="writing" class="section">
+            <h2 class="section-title">Writing</h2>
+            
+            <article class="writing">
+                <h3 class="writing-title">Understanding Entropy in Secret Detection</h3>
+                <p class="writing-meta">March 2026 · 5 min read</p>
+                <p class="writing-excerpt">
+                    How Shannon entropy helps identify potential API keys and tokens in source code...
+                </p>
+                <a href="#" class="writing-link">Read more</a>
+            </article>
+
+            <article class="writing">
+                <h3 class="writing-title">Building CLI Tools with Go</h3>
+                <p class="writing-meta">February 2026 · 8 min read</p>
+                <p class="writing-excerpt">
+                    A deep dive into creating efficient command-line interfaces using Go's standard library...
+                </p>
+                <a href="#" class="writing-link">Read more</a>
+            </article>
+
+            <article class="writing">
+                <h3 class="writing-title">Why I Chose Go for Security Tools</h3>
+                <p class="writing-meta">January 2026 · 6 min read</p>
+                <p class="writing-excerpt">
+                    Exploring Go's advantages for building security-focused developer tools...
+                </p>
+                <a href="#" class="writing-link">Read more</a>
+            </article>
+        </section>
     </main>
+
+    <footer class="footer">
+        <div class="footer-links">
+            <a href="https://github.com/holyknight101" class="footer-link">GitHub</a>
+            <a href="https://linkedin.com/in/holyknight101" class="footer-link">LinkedIn</a>
+            <a href="mailto:holyknight101@example.com" class="footer-link">Email</a>
+        </div>
+        <p class="copyright">&copy; 2026 Holy Knight</p>
+    </footer>
 
     <script src="script.js"></script>
 </body>
