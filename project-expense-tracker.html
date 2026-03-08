@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expense Tracker | Holy Knight</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Inter+Tight:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="theme-toggle-container">
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+            <span class="toggle-icon light-icon">☀️</span>
+            <span class="toggle-icon dark-icon">🌙</span>
+        </button>
+    </div>
+
+    <div class="container">
+        <header class="header">
+            <a href="index.html" class="cv-link">
+                <span class="cv-text">← Back to Home</span>
+            </a>
+        </header>
+
+        <article class="project-page">
+            <header class="project-page-header">
+                <h1 class="project-page-title">Expense Tracker with ADK</h1>
+                <p class="project-page-subtitle">Intelligent Expense Tracking using Google Agent Development Kit</p>
+                <div class="separator"></div>
+            </header>
+
+            <div class="project-page-content">
+                <section class="project-section">
+                    <h2 class="project-section-title">Overview</h2>
+                    <p class="text">
+                        An intelligent expense tracking application that leverages Google's Agent Development Kit (ADK) 
+                        to automate expense categorization and provide financial insights through natural language interactions.
+                    </p>
+                    <p class="text">
+                        The system processes transaction data, automatically categorizes expenses, and allows users to 
+                        query their spending patterns using conversational AI.
+                    </p>
+                </section>
+
+                <section class="project-section">
+                    <h2 class="project-section-title">Features</h2>
+                    <ul class="feature-list">
+                        <li><strong>Auto-Categorization:</strong> AI-powered expense classification</li>
+                        <li><strong>Natural Language Queries:</strong> Ask questions about spending habits</li>
+                        <li><strong>Receipt Processing:</strong> OCR integration for receipt scanning</li>
+                        <li><strong>Budget Tracking:</strong> Monitor spending against set budgets</li>
+                        <li><strong>Export Reports:</strong> Generate CSV/PDF financial reports</li>
+                        <li><strong>Multi-Currency:</strong> Support for international transactions</li>
+                    </ul>
+                </section>
+
+                <section class="project-section">
+                    <h2 class="project-section-title">How It Works</h2>
+                    <p class="text">
+                        The application uses Google ADK to create an intelligent agent that:
+                    </p>
+                    <ol class="feature-list numbered">
+                        <li>Receives transaction data from connected bank accounts or manual entry</li>
+                        <li>Processes and categorizes each transaction using ML models</li>
+                        <li>Stores data in a structured format for querying</li>
+                        <li>Responds to natural language questions about spending patterns</li>
+                    </ol>
+                </section>
+
+                <section class="project-section">
+                    <h2 class="project-section-title">Example Queries</h2>
+                    
+                    <div class="code-snippet">
+                        <div class="code-header">
+                            <span class="code-language">Natural Language</span>
+                            <button class="code-copy-btn">Copy</button>
+                        </div>
+                        <div class="code-content">
+                            <pre><code>"How much did I spend on food last month?"
+"Show me my top 5 spending categories this year"
+"Did I exceed my entertainment budget?"
+"Compare my spending this month vs last month"</code></pre>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="project-section">
+                    <h2 class="project-section-title">Tech Stack</h2>
+                    <div class="project-tech">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Google ADK</span>
+                        <span class="tech-tag">AI Agents</span>
+                        <span class="tech-tag">SQLite</span>
+                        <span class="tech-tag">FastAPI</span>
+                    </div>
+                </section>
+
+                <section class="project-section">
+                    <h2 class="project-section-title">Links</h2>
+                    <div class="project-links">
+                        <a href="#" class="external-link">View on GitHub →</a>
+                    </div>
+                </section>
+            </div>
+        </article>
+
+        <footer class="footer">
+            <div class="separator"></div>
+            <p class="copyright">&copy; 2026 Holy Knight. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

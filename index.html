@@ -8,19 +8,49 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Inter+Tight:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
+    <div class="theme-toggle-container">
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+            <span class="toggle-icon light-icon">☀️</span>
+            <span class="toggle-icon dark-icon">🌙</span>
+        </button>
+    </div>
+
     <div class="container">
         <header class="header">
-            <h1 class="name">Holy Knight</h1>
-            <p class="title">Software Engineer & AI Developer</p>
-            <div class="separator"></div>
+            <a href="cv.pdf" class="cv-link" target="_blank">
+                <span class="cv-text">Curriculum Vitae</span>
+                <span class="cv-arrow">→</span>
+            </a>
         </header>
+
+        <div class="hero-section">
+            <div class="hero-content">
+                <h1 class="name">Holy Knight</h1>
+                <p class="title">Software Engineer & AI Developer</p>
+                <div class="separator"></div>
+                <p class="bio">
+                    I build robust backend systems and explore AI/ML applications. 
+                    Currently at Monash University, Faculty of Information Technology.
+                </p>
+            </div>
+            
+            <div class="hero-image-wrapper">
+                <div class="image-box">
+                    <div class="image-placeholder">
+                        <span class="placeholder-text">[Your Photo Here]</span>
+                    </div>
+                </div>
+                <p class="joke" id="joke">Why do programmers prefer dark mode? Because light attracts bugs. 🐛</p>
+            </div>
+        </div>
 
         <nav class="nav">
             <a href="#about" class="nav-link">About</a>
             <a href="#projects" class="nav-link">Projects</a>
+            <a href="#blog" class="nav-link">Blog</a>
             <a href="#contact" class="nav-link">Contact</a>
         </nav>
 
@@ -45,7 +75,9 @@
                 
                 <div class="project-list">
                     <article class="project">
-                        <h3 class="project-title">GitAegis</h3>
+                        <h3 class="project-title">
+                            <a href="project-gitaegis.html" class="project-title-link">GitAegis</a>
+                        </h3>
                         <p class="project-description">
                             A lightweight Go CLI tool for detecting secrets and sensitive data before commit. 
                             Features Shannon entropy analysis, regex pattern matching, and tree-sitter AST parsing.
@@ -55,11 +87,12 @@
                             <span class="tech-tag">CLI</span>
                             <span class="tech-tag">Security</span>
                         </div>
-                        <a href="https://github.com/steverahardjo/gitaegis" class="project-link" target="_blank" rel="noopener">View Project →</a>
                     </article>
 
                     <article class="project">
-                        <h3 class="project-title">Patent Analyzer</h3>
+                        <h3 class="project-title">
+                            <a href="project-patent-analyzer.html" class="project-title-link">Patent Analyzer</a>
+                        </h3>
                         <p class="project-description">
                             An AI-powered system for analyzing patent documents using vector databases, 
                             semantic search, and large language models for intelligent Q&A interactions.
@@ -69,11 +102,12 @@
                             <span class="tech-tag">NLP</span>
                             <span class="tech-tag">Docker</span>
                         </div>
-                        <a href="#" class="project-link">View Project →</a>
                     </article>
 
                     <article class="project">
-                        <h3 class="project-title">Expense Tracker with ADK</h3>
+                        <h3 class="project-title">
+                            <a href="project-expense-tracker.html" class="project-title-link">Expense Tracker with ADK</a>
+                        </h3>
                         <p class="project-description">
                             An intelligent expense tracking application leveraging Google's Agent Development Kit 
                             for automated categorization and financial insights.
@@ -83,11 +117,12 @@
                             <span class="tech-tag">Google ADK</span>
                             <span class="tech-tag">AI Agents</span>
                         </div>
-                        <a href="#" class="project-link">View Project →</a>
                     </article>
 
                     <article class="project">
-                        <h3 class="project-title">Application Scraper</h3>
+                        <h3 class="project-title">
+                            <a href="project-app-scraper.html" class="project-title-link">Application Scraper</a>
+                        </h3>
                         <p class="project-description">
                             Automated system for extracting and summarizing job application data from email 
                             communications, organizing into structured tabular format.
@@ -97,7 +132,33 @@
                             <span class="tech-tag">Automation</span>
                             <span class="tech-tag">Gmail API</span>
                         </div>
-                        <a href="#" class="project-link">View Project →</a>
+                    </article>
+                </div>
+            </section>
+
+            <section id="blog" class="section">
+                <h2 class="section-title">Blog</h2>
+                <div class="separator separator-small"></div>
+                
+                <div class="blog-list">
+                    <article class="blog-post-preview">
+                        <h3 class="blog-post-title">
+                            <a href="blog-post-template.html" class="blog-post-link">Understanding Entropy in Secret Detection</a>
+                        </h3>
+                        <p class="blog-post-meta">March 2026 · 5 min read</p>
+                        <p class="blog-post-excerpt">
+                            How Shannon entropy helps identify potential API keys and tokens in source code...
+                        </p>
+                    </article>
+
+                    <article class="blog-post-preview">
+                        <h3 class="blog-post-title">
+                            <a href="#" class="blog-post-link">Building CLI Tools with Go</a>
+                        </h3>
+                        <p class="blog-post-meta">February 2026 · 8 min read</p>
+                        <p class="blog-post-excerpt">
+                            A deep dive into creating efficient command-line interfaces using Go's standard library...
+                        </p>
                     </article>
                 </div>
             </section>
@@ -121,5 +182,7 @@
             <p class="copyright">&copy; 2026 Holy Knight. All rights reserved.</p>
         </footer>
     </div>
+
+    <script src="script.js"></script>
 </body>
 </html>

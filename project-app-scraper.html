@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Application Scraper | Holy Knight</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Inter+Tight:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="theme-toggle-container">
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+            <span class="toggle-icon light-icon">☀️</span>
+            <span class="toggle-icon dark-icon">🌙</span>
+        </button>
+    </div>
+
+    <div class="container">
+        <header class="header">
+            <a href="index.html" class="cv-link">
+                <span class="cv-text">← Back to Home</span>
+            </a>
+        </header>
+
+        <article class="project-page">
+            <header class="project-page-header">
+                <h1 class="project-page-title">Application Scraper</h1>
+                <p class="project-page-subtitle">Automated Job Application Tracking from Email</p>
+                <div class="separator"></div>
+            </header>
+
+            <div class="project-page-content">
+                <section class="project-section">
+                    <h2 class="project-section-title">Overview</h2>
+                    <p class="text">
+                        An automated system for extracting and summarizing job application data from email 
+                        communications. The scraper processes inbox messages and organizes application information 
+                        into a structured tabular format.
+                    </p>
+                    <p class="text">
+                        This tool helps job seekers track their applications across multiple platforms without 
+                        manual data entry.
+                    </p>
+                </section>
+
+                <section class="project-section">
+                    <h2 class="project-section-title">Features</h2>
+                    <ul class="feature-list">
+                        <li><strong>Email Extraction:</strong> Parse job-related emails by sender and subject</li>
+                        <li><strong>Auto-Summarization:</strong> Extract key information using NLP</li>
+                        <li><strong>Structured Output:</strong> Generate organized tables with application data</li>
+                        <li><strong>Platform Detection:</strong> Identify application platforms (LinkedIn, Indeed, etc.)</li>
+                        <li><strong>Status Tracking:</strong> Track application progress automatically</li>
+                        <li><strong>Export Options:</strong> Output to CSV, JSON, or Google Sheets</li>
+                    </ul>
+                </section>
+
+                <section class="project-section">
+                    <h2 class="project-section-title">Data Fields</h2>
+                    <p class="text">
+                        The system extracts the following information from each application:
+                    </p>
+                    <ul class="feature-list">
+                        <li><strong>Unique ID:</strong> Auto-generated identifier</li>
+                        <li><strong>Sender:</strong> Company/recruiter information</li>
+                        <li><strong>Job Title:</strong> Position applied for</li>
+                        <li><strong>Platform:</strong> Application source</li>
+                        <li><strong>Process Stage:</strong> Current status in hiring pipeline</li>
+                        <li><strong>Chained Email ID:</strong> Thread tracking</li>
+                    </ul>
+                </section>
+
+                <section class="project-section">
+                    <h2 class="project-section-title">Architecture</h2>
+                    <p class="text">
+                        The system consists of two main agents:
+                    </p>
+                    <ul class="feature-list">
+                        <li><strong>Extractor Agent:</strong> Scans Gmail inbox for job-related messages</li>
+                        <li><strong>Summarizer Agent:</strong> Processes email content and extracts entities</li>
+                    </ul>
+                </section>
+
+                <section class="project-section">
+                    <h2 class="project-section-title">Tech Stack</h2>
+                    <div class="project-tech">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Gmail API</span>
+                        <span class="tech-tag">NLP</span>
+                        <span class="tech-tag">Automation</span>
+                        <span class="tech-tag">Google Sheets</span>
+                    </div>
+                </section>
+
+                <section class="project-section">
+                    <h2 class="project-section-title">Links</h2>
+                    <div class="project-links">
+                        <a href="#" class="external-link">View on GitHub →</a>
+                    </div>
+                </section>
+            </div>
+        </article>
+
+        <footer class="footer">
+            <div class="separator"></div>
+            <p class="copyright">&copy; 2026 Holy Knight. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
