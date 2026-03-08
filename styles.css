@@ -306,6 +306,41 @@ body {
     color: var(--muted);
 }
 
+.experience {
+    margin-top: 1rem;
+}
+
+.experience-item {
+    padding: 1rem;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    margin-bottom: 0.75rem;
+}
+
+.experience-title {
+    font-size: 1rem;
+    font-weight: 500;
+    margin-bottom: 0.25rem;
+}
+
+.experience-company {
+    color: var(--muted);
+    margin-bottom: 0.25rem;
+}
+
+.experience-year {
+    font-size: 0.85rem;
+    color: var(--muted);
+    margin-bottom: 0.5rem;
+}
+
+.experience-desc {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--text);
+}
+
 /* Projects Page */
 .project {
     padding: 1.5rem 0;
