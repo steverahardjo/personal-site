@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects | Holy Knight</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="theme-toggle-container">
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+            <span class="toggle-icon light-icon">☀️</span>
+            <span class="toggle-icon dark-icon">🌙</span>
+        </button>
+    </div>
+
+    <div class="container">
+        <nav class="nav page-nav">
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="about.html" class="nav-link">About</a>
+            <a href="projects.html" class="nav-link active">Projects</a>
+            <a href="blog.html" class="nav-link">Blog</a>
+            <a href="resume.html" class="nav-link nav-link-red">Resume</a>
+            <a href="contact.html" class="nav-link">Contact</a>
+        </nav>
+
+        <main class="page-main">
+            <h1 class="page-title">Projects</h1>
+            <div class="separator separator-small"></div>
+            
+            <div class="projects-grid">
+                <article class="project-card">
+                    <h2 class="project-card-title">
+                        <a href="project-gitaegis.html" class="project-card-link">GitAegis</a>
+                    </h2>
+                    <p class="project-card-excerpt">
+                        A lightweight Go CLI tool for detecting secrets and sensitive data before commit.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Go</span>
+                        <span class="tech-tag">CLI</span>
+                        <span class="tech-tag">Security</span>
+                    </div>
+                    <a href="project-gitaegis.html" class="project-card-more">View Details →</a>
+                </article>
+
+                <article class="project-card">
+                    <h2 class="project-card-title">
+                        <a href="project-patent-analyzer.html" class="project-card-link">Patent Analyzer</a>
+                    </h2>
+                    <p class="project-card-excerpt">
+                        AI-powered patent document analysis using vector databases and LLMs.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">NLP</span>
+                        <span class="tech-tag">Docker</span>
+                    </div>
+                    <a href="project-patent-analyzer.html" class="project-card-more">View Details →</a>
+                </article>
+
+                <article class="project-card">
+                    <h2 class="project-card-title">
+                        <a href="project-expense-tracker.html" class="project-card-link">Expense Tracker</a>
+                    </h2>
+                    <p class="project-card-excerpt">
+                        Intelligent expense tracking with Google's Agent Development Kit.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Google ADK</span>
+                        <span class="tech-tag">AI Agents</span>
+                    </div>
+                    <a href="project-expense-tracker.html" class="project-card-more">View Details →</a>
+                </article>
+
+                <article class="project-card">
+                    <h2 class="project-card-title">
+                        <a href="project-app-scraper.html" class="project-card-link">Application Scraper</a>
+                    </h2>
+                    <p class="project-card-excerpt">
+                        Automated job application tracking from Gmail with structured output.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Automation</span>
+                        <span class="tech-tag">Gmail API</span>
+                    </div>
+                    <a href="project-app-scraper.html" class="project-card-more">View Details →</a>
+                </article>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <div class="separator"></div>
+            <p class="copyright">&copy; 2026 Holy Knight. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

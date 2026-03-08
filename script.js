@@ -3,6 +3,8 @@
     const themeToggle = document.getElementById('themeToggle');
     const html = document.documentElement;
     
+    if (!themeToggle) return;
+    
     // Check for saved theme preference or default to light
     const savedTheme = localStorage.getItem('theme') || 'light';
     html.setAttribute('data-theme', savedTheme);
@@ -29,7 +31,9 @@ const jokes = [
     "Sleep is just a blocking call with an indefinite timeout. 😴",
     "My code doesn't work, I have no idea why. My code works, I have no idea why. 🤷",
     "Arrays start at 0, not 1. Fight me. 🥊",
-    "I don't always test my code, but when I do, it's in production. 🚀"
+    "I don't always test my code, but when I do, it's in production. 🚀",
+    "Debugging is like being a detective in a crime movie where you're also the murderer. 🔍",
+    "The code worked and I don't know why. The code doesn't work and I don't know why. 🎲"
 ];
 
 const jokeElement = document.getElementById('joke');
@@ -57,22 +61,5 @@ document.querySelectorAll('.code-copy-btn').forEach(function(btn) {
             console.error('Failed to copy:', err);
             btn.textContent = 'Failed';
         });
-    });
-});
-
-// Smooth scroll for anchor links
-document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
-    anchor.addEventListener('click', function(e) {
-        const href = this.getAttribute('href');
-        if (href !== '#' && href.length > 1) {
-            const target = document.querySelector(href);
-            if (target) {
-                e.preventDefault();
-                target.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
-            }
-        }
     });
 });

@@ -3,12 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Personal website of Holy Knight - Software Engineer & AI Developer">
     <title>Holy Knight | Software Engineer</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Inter+Tight:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="theme-toggle-container">
@@ -19,24 +18,20 @@
     </div>
 
     <div class="container">
-        <header class="header">
-            <a href="cv.pdf" class="cv-link" target="_blank">
-                <span class="cv-text">Curriculum Vitae</span>
-                <span class="cv-arrow">→</span>
-            </a>
-        </header>
-
-        <div class="hero-section">
-            <div class="hero-content">
-                <h1 class="name">Holy Knight</h1>
-                <p class="title">Software Engineer & AI Developer</p>
-                <div class="separator"></div>
-                <p class="bio">
-                    I build robust backend systems and explore AI/ML applications. 
-                    Currently at Monash University, Faculty of Information Technology.
-                </p>
+        <div class="hero-landing">
+            <div class="hero-content-landing">
+                <h1 class="hero-name">Holy Knight</h1>
+                <p class="hero-title">Software Engineer & AI Developer</p>
+                
+                <nav class="hero-nav">
+                    <a href="about.html" class="hero-nav-link">About</a>
+                    <a href="projects.html" class="hero-nav-link">Projects</a>
+                    <a href="blog.html" class="hero-nav-link">Blog</a>
+                    <a href="resume.html" class="hero-nav-link hero-nav-link-red">Resume</a>
+                    <a href="contact.html" class="hero-nav-link">Contact</a>
+                </nav>
             </div>
-            
+
             <div class="hero-image-wrapper">
                 <div class="image-box">
                     <div class="image-placeholder">
@@ -44,138 +39,9 @@
                     </div>
                 </div>
                 <p class="joke" id="joke">Why do programmers prefer dark mode? Because light attracts bugs. 🐛</p>
+                <p class="current-status">current: <span class="status-sleep">sleep deprived</span> 😴</p>
             </div>
         </div>
-
-        <nav class="nav">
-            <a href="#about" class="nav-link">About</a>
-            <a href="#projects" class="nav-link">Projects</a>
-            <a href="#blog" class="nav-link">Blog</a>
-            <a href="#contact" class="nav-link">Contact</a>
-        </nav>
-
-        <main>
-            <section id="about" class="section">
-                <h2 class="section-title">About</h2>
-                <div class="separator separator-small"></div>
-                <p class="text">
-                    I am a software engineering student at <strong>Monash University</strong>, 
-                    Faculty of Information Technology. My interests lie in building robust backend systems, 
-                    exploring AI/ML applications, and creating tools that enhance developer workflows.
-                </p>
-                <p class="text">
-                    I focus on writing clean, efficient code and designing systems that are both 
-                    scalable and maintainable. My work spans across Go, Python, and modern web technologies.
-                </p>
-            </section>
-
-            <section id="projects" class="section">
-                <h2 class="section-title">Projects</h2>
-                <div class="separator separator-small"></div>
-                
-                <div class="project-list">
-                    <article class="project">
-                        <h3 class="project-title">
-                            <a href="project-gitaegis.html" class="project-title-link">GitAegis</a>
-                        </h3>
-                        <p class="project-description">
-                            A lightweight Go CLI tool for detecting secrets and sensitive data before commit. 
-                            Features Shannon entropy analysis, regex pattern matching, and tree-sitter AST parsing.
-                        </p>
-                        <div class="project-tech">
-                            <span class="tech-tag">Go</span>
-                            <span class="tech-tag">CLI</span>
-                            <span class="tech-tag">Security</span>
-                        </div>
-                    </article>
-
-                    <article class="project">
-                        <h3 class="project-title">
-                            <a href="project-patent-analyzer.html" class="project-title-link">Patent Analyzer</a>
-                        </h3>
-                        <p class="project-description">
-                            An AI-powered system for analyzing patent documents using vector databases, 
-                            semantic search, and large language models for intelligent Q&A interactions.
-                        </p>
-                        <div class="project-tech">
-                            <span class="tech-tag">Python</span>
-                            <span class="tech-tag">NLP</span>
-                            <span class="tech-tag">Docker</span>
-                        </div>
-                    </article>
-
-                    <article class="project">
-                        <h3 class="project-title">
-                            <a href="project-expense-tracker.html" class="project-title-link">Expense Tracker with ADK</a>
-                        </h3>
-                        <p class="project-description">
-                            An intelligent expense tracking application leveraging Google's Agent Development Kit 
-                            for automated categorization and financial insights.
-                        </p>
-                        <div class="project-tech">
-                            <span class="tech-tag">Python</span>
-                            <span class="tech-tag">Google ADK</span>
-                            <span class="tech-tag">AI Agents</span>
-                        </div>
-                    </article>
-
-                    <article class="project">
-                        <h3 class="project-title">
-                            <a href="project-app-scraper.html" class="project-title-link">Application Scraper</a>
-                        </h3>
-                        <p class="project-description">
-                            Automated system for extracting and summarizing job application data from email 
-                            communications, organizing into structured tabular format.
-                        </p>
-                        <div class="project-tech">
-                            <span class="tech-tag">Python</span>
-                            <span class="tech-tag">Automation</span>
-                            <span class="tech-tag">Gmail API</span>
-                        </div>
-                    </article>
-                </div>
-            </section>
-
-            <section id="blog" class="section">
-                <h2 class="section-title">Blog</h2>
-                <div class="separator separator-small"></div>
-                
-                <div class="blog-list">
-                    <article class="blog-post-preview">
-                        <h3 class="blog-post-title">
-                            <a href="blog-post-template.html" class="blog-post-link">Understanding Entropy in Secret Detection</a>
-                        </h3>
-                        <p class="blog-post-meta">March 2026 · 5 min read</p>
-                        <p class="blog-post-excerpt">
-                            How Shannon entropy helps identify potential API keys and tokens in source code...
-                        </p>
-                    </article>
-
-                    <article class="blog-post-preview">
-                        <h3 class="blog-post-title">
-                            <a href="#" class="blog-post-link">Building CLI Tools with Go</a>
-                        </h3>
-                        <p class="blog-post-meta">February 2026 · 8 min read</p>
-                        <p class="blog-post-excerpt">
-                            A deep dive into creating efficient command-line interfaces using Go's standard library...
-                        </p>
-                    </article>
-                </div>
-            </section>
-
-            <section id="contact" class="section">
-                <h2 class="section-title">Contact</h2>
-                <div class="separator separator-small"></div>
-                <p class="text">
-                    I'm always open to discussing new opportunities, collaborations, or interesting ideas.
-                </p>
-                <div class="contact-links">
-                    <a href="mailto:holyknight101@example.com" class="contact-link">Email</a>
-                    <a href="https://github.com/holyknight101" class="contact-link" target="_blank" rel="noopener">GitHub</a>
-                    <a href="https://linkedin.com/in/holyknight101" class="contact-link" target="_blank" rel="noopener">LinkedIn</a>
-                </div>
-            </section>
-        </main>
 
         <footer class="footer">
             <div class="separator"></div>
