@@ -468,7 +468,7 @@ body {
     transition: color 0.2s;
 }
 
-.footer-link:hover { color: var(--text); }
+.footer-link:hover { color: var(--red); }
 
 .copyright {
     font-size: 0.8rem;
