@@ -1,4 +1,6 @@
 ---
+import JsonLd from '../components/JsonLd.astro';
+
 export interface Props {
     title: string;
     description?: string;
@@ -6,6 +8,12 @@ export interface Props {
 }
 
 const { title, description, page } = Astro.props;
+
+const siteUrl = 'https://sjrah.net';
+const defaultDescription = 'Steve Jevon Rahardjo - Data Science graduate specializing in backend systems, AI/ML, and database optimization. Building scalable software solutions.';
+const pageDescription = description || defaultDescription;
+
+const ogImage = `${siteUrl}/og-image.png`;
 ---
 
 <!doctype html>
@@ -13,19 +21,43 @@ const { title, description, page } = Astro.props;
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta name="description" content={description || "Steve Rahardjo."} />
-        <meta property="og:title" content={title} />
-        <meta
-            property="og:description"
-            content={description || "Aspiring[Wannabe] Engineer"}
-        />
+        <meta name="description" content={pageDescription} />
+        <meta name="author" content="Steve Jevon Rahardjo" />
+        <meta name="robots" content="index, follow" />
+        
+        <!-- Canonical URL -->
+        <link rel="canonical" href={`${siteUrl}${Astro.url.pathname}`} />
+        
+        <!-- Open Graph / Facebook -->
         <meta property="og:type" content="website" />
+        <meta property="og:url" content={`${siteUrl}${Astro.url.pathname}`} />
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content={pageDescription} />
+        <meta property="og:image" content={ogImage} />
+        <meta property="og:site_name" content="Steve Jevon Rahardjo" />
+        
+        <!-- Twitter -->
+        <meta property="twitter:card" content="summary_large_image" />
+        <meta property="twitter:url" content={`${siteUrl}${Astro.url.pathname}`} />
+        <meta property="twitter:title" content={title} />
+        <meta property="twitter:description" content={pageDescription} />
+        <meta property="twitter:image" content={ogImage} />
+        
         <title>{title}</title>
         <link
             rel="icon"
             href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>👨‍💻</text></svg>"
         />
         <link rel="stylesheet" href="/styles.css" />
+        
+        <!-- JSON-LD Structured Data -->
+        <JsonLd 
+            name="Steve Jevon Rahardjo"
+            jobTitle="Software Engineer"
+            email="steve.jevon.r@gmail.com"
+            github="https://github.com/steverahardjo"
+            linkedin="https://linkedin.com/in/steve-jevon-rahardjo"
+        />
     </head>
     <body class={page === "writing" ? "writing-page" : ""}>
         <div class="theme-toggle" id="themeToggle">◐</div>

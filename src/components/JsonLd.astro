@@ -1,0 +1,33 @@
+---
+export interface Props {
+  name: string;
+  jobTitle: string;
+  email: string;
+  github?: string;
+  linkedin?: string;
+  sameAs?: string[];
+}
+
+const { name, jobTitle, email, github, linkedin, sameAs = [] } = Astro.props;
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name,
+  jobTitle,
+  email: `mailto:${email}`,
+  url: "https://sjrah.net",
+  sameAs: [
+    github,
+    linkedin,
+    ...sameAs,
+  ].filter(Boolean),
+};
+---
+
+<script is:inline>
+  const script = document.createElement('script');
+  script.type = 'application/ld+json';
+  script.textContent = JSON.stringify(structuredData);
+  document.head.appendChild(script);
+</script>
