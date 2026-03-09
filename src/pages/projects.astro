@@ -1,0 +1,76 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const projects = [
+    {
+        title: "Patent Analyzer",
+        description:
+            "Final Year Project: A patent document analyzer that extracts TRIZ innovation principles using LLMs and hybrid RAG search. Implemented backend components including automated text extraction (bs4), chain-of-thought prompting, and vector search with QdrantDB.",
+        tags: ["Python", "Django", "OpenAI", "QdrantDB", "RAG"],
+        link: "/projects/patent-analyzer",
+    },
+    {
+        title: "Turn-based Elden Ring inspired game",
+        description:
+            "Project fone for FIT2009 where we apply OOP paradigm to extend the existing template and game engine provided with the supporting documents such as design rationale, UML diagram, and data-flow diagram. I take into account OOP-affirming principles such as DRY, KISS, SOLID, code smells avoidance.",
+        tags: ["Java", "Lucidchart"],
+        link: "https://github.com/steverahardjo/oop-fit2099--asign2",
+    },
+    {
+        title: "Autonomous Expense Agent",
+        description:
+            "A multi-agent, multimodal expense tracking system using Google ADK with Model Context Protocol (MCP). Features YOLO-based receipt image cropping, MongoDB transactions, Matplotlib visualizations, and Google Cloud Storage integration.",
+        tags: ["Python", "Google ADK", "MCP", "YOLO", "Telegram API"],
+        link: "/projects/expense-tracker",
+    },
+    {
+        title: "Big Data IoT Processing",
+        description:
+            "Designed a data warehouse schema in MongoDB for IoT sensor data. Built a Kafka pub/sub system ingesting real-time streams from multiple IoT sources. Used PySpark with custom UDFs for preprocessing and anomaly detection.",
+        tags: ["PySpark", "Kafka", "MongoDB", "Matplotlib"],
+        link: "https://github.com/steverahardjo/AWAS_traffic_detector",
+    },
+    {
+        title: "GitAegis — CLI Secret Scanner",
+        description:
+            "A Go CLI tool for detecting secrets and API keys before commit using Shannon entropy analysis and tree-sitter AST parsing. Features configurable parameters via CLI flags and TOML config, JSON output for CI/CD integration.",
+        tags: ["Go", "Cobra", "Tree-sitter", "Git", "Github Action"],
+        link: "https://github.com/steverahardjo/gitaegis",
+        external: true,
+    },
+];
+---
+
+<BaseLayout
+    title="Projects | Steve Jevon Rahardjo"
+    description="Projects by Steve Jevon Rahardjo - Patent Analyzer, Expense Agent, IoT Processing, and GitAegis secret scanner."
+    page="projects"
+>
+    <div class="container page">
+        <h1 class="page-title">
+            <span>Projects</span>
+        </h1>
+
+        {
+            projects.map((project) => (
+                <article class="project">
+                    <h2 class="project-title">{project.title}</h2>
+                    <p class="project-desc">{project.description}</p>
+                    <div class="tags">
+                        {project.tags.map((tag) => (
+                            <span class="tag">{tag}</span>
+                        ))}
+                    </div>
+                    <a
+                        href={project.link}
+                        class="project-link"
+                        target={project.external ? "_blank" : undefined}
+                        rel={project.external ? "noopener" : undefined}
+                    >
+                        {project.external ? "View on GitHub" : "View Details"} →
+                    </a>
+                </article>
+            ))
+        }
+    </div>
+</BaseLayout>

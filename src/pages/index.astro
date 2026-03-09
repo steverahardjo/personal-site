@@ -1,0 +1,45 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const jokes = [
+    "Why do programmers prefer dark mode? Light attracts bugs. 🐛",
+    "Arrays start at 0, not 1. Fight me. 🥊",
+    "Sleep is a blocking call with indefinite timeout. 😴",
+    "My code works, I have no idea why. 🤷",
+    "Debugging: being detective and murderer in the same story. 🔍",
+];
+
+const randomJoke = jokes[Math.floor(Math.random() * jokes.length)];
+---
+
+<BaseLayout title="Steve Rahardjo" page="home">
+    <div class="container home">
+        <div class="content">
+            <div class="text-section">
+                <h1 class="name">Steve Rahardjo</h1>
+                <p class="bio">Currently looking for job 😭</p>
+
+                <div class="links">
+                    <a href="/resume.pdf" class="link link-red">Resume</a>
+                    <a
+                        href="https://github.com/steverahardjo"
+                        class="link"
+                        target="_blank"
+                        rel="noopener">GitHub</a
+                    >
+                    <a href="mailto:steve.jevon.r@gmail.com" class="link"
+                        >Email</a
+                    >
+                </div>
+            </div>
+
+            <div class="image-section">
+                <div class="image-box">
+                    <div class="image-placeholder">[Photo]</div>
+                </div>
+                <p class="joke" id="joke">{randomJoke}</p>
+                <p class="status">current: <span>sleep deprived</span></p>
+            </div>
+        </div>
+    </div>
+</BaseLayout>

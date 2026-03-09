@@ -1,0 +1,25 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const errorJokes = [
+  "404: Motivation not found. Try refreshing.",
+  "This page is as empty as my motivation on Monday mornings.",
+  "Error 404: Sleep not found. (This is normal for programmers.)",
+  "The page you're looking for has been refactored into oblivion.",
+  "404: Like my social life, this page doesn't exist."
+];
+
+const randomJoke = errorJokes[Math.floor(Math.random() * errorJokes.length)];
+---
+
+<BaseLayout title="404 | Page Not Found">
+  <div class="container page error-page">
+    <h1 class="error-title">404</h1>
+    <p class="error-text">Page Not Found</p>
+    <p class="error-desc">
+      The page you're looking for doesn't exist or has been moved.
+    </p>
+    <p class="error-joke">{randomJoke}</p>
+    <a href="/" class="error-link">Back to Home →</a>
+  </div>
+</BaseLayout>

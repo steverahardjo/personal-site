@@ -1,0 +1,70 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout
+    title="Personal Yapping | Steve Jevon Rahardjo"
+    description="Random thoughts and ramblings coming soon."
+    page="writing"
+>
+    <div class="container page">
+        <h1 class="page-title">
+            <span>Writing</span>
+        </h1>
+
+        <div class="coming-soon">
+            <div class="coming-soon-icon">🚧</div>
+            <h2 class="coming-soon-title">Coming Soon</h2>
+            <p class="coming-soon-text">
+                I'm still figuring out what to yap about. Check back later for
+                some unhinged thoughts and ramblings.
+            </p>
+        </div>
+    </div>
+</BaseLayout>
+
+<style>
+    .coming-soon {
+        text-align: center;
+        padding: 4rem 0;
+    }
+
+    .coming-soon-icon {
+        font-size: 4rem;
+        margin-bottom: 1.5rem;
+        animation: bounce 2s ease-in-out infinite;
+    }
+
+    @keyframes bounce {
+        0%,
+        100% {
+            transform: translateY(0);
+        }
+        50% {
+            transform: translateY(-10px);
+        }
+    }
+
+    .coming-soon-title {
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        font-size: 2rem;
+        font-weight: 800;
+        color: var(--text);
+        margin-bottom: 1rem;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+    }
+
+    .coming-soon-text {
+        font-size: 1rem;
+        line-height: 1.8;
+        color: var(--muted);
+        max-width: 400px;
+        margin: 0 auto;
+        padding: 1rem 1.25rem;
+        background: var(--offwhite);
+        border-radius: 8px;
+        border: 1px solid var(--border);
+        box-shadow: var(--shadow-sm);
+    }
+</style>
