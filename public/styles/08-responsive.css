@@ -1,0 +1,97 @@
+/* ========================================
+   Responsive Design
+   ======================================== */
+
+@media (max-width: 600px) {
+    /* Show mobile header */
+    .mobile-header {
+        display: block;
+    }
+
+    /* Hide desktop header on mobile */
+    .header {
+        display: none;
+    }
+
+    /* Hide blue hue on mobile */
+    .blue-hue {
+        display: none;
+    }
+
+    /* Home page layout */
+    .content {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .image-section {
+        max-width: 200px;
+        margin: 0 auto;
+    }
+
+    .name {
+        font-size: 2rem;
+    }
+
+    /* Footer */
+    .footer-social {
+        justify-content: center;
+    }
+
+    /* Writing page */
+    .writing-list {
+        gap: 1rem;
+    }
+
+    .writing-item {
+        padding: 1.25rem;
+    }
+
+    .blog-post {
+        padding: 1.5rem 1rem;
+    }
+
+    .blog-post h1 {
+        font-size: 1.75rem;
+    }
+
+    /* Projects page */
+    .projects-list {
+        gap: 1.5rem;
+    }
+
+    .project {
+        padding: 1.25rem;
+    }
+
+    /* Container */
+    .container {
+        padding: 1.5rem 1rem;
+    }
+
+    .container.home {
+        padding-top: 5rem;
+    }
+}
+
+/* Tablet */
+@media (min-width: 601px) and (max-width: 900px) {
+    .content {
+        gap: 2rem;
+    }
+
+    .projects-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Large screens */
+@media (min-width: 1200px) {
+    .container {
+        max-width: 1100px;
+    }
+
+    .container.home {
+        max-width: 1000px;
+    }
+}

@@ -1,0 +1,119 @@
+/* ========================================
+   Writing Page & Blog Posts
+   ======================================== */
+
+.writing-page {
+    padding-top: 0;
+}
+
+.writing-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.writing-item {
+    background: var(--offwhite);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.5rem;
+    transition: all 0.2s;
+}
+
+[data-theme="dark"] .writing-item {
+    background: var(--offwhite-dark);
+}
+
+.writing-item:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-hover);
+}
+
+.writing-date {
+    font-size: 0.8rem;
+    color: var(--muted);
+    margin-bottom: 0.5rem;
+}
+
+.writing-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 0.75rem;
+}
+
+.writing-excerpt {
+    font-size: 0.95rem;
+    color: var(--muted);
+    line-height: 1.6;
+}
+
+/* Blog Post Content */
+.blog-post {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem;
+}
+
+.blog-post h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: var(--text);
+}
+
+.blog-post .date {
+    font-size: 0.9rem;
+    color: var(--muted);
+    margin-bottom: 2rem;
+}
+
+.blog-post-content {
+    font-size: 1.05rem;
+    line-height: 1.8;
+}
+
+.blog-post-content h2 {
+    font-size: 1.75rem;
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.blog-post-content h3 {
+    font-size: 1.25rem;
+    margin-top: 2rem;
+    margin-bottom: 0.75rem;
+}
+
+.blog-post-content p {
+    margin-bottom: 1.5rem;
+}
+
+.blog-post-content a {
+    color: var(--red);
+    text-decoration: underline;
+}
+
+.blog-post-content code {
+    background: var(--offwhite);
+    padding: 0.2rem 0.4rem;
+    border-radius: 4px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.9em;
+}
+
+[data-theme="dark"] .blog-post-content code {
+    background: var(--offwhite-dark);
+}
+
+.blog-post-content pre {
+    background: var(--offwhite);
+    padding: 1.5rem;
+    border-radius: 8px;
+    overflow-x: auto;
+    margin-bottom: 1.5rem;
+}
+
+[data-theme="dark"] .blog-post-content pre {
+    background: var(--offwhite-dark);
+}

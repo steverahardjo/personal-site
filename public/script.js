@@ -4,13 +4,34 @@
     const html = document.documentElement;
     const saved = localStorage.getItem('theme') || 'light';
     html.setAttribute('data-theme', saved);
-    
+
     btn?.addEventListener('click', () => {
         const current = html.getAttribute('data-theme');
         const next = current === 'dark' ? 'light' : 'dark';
         html.setAttribute('data-theme', next);
         localStorage.setItem('theme', next);
     });
+})();
+
+// Mobile Menu Toggle
+(function() {
+    const menuBtn = document.getElementById('mobileMenuBtn');
+    const mobileNav = document.getElementById('mobileNav');
+
+    if (menuBtn && mobileNav) {
+        menuBtn.addEventListener('click', () => {
+            menuBtn.classList.toggle('active');
+            mobileNav.classList.toggle('open');
+        });
+
+        // Close menu when clicking a link
+        mobileNav.querySelectorAll('.mobile-nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                menuBtn.classList.remove('active');
+                mobileNav.classList.remove('open');
+            });
+        });
+    }
 })();
 
 // Joke Rotator

@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import GhCalendar from "../components/GhCalendar.tsx";
 
 const jokes = [
     "Why do programmers prefer dark mode? Light attracts bugs. 🐛",
@@ -12,8 +13,8 @@ const jokes = [
 const randomJoke = jokes[Math.floor(Math.random() * jokes.length)];
 ---
 
-<BaseLayout 
-    title="Steve Jevon Rahardjo | Software Engineer" 
+<BaseLayout
+    title="sjrah.net"
     description="Steve Jevon Rahardjo - Data Science graduate specializing in backend systems, AI/ML, and database optimization. Building scalable software solutions."
     page="home"
 >
@@ -24,7 +25,8 @@ const randomJoke = jokes[Math.floor(Math.random() * jokes.length)];
                 <p class="bio">Currently looking for job 😭</p>
 
                 <div class="links">
-                    <a href="/resume.pdf" class="link link-red">Resume</a>
+                    <a href="/public/resume.pdf" class="link link-red">Resume</a
+                    >
                     <a
                         href="https://github.com/steverahardjo"
                         class="link"
@@ -44,6 +46,9 @@ const randomJoke = jokes[Math.floor(Math.random() * jokes.length)];
                 <p class="joke" id="joke">{randomJoke}</p>
                 <p class="status">current: <span>sleep deprived</span></p>
             </div>
+        </div>
+        <div class="calendar-wrapper" style="margin-top: 2rem;">
+            <GhCalendar client:visible />
         </div>
     </div>
 </BaseLayout>
