@@ -180,6 +180,12 @@
     margin-bottom: 0.75rem;
 }
 
+.coursework {
+    font-size: var(--text-body);
+    color: var(--muted);
+    line-height: 1.7;
+}
+
 .experience-desc {
     font-size: var(--text-body);
     color: var(--muted);
