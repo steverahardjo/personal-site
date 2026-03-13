@@ -79,11 +79,19 @@
    About Page
    ======================================== */
 
+.intro-section {
+    margin-bottom: 3rem;
+}
+
 .text {
     font-size: var(--text-body);
     line-height: 1.8;
     color: var(--muted);
     margin-bottom: 1.5rem;
+}
+
+.text:last-child {
+    margin-bottom: 0;
 }
 
 .text strong {
@@ -95,13 +103,26 @@
     font-size: var(--text-h3);
     font-weight: 600;
     color: var(--text);
-    margin: 3rem 0 1.25rem 0;
+    margin: 3rem 0 1.5rem 0;
+    position: relative;
+}
+
+.section-subtitle::before {
+    content: '';
+    position: absolute;
+    left: -1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 4px;
+    height: 20px;
+    background: var(--red);
+    border-radius: 2px;
 }
 
 .skills {
     display: flex;
     flex-direction: column;
-    gap: 0.75rem;
+    gap: 0.875rem;
 }
 
 .skill-item {
@@ -112,10 +133,16 @@
     border: 1px solid var(--border);
     border-radius: 8px;
     align-items: baseline;
+    transition: all 0.2s;
 }
 
 [data-theme="dark"] .skill-item {
     background: var(--offwhite-dark);
+}
+
+.skill-item:hover {
+    border-color: var(--red);
+    transform: translateX(4px);
 }
 
 .skill-label {
@@ -140,11 +167,12 @@
 
 .education-item,
 .experience-item {
-    padding: 1.25rem 1.5rem;
+    padding: 1.5rem 1.75rem;
     background: var(--offwhite);
     border: 1px solid var(--border);
     border-radius: 8px;
     transition: all 0.2s;
+    position: relative;
 }
 
 [data-theme="dark"] .education-item,
@@ -154,7 +182,9 @@
 
 .education-item:hover,
 .experience-item:hover {
+    border-color: var(--border);
     box-shadow: var(--shadow-md);
+    transform: translateY(-2px);
 }
 
 .education-title,
@@ -177,13 +207,68 @@
 .experience-year {
     font-size: var(--text-meta);
     color: var(--muted);
-    margin-bottom: 0.75rem;
+    margin-bottom: 1rem;
 }
 
-.coursework {
+.coursework,
+.experience-desc {
     font-size: var(--text-body);
     color: var(--muted);
     line-height: 1.7;
+}
+
+.coursework {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border);
+}
+
+.coursework-label {
+    display: block;
+    font-size: var(--text-body-xs);
+    font-weight: 700;
+    color: var(--text);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.75rem;
+}
+
+.coursework-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    grid-auto-flow: dense;
+    gap: 0.5rem;
+}
+
+.coursework-item {
+    font-size: var(--text-body-xs);
+    padding: 0.75rem 1rem;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    color: var(--text);
+    font-weight: 500;
+    font-family: 'Courier New', 'Monaco', monospace;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    min-height: 44px;
+}
+
+.coursework-item:nth-child(2n) {
+    grid-column: span 2;
+}
+
+.coursework-item:nth-child(7n) {
+    grid-column: span 2;
+}
+
+@media (max-width: 600px) {
+    .coursework-item:nth-child(3n),
+    .coursework-item:nth-child(5n) {
+        grid-column: span 1;
+    }
 }
 
 .experience-desc {

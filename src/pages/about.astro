@@ -12,26 +12,28 @@ import BaseLayout from "../layouts/BaseLayout.astro";
             <span>About</span>
         </h1>
 
-        <p class="text">
-            I am a Computer Science graduate from <strong
-                >Monash University Malaysia</strong
-            > with a focus on backend systems and AI-centric development.
-        </p>
+        <div class="intro-section">
+            <p class="text">
+                I am a Computer Science graduate from <strong
+                    >Monash University Malaysia</strong
+                > with a focus on backend systems and AI-centric development.
+            </p>
 
-        <p class="text">
-            Currently, I am refining several side projects to build a deeper
-            understanding of
-            <strong>network programming</strong> and <strong
-                >database optimization</strong
-            >. I also dedicate time to following <strong>LLM research</strong> and
-            its practical application in software products.
-        </p>
+            <p class="text">
+                Currently, I am refining several side projects to build a deeper
+                understanding of
+                <strong>network programming</strong> and <strong
+                    >database optimization</strong
+                >. I also dedicate time to following <strong>LLM research</strong> and
+                its practical application in software products.
+            </p>
 
-        <p class="text">
-            My goal is to apply these technical interests to scalable,
-            real-world systems while staying up to date with the evolving AI
-            landscape.
-        </p>
+            <p class="text">
+                My goal is to apply these technical interests to scalable,
+                real-world systems while staying up to date with the evolving AI
+                landscape.
+            </p>
+        </div>
 
         <h2 class="section-subtitle">Skills</h2>
         <div class="skills">
@@ -69,37 +71,44 @@ import BaseLayout from "../layouts/BaseLayout.astro";
                 </h3>
                 <p class="education-school">Monash University Malaysia</p>
                 <p class="education-year">Feb 2023 — Nov 2025</p>
-                <p class="coursework">
-                    Relevant Coursework: Data Structure and Algorithm, Data
-                    Science, Object-Oriented Programming, Data Modelling, Data
-                    Data Visualization, Data Management and Warehousing, Big
-                    Data Principles and Application, App Development in Android.
+                <div class="coursework">
+                    <span class="coursework-label">Relevant Coursework</span>
+                    <div class="coursework-list">
+                        <span class="coursework-item">Data Science</span>
+                        <span class="coursework-item">Data Structure and Algorithm</span>
+                        <span class="coursework-item">Data Modelling</span>
+                        <span class="coursework-item">Data Visualization</span>
+                        <span class="coursework-item">Object-Oriented Programming</span>
+                        <span class="coursework-item">Data Management and Warehousing</span>
+                        <span class="coursework-item">App Development in Android</span>
+                        <span class="coursework-item">Big Data Principles and Application</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h2 class="section-subtitle">Experience</h2>
+        <div class="experience">
+            <div class="experience-item">
+                <h3 class="experience-title">
+                    Data Analyst Trainee (CDP Team)
+                </h3>
+                <p class="experience-company">SynergyXYZ</p>
+                <p class="experience-year">Nov 2024 — Feb 2025</p>
+                <p class="experience-desc">
+                    Researched Customer Data Platform vendors, formulated
+                    CDP service offerings, and compiled technical
+                    documentation. Gained experience with Google Ads.
                 </p>
             </div>
-
-            <h2 class="section-subtitle">Experience</h2>
-            <div class="experience">
-                <div class="experience-item">
-                    <h3 class="experience-title">
-                        Data Analyst Trainee (CDP Team)
-                    </h3>
-                    <p class="experience-company">SynergyXYZ</p>
-                    <p class="experience-year">Nov 2024 — Feb 2025</p>
-                    <p class="experience-desc">
-                        Researched Customer Data Platform vendors, formulated
-                        CDP service offerings, and compiled technical
-                        documentation. Gained experience with Google Ads.
-                    </p>
-                </div>
-                <div class="experience-item">
-                    <h3 class="experience-title">Website Admin (Volunteer)</h3>
-                    <p class="experience-company">PPI Monash Malaysia</p>
-                    <p class="experience-year">Jul 2024 — Nov 2025</p>
-                    <p class="experience-desc">
-                        Executed website revamp using WordPress, published
-                        content, and assisted in event program coordination.
-                    </p>
-                </div>
+            <div class="experience-item">
+                <h3 class="experience-title">Website Admin (Volunteer)</h3>
+                <p class="experience-company">PPI Monash Malaysia</p>
+                <p class="experience-year">Jul 2024 — Nov 2025</p>
+                <p class="experience-desc">
+                    Executed website revamp using WordPress, published
+                    content, and assisted in event program coordination.
+                </p>
             </div>
         </div>
     </div>
