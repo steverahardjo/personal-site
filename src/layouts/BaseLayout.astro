@@ -20,6 +20,12 @@ const ogImage = `${siteUrl}/og-image.png`;
 <!doctype html>
 <html lang="en">
     <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400..800;1,6..72,400..800&display=swap"
+            rel="stylesheet"
+        />
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="description" content={pageDescription} />
@@ -70,14 +76,34 @@ const ogImage = `${siteUrl}/og-image.png`;
 
         <!-- Mobile Header -->
         <header class="mobile-header">
-            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu">
+            <button
+                class="mobile-menu-btn"
+                id="mobileMenuBtn"
+                aria-label="Toggle menu"
+            >
                 <span class="hamburger"></span>
             </button>
             <div class="mobile-nav" id="mobileNav">
-                <a href="/" class={`mobile-nav-link ${page === "home" ? "active" : ""}`}>Home</a>
-                <a href="/about" class={`mobile-nav-link ${page === "about" ? "active" : ""}`}>About</a>
-                <a href="/projects" class={`mobile-nav-link ${page === "projects" ? "active" : ""}`}>Projects</a>
-                <a href="/writing" class={`mobile-nav-link ${page === "writing" ? "active" : ""}`}>Writing</a>
+                <a
+                    href="/"
+                    class={`mobile-nav-link ${page === "home" ? "active" : ""}`}
+                    >Home</a
+                >
+                <a
+                    href="/about"
+                    class={`mobile-nav-link ${page === "about" ? "active" : ""}`}
+                    >About</a
+                >
+                <a
+                    href="/projects"
+                    class={`mobile-nav-link ${page === "projects" ? "active" : ""}`}
+                    >Projects</a
+                >
+                <a
+                    href="/writing"
+                    class={`mobile-nav-link ${page === "writing" ? "active" : ""}`}
+                    >Writing</a
+                >
             </div>
         </header>
 

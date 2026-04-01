@@ -20,8 +20,10 @@
 }
 
 .footer-link {
-    color: var(--muted);
-    transition: color 0.2s, transform 0.2s;
+    color: var(--red);
+    transition:
+        color 0.2s,
+        transform 0.2s;
 }
 
 .footer-link:hover {
