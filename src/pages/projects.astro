@@ -5,72 +5,70 @@ const projects = [
     {
         title: "Patent Analyzer",
         description:
-            "Took part in the full-stack development of a patent analyzer based on TRIZ40 principles, powered by LLM stack. Worked mostly on the backend systems, including 3 main services; patent retrieval from USPTO website, a novel classification method using LLM decoder model with context injection, Hybrid retrieval based RAG chatbot using QdrantDB and Cohere's reranker.",
-        tags: ["Python", "Django", "OpenAI", "QdrantDB", "RAG"],
+            "Architected a full-stack patent analysis platform leveraging TRIZ40 principles. Engineered a multi-service backend featuring automated USPTO retrieval, LLM-based classification with context injection, and a high-performance RAG chatbot powered by Qdrant and Cohere reranking.",
+        tags: ["Python", "Django", "QdrantDB", "RAG"],
         link: "https://github.com/reneeyst23/patent-analyser-fyp",
     },
     {
-        title: "Turn-based Elden Ring inspired game",
+        title: "GitAegis",
         description:
-            "Project fone for FIT2009 where we apply OOP paradigm to extend the existing template and game engine provided with the supporting documents such as design rationale, UML diagram, and data-flow diagram. I take into account OOP-affirming principles such as DRY, KISS, SOLID, code smells avoidance.",
-        tags: ["Java", "Lucidchart"],
-        link: "https://github.com/steverahardjo/oop-fit2099--asign2",
+            "A high-performance Go CLI security engine. Detects exposed secrets using Shannon entropy and Tree-sitter AST parsing. Designed for CI/CD integration with granular TOML configuration and structured JSON reporting.",
+        tags: ["Go", "Cobra", "Tree-sitter", "Security"],
+        link: "https://github.com/steverahardjo/gitaegis",
+        external: true,
     },
     {
         title: "Autonomous Expense Agent",
         description:
-            "A multi-agent, multimodal expense tracking system using Google ADK with Model Context Protocol (MCP). Features YOLO-based receipt image cropping, MongoDB transactions, Matplotlib visualizations, and Google Cloud Storage integration.",
-        tags: ["Python", "Google ADK", "MCP", "YOLO", "Telegram API"],
+            "A multi-agent multimodal system utilizing the Google ADK and Model Context Protocol (MCP). Implements YOLO-based computer vision for receipt processing and complex MongoDB transactional logic for automated financial tracking.",
+        tags: ["Python", "MCP", "YOLO", "Google ADK"],
         link: "/projects/expense-tracker",
     },
     {
-        title: "Big Data IoT Processing",
+        title: "Big Data IoT Pipeline",
         description:
-            "Designed a data warehouse schema in MongoDB for IoT sensor data. Built a Kafka pub/sub system ingesting real-time streams from multiple IoT sources. Used PySpark with custom UDFs for preprocessing and anomaly detection.",
-        tags: ["PySpark", "Kafka", "MongoDB", "Matplotlib"],
+            "Built a resilient real-time data ingestion system using Kafka and PySpark. Implemented custom UDFs for anomaly detection across massive IoT sensor streams, backed by a specialized MongoDB warehouse schema.",
+        tags: ["PySpark", "Kafka", "MongoDB"],
         link: "https://github.com/steverahardjo/AWAS_traffic_detector",
-    },
-    {
-        title: "GitAegis — CLI Secret Scanner",
-        description:
-            "A Go CLI tool for detecting secrets and API keys before commit using Shannon entropy analysis and tree-sitter AST parsing. Features configurable parameters via CLI flags and TOML config, JSON output for CI/CD integration.",
-        tags: ["Go", "Cobra", "Tree-sitter", "Git", "Github Action"],
-        link: "https://github.com/steverahardjo/gitaegis",
-        external: true,
     },
 ];
 ---
 
-<BaseLayout
-    title="Projects | Steve Jevon Rahardjo"
-    description="Explore Steve Jevon Rahardjo's software projects including Patent Analyzer (LLM/RAG), Expense Agent (Google ADK), IoT data processing (PySpark/Kafka), and GitAegis (Go CLI security tool)."
-    page="projects"
->
+<BaseLayout title="Projects | Steve Jevon Rahardjo" page="projects">
     <div class="container page">
-        <h1 class="page-title">
-            <span>Projects</span>
-        </h1>
+        <h1 class="page-title">Selected <span>Works</span></h1>
 
-        {
-            projects.map((project) => (
-                <article class="project">
-                    <h2 class="project-title">{project.title}</h2>
-                    <p class="project-desc">{project.description}</p>
-                    <div class="tags">
-                        {project.tags.map((tag) => (
-                            <span class="tag">{tag}</span>
-                        ))}
-                    </div>
-                    <a
-                        href={project.link}
-                        class="project-link"
-                        target={project.external ? "_blank" : undefined}
-                        rel={project.external ? "noopener" : undefined}
-                    >
-                        {project.external ? "View on GitHub" : "View Details"} →
-                    </a>
-                </article>
-            ))
-        }
+        <div class="roulette-container">
+            <div class="roulette-track">
+                {
+                    projects.map((project) => (
+                        <a href={project.link} class="project-card-link">
+                            <article class="project-card">
+                                <div class="card-header">
+                                    <span class="card-category">
+                                        Engineering
+                                    </span>
+                                    <h2 class="project-title">
+                                        {project.title}
+                                    </h2>
+                                </div>
+                                <p class="project-desc">
+                                    {project.description}
+                                </p>
+                                <div class="tags">
+                                    {project.tags.map((tag) => (
+                                        <span class="tag">{tag}</span>
+                                    ))}
+                                </div>
+                                <span class="view-trigger">
+                                    Explore System →
+                                </span>
+                            </article>
+                        </a>
+                    ))
+                }
+                {/* Duplicate for infinite loop effect if desired */}
+            </div>
+        </div>
     </div>
 </BaseLayout>

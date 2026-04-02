@@ -31,7 +31,7 @@
 }
 
 .name {
-    font-family: "MEgalopolisExtra"; /* Fallback to Newsreader if the file fails */
+    font-family: "Inter"; /* Fallback to Newsreader if the file fails */
     font-size: var(--text-h1);
     font-weight: 700;
     color: var(--red);

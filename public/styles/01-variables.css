@@ -11,40 +11,40 @@
 }
 
 :root {
-    /* Light Theme */
-    --bg: #fbfaf8;
-    --text: #1d1c16;
-    --muted: #6b6a65;
-    --border: #e0e0e0;
-    --red: #dc2626;
-    --blue-hue: ##e9f3f7;
-    --offwhite: #f8f9fa;
-    --offwhite-dark: #f0f1f3;
-    --salmon: #d97757;
+    /* Light Theme - Red, Cream, & Black */
+    --bg: #fdfaf3; /* Warm Cream */
+    --text: #1a1a1a; /* Near Black */
+    --muted: #5e5a56; /* Muted Taupe */
+    --border: #e6e0d4; /* Cream Border */
+    --red: #b91c1c; /* Classic Deep Red */
+    --blue-hue: #fef2f2; /* Very Light Red Wash */
+    --offwhite: #f5f1e8; /* Darker Cream */
+    --offwhite-dark: #ebe4d5; /* Shadow Cream */
+    --salmon: #e1554d; /* Soft Red/Coral Accent */
 
     /* Shadows */
     --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08);
     --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.1);
     --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.12);
-    --shadow-hover: 0 12px 32px rgba(0, 0, 0, 0.15);
+    --shadow-hover: 0 12px 32px rgba(185, 28, 28, 0.15); /* Reddish shadow tint */
 }
 
 [data-theme="dark"] {
-    /* Dark Theme */
-    --bg: #0a0a0a;
-    --text: #f0f0f0;
-    --muted: #888;
-    --border: #333;
-    --red: #ef4444;
-    --blue-hue: rgba(59, 130, 246, 0.15);
-    --offwhite: #1a1a1a;
-    --offwhite-dark: #252525;
+    /* Dark Theme - Black, Red, & Cream */
+    --bg: #0f0f0f; /* Jet Black */
+    --text: #fdfaf3; /* Cream Text */
+    --muted: #a1a1aa; /* Cool Gray */
+    --border: #2a2a2a; /* Dark Border */
+    --red: #ef4444; /* Vibrant Red for dark mode */
+    --blue-hue: rgba(239, 68, 68, 0.1); /* Subtle Red Glow */
+    --offwhite: #1a1a1a; /* Off-Black */
+    --offwhite-dark: #262626; /* Elevated Black */
 
-    /* Shadows - darker for dark mode */
-    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
-    --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.4);
-    --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.5);
-    --shadow-hover: 0 12px 32px rgba(0, 0, 0, 0.6);
+    /* Shadows - Deep and defined */
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.5);
+    --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.6);
+    --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.7);
+    --shadow-hover: 0 12px 32px rgba(239, 68, 68, 0.15);
 }
 
 html {
@@ -53,7 +53,7 @@ html {
 
 body {
     font-family:
-        "TiM",
+        "Inter",
         -apple-system,
         BlinkMacSystemFont,
         "Segoe UI",
@@ -71,8 +71,14 @@ body {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+
+    /* Animation & Entrance */
     opacity: 0;
     animation: fadeIn 0.5s ease forwards;
+
+    /* Optional: Improves font rendering for Inter */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 @media (max-width: 600px) {
