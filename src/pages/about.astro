@@ -7,109 +7,129 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     description="Learn about Steve Jevon Rahardjo - Data Science graduate from Monash University specializing in backend systems, AI/ML, Python, Go, and database technologies."
     page="about"
 >
-    <div class="container page">
+    <div class="container page about-page">
         <h1 class="page-title">
             <span>About</span>
         </h1>
 
-        <div class="intro-section">
-            <p class="text">
-                I am a Computer Science graduate from <strong
-                    >Monash University Malaysia</strong
-                > with a focus on backend systems and AI-centric development.
+        <section class="about-intro">
+            <p>
+                I am a Computer Science graduate from
+                <strong>Monash University Malaysia</strong>
+                focused on backend systems and AI-centric development.
             </p>
-
-            <p class="text">
-                Currently, I am refining several side projects to build a deeper
-                understanding of
-                <strong>network programming</strong> and <strong
-                    >database optimization</strong
-                >. I also dedicate time to following <strong>LLM research</strong> and
-                its practical application in software products.
+            <p>
+                I build side projects around <strong>network programming</strong>,
+                <strong>database optimization</strong>, and practical <strong>LLM</strong>
+                applications.
             </p>
-
-            <p class="text">
-                My goal is to apply these technical interests to scalable,
-                real-world systems while staying up to date with the evolving AI
-                landscape.
+            <p>
+                My goal is to ship scalable products with clean engineering and
+                useful AI features.
             </p>
-        </div>
+        </section>
 
-        <h2 class="section-subtitle">Skills</h2>
-        <div class="skills">
-            <div class="skill-item">
-                <span class="skill-label">Languages</span>
-                <span class="skill-value"
-                    >Python, Java, Go, SQL, R, TypeScript</span
-                >
-            </div>
-            <div class="skill-item">
-                <span class="skill-label">AI/ML</span>
-                <span class="skill-value"
-                    >LLMs, RAG, Google ADK, Hugging Face, Scikit-Learn, XGBoost</span
-                >
-            </div>
-            <div class="skill-item">
-                <span class="skill-label">Data Tools</span>
-                <span class="skill-value"
-                    >PySpark, Kafka, MongoDB, QdrantDB, Pandas, Matplotlib</span
-                >
-            </div>
-            <div class="skill-item">
-                <span class="skill-label">Dev Tools</span>
-                <span class="skill-value"
-                    >Git, Docker, GitHub Actions, Flask, BeautifulSoup</span
-                >
-            </div>
-        </div>
-
-        <h2 class="section-subtitle">Education</h2>
-        <div class="education">
-            <div class="education-item">
-                <h3 class="education-title">
-                    Bachelor of Computer Science (Data Science)
-                </h3>
-                <p class="education-school">Monash University Malaysia</p>
-                <p class="education-year">Feb 2023 — Nov 2025</p>
-                <div class="coursework">
-                    <span class="coursework-label">Relevant Coursework</span>
-                    <div class="coursework-list">
-                        <span class="coursework-item">Data Science</span>
-                        <span class="coursework-item">Data Structure and Algorithm</span>
-                        <span class="coursework-item">Data Modelling</span>
-                        <span class="coursework-item">Data Visualization</span>
-                        <span class="coursework-item">Object-Oriented Programming</span>
-                        <span class="coursework-item">Data Management and Warehousing</span>
-                        <span class="coursework-item">App Development in Android</span>
-                        <span class="coursework-item">Big Data Principles and Application</span>
+        <section class="about-section">
+            <h2 class="about-section-title">Skills</h2>
+            <div class="about-skills-grid">
+                <article class="about-skill-card">
+                    <h3 class="about-skill-label">Languages</h3>
+                    <p class="about-skill-sub">Core programming and query languages</p>
+                    <div class="about-word-cloud">
+                        <span class="about-word">Python</span>
+                        <span class="about-word">Java</span>
+                        <span class="about-word">Go</span>
+                        <span class="about-word">SQL</span>
+                        <span class="about-word">R</span>
+                        <span class="about-word">TypeScript</span>
                     </div>
-                </div>
-            </div>
-        </div>
+                </article>
 
-        <h2 class="section-subtitle">Experience</h2>
-        <div class="experience">
-            <div class="experience-item">
-                <h3 class="experience-title">
-                    Data Analyst Trainee (CDP Team)
-                </h3>
-                <p class="experience-company">SynergyXYZ</p>
-                <p class="experience-year">Nov 2024 — Feb 2025</p>
-                <p class="experience-desc">
-                    Researched Customer Data Platform vendors, formulated
-                    CDP service offerings, and compiled technical
-                    documentation. Gained experience with Google Ads.
-                </p>
+                <article class="about-skill-card">
+                    <h3 class="about-skill-label">AI/ML</h3>
+                    <p class="about-skill-sub">Applied model and retrieval workflows</p>
+                    <div class="about-word-cloud">
+                        <span class="about-word">LLMs</span>
+                        <span class="about-word">RAG</span>
+                        <span class="about-word">Google ADK</span>
+                        <span class="about-word">Hugging Face</span>
+                        <span class="about-word">Scikit-Learn</span>
+                        <span class="about-word">XGBoost</span>
+                    </div>
+                </article>
+
+                <article class="about-skill-card">
+                    <h3 class="about-skill-label">Data Tools</h3>
+                    <p class="about-skill-sub">Streaming, analytics, and data infrastructure</p>
+                    <div class="about-word-cloud">
+                        <span class="about-word">PySpark</span>
+                        <span class="about-word">Kafka</span>
+                        <span class="about-word">MongoDB</span>
+                        <span class="about-word">QdrantDB</span>
+                        <span class="about-word">Pandas</span>
+                        <span class="about-word">Matplotlib</span>
+                    </div>
+                </article>
+
+                <article class="about-skill-card">
+                    <h3 class="about-skill-label">Dev Tools</h3>
+                    <p class="about-skill-sub">Build, automation, and delivery workflow</p>
+                    <div class="about-word-cloud">
+                        <span class="about-word">Git</span>
+                        <span class="about-word">Docker</span>
+                        <span class="about-word">GitHub Actions</span>
+                        <span class="about-word">Flask</span>
+                        <span class="about-word">BeautifulSoup</span>
+                    </div>
+                </article>
             </div>
-            <div class="experience-item">
-                <h3 class="experience-title">Website Admin (Volunteer)</h3>
-                <p class="experience-company">PPI Monash Malaysia</p>
-                <p class="experience-year">Jul 2024 — Nov 2025</p>
-                <p class="experience-desc">
-                    Executed website revamp using WordPress, published
-                    content, and assisted in event program coordination.
-                </p>
+        </section>
+
+        <section class="about-section">
+            <h2 class="about-section-title">Education</h2>
+            <article class="about-card">
+                <h3 class="about-card-title">Bachelor of Computer Science (Data Science)</h3>
+                <p class="about-card-org">Monash University Malaysia</p>
+                <p class="about-card-date">Feb 2023 - Nov 2025</p>
+
+                <p class="about-meta-label">Relevant Coursework</p>
+                <div class="about-chip-list">
+                    <span class="about-chip">Data Science</span>
+                    <span class="about-chip">DSA</span>
+                    <span class="about-chip">Data Modelling</span>
+                    <span class="about-chip">Visualization</span>
+                    <span class="about-chip">OOP</span>
+                    <span class="about-chip">Warehousing</span>
+                    <span class="about-chip">Android Dev</span>
+                    <span class="about-chip">Big Data</span>
+                </div>
+            </article>
+        </section>
+
+        <section class="about-section">
+            <h2 class="about-section-title">Experience</h2>
+            <div class="about-stack">
+                <article class="about-card">
+                    <h3 class="about-card-title">Data Analyst Trainee (CDP Team)</h3>
+                    <p class="about-card-org">SynergyXYZ</p>
+                    <p class="about-card-date">Nov 2024 - Feb 2025</p>
+                    <p class="about-card-body">
+                        Researched Customer Data Platform vendors, formulated CDP
+                        service offerings, and compiled technical documentation.
+                        Gained experience with Google Ads.
+                    </p>
+                </article>
+
+                <article class="about-card">
+                    <h3 class="about-card-title">Website Admin (Volunteer)</h3>
+                    <p class="about-card-org">PPI Monash Malaysia</p>
+                    <p class="about-card-date">Jul 2024 - Nov 2025</p>
+                    <p class="about-card-body">
+                        Executed website revamp using WordPress, published content,
+                        and assisted in event program coordination.
+                    </p>
+                </article>
             </div>
-        </div>
+        </section>
     </div>
 </BaseLayout>

@@ -1,11 +1,12 @@
 /* ========================================
-   Footer
+   Footer Styles
    ======================================== */
 
 .footer {
     margin-top: auto;
     border-top: 1px solid var(--border);
     padding: 2rem 1.5rem;
+    text-align: center;
 }
 
 .footer-container {
@@ -19,17 +20,9 @@
     justify-content: center;
 }
 
-.footer-link {
-    color: var(--muted);
-    transition: color 0.2s, transform 0.2s;
-}
-
-.footer-link:hover {
-    color: var(--text);
-    transform: scale(1.1);
-}
-
-.footer-icon {
-    width: 24px;
-    height: 24px;
+/* Responsive Design */
+@media (max-width: 600px) {
+    .footer {
+        padding: 1rem;
+    }
 }

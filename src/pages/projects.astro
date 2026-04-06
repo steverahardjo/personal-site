@@ -38,37 +38,67 @@ const projects = [
     <div class="container page">
         <h1 class="page-title">Selected <span>Works</span></h1>
 
-        <div class="roulette-container">
-            <div class="roulette-track">
-                {
-                    projects.map((project) => (
-                        <a href={project.link} class="project-card-link">
-                            <article class="project-card">
-                                <div class="card-header">
-                                    <span class="card-category">
-                                        Engineering
-                                    </span>
-                                    <h2 class="project-title">
-                                        {project.title}
-                                    </h2>
-                                </div>
+        <div class="projects-grid">
+            {
+                projects.map((project) => (
+                    <div class="project-card js-project-card">
+                        <div class="card-main-content">
+                            <h2 class="project-title">{project.title}</h2>
+                            <div class="stack-tags">
+                                {project.tags.map((tag) => (
+                                    <span class="tag">{tag}</span>
+                                ))}
+                            </div>
+                            <a
+                                href={project.link}
+                                class="code-button"
+                                target="_blank"
+                                onclick="event.stopPropagation()"
+                            >
+                                View Source <span>&lt;/&gt;</span>
+                            </a>
+                        </div>
+
+                        <div class="project-popover">
+                            <div class="popover-inner">
                                 <p class="project-desc">
                                     {project.description}
                                 </p>
-                                <div class="tags">
-                                    {project.tags.map((tag) => (
-                                        <span class="tag">{tag}</span>
-                                    ))}
-                                </div>
-                                <span class="view-trigger">
-                                    Explore System →
-                                </span>
-                            </article>
-                        </a>
-                    ))
-                }
-                {/* Duplicate for infinite loop effect if desired */}
-            </div>
+                                <a href={project.link} class="view-details">
+                                    Full Case Study →
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                ))
+            }
         </div>
     </div>
 </BaseLayout>
+
+<script>
+    const cards = document.querySelectorAll(".js-project-card");
+
+    cards.forEach((card) => {
+        card.addEventListener("click", (e) => {
+            // Check if this card is already open
+            const isActive = card.classList.contains("is-active");
+
+            // Close all other open cards first (Noir clean style)
+            cards.forEach((c) => c.classList.remove("is-active"));
+
+            // If it wasn't active, open it
+            if (!isActive) {
+                card.classList.add("is-active");
+            }
+        });
+    });
+
+    // Close cards if the user clicks anywhere else on the page
+    document.addEventListener("click", (e) => {
+        const target = e.target as HTMLElement;
+        if (!target.closest(".js-project-card")) {
+            cards.forEach((c) => c.classList.remove("is-active"));
+        }
+    });
+</script>

@@ -1,13 +1,22 @@
-/* ========================================
-   Desktop Header & Navigation
-   ======================================== */
-
 .header {
     position: sticky;
-    top: 0;
-    background: var(--bg);
+    top: 0.7rem;
+    background: var(--header-bg);
     border-bottom: 1px solid var(--border);
+    border: 1px solid color-mix(in srgb, var(--border) 80%, #fff);
+    border-radius: 14px;
+    margin: 0 auto;
+    max-width: 760px;
     z-index: 100;
+    backdrop-filter: blur(10px);
+    box-shadow:
+        0 1px 0 rgba(255, 255, 255, 0.2) inset,
+        0 10px 24px rgba(0, 0, 0, 0.14),
+        0 2px 6px rgba(0, 0, 0, 0.1);
+    transition:
+        background-color 0.2s ease,
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
 }
 
 html {
@@ -16,20 +25,22 @@ html {
 }
 
 .nav {
-    max-width: 680px;
+    max-width: 720px;
     margin: 0 auto;
-    padding: 1.25rem 1.5rem;
+    padding: 0.95rem 1.2rem;
     display: flex;
     gap: 2rem;
+    justify-content: center;
 }
 
 .nav-link {
-    font-size: var(--text-nav);
     color: var(--muted);
     text-decoration: none;
-    transition: color 0.2s;
+    font-size: var(--text-nav);
+    
+    font-weight: 700;
     position: relative;
-    font-weight: 500;
+    transition: color 0.2s;
 }
 
 .nav-link:hover {
@@ -38,22 +49,17 @@ html {
 
 .nav-link.active {
     color: var(--red);
-    font-weight: 600;
 }
 
 .nav-link.active::after {
-    content: '';
+    content: "";
     position: absolute;
-    bottom: -4px;
     left: 0;
+    bottom: -4px;
     width: 100%;
     height: 2px;
     background: var(--red);
 }
-
-/* ========================================
-   Theme Toggle Button
-   ======================================== */
 
 .theme-toggle {
     position: fixed;
@@ -61,65 +67,59 @@ html {
     right: 1.25rem;
     width: 44px;
     height: 44px;
-    background: var(--bg);
-    border: 1px solid var(--border);
     border-radius: 50%;
+    border: 1px solid var(--border);
+    background: var(--bg);
+    color: var(--text);
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.25rem;
-    color: var(--text);
+    font-size: 1.1rem;
     z-index: 101;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    transition: all 0.2s;
+    transition:
+        transform 0.2s,
+        box-shadow 0.2s;
 }
 
 .theme-toggle:hover {
-    transform: rotate(30deg);
+    transform: rotate(20deg);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
-@media (max-width: 600px) {
-    .theme-toggle {
-        top: auto;
-        bottom: 1rem;
-        right: 1rem;
-        width: 44px;
-        height: 44px;
-    }
-}
-
-/* ========================================
-   Blue Hue Background Effect
-   ======================================== */
-
 .blue-hue {
     position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
+    inset: 0;
     height: 100vh;
-    background: linear-gradient(180deg, rgba(59, 130, 246, 0.03) 0%, transparent 50%);
     z-index: -1;
     pointer-events: none;
+    background: linear-gradient(
+        180deg,
+        rgba(59, 130, 246, 0.03) 0%,
+        transparent 50%
+    );
 }
-
-/* ========================================
-   Reading Progress Bar (Writing Page)
-   ======================================== */
 
 .progress-bar {
     position: fixed;
     top: 0;
     left: 0;
-    width: 0%;
+    width: 0;
     height: 2px;
     background: var(--red);
     z-index: 1000;
     transition: width 0.1s;
 }
 
-.progress-bar.hidden {
-    display: none;
+@media (max-width: 600px) {
+    .header {
+        display: none;
+    }
+
+    .theme-toggle {
+        top: auto;
+        bottom: 1rem;
+        right: 1rem;
+    }
 }

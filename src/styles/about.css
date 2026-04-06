@@ -1,0 +1,172 @@
+.about-page {
+    display: grid;
+    gap: 2rem;
+}
+
+.about-intro {
+    display: grid;
+    gap: 0.9rem;
+    padding: 1.1rem 1.15rem;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    background: color-mix(in srgb, var(--bg) 86%, var(--blue-hue));
+}
+
+.about-intro p {
+    margin: 0;
+    color: var(--text);
+}
+
+.about-section {
+    display: grid;
+    gap: 1rem;
+}
+
+.about-section-title {
+    margin: 0;
+    font-size: 1.2rem;
+    font-weight: 800;
+    letter-spacing: 0.01em;
+}
+
+.about-skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(235px, 1fr));
+    gap: 1rem;
+}
+
+.about-skill-card {
+    padding: 1rem;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    background: var(--bg);
+    transition:
+        transform 0.2s ease,
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.about-skill-card:hover {
+    transform: translateY(-2px);
+    border-color: color-mix(in srgb, var(--red) 45%, var(--border));
+    box-shadow: 0 10px 22px rgba(0, 0, 0, 0.08);
+}
+
+.about-skill-label {
+    margin: 0;
+    color: var(--red);
+    font-size: 0.82rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.about-skill-sub {
+    margin: 0.45rem 0 0.8rem;
+    color: var(--muted);
+    font-size: 0.9rem;
+}
+
+.about-word-cloud {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem 0.55rem;
+}
+
+.about-word {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.25rem 0.54rem;
+    border-radius: 3px;
+    border: 1px solid color-mix(in srgb, var(--red) 32%, var(--border));
+    background: color-mix(in srgb, var(--bg) 90%, var(--red));
+    color: var(--text);
+    font-weight: 700;
+    font-size: 0.78rem;
+    line-height: 1;
+}
+
+.about-word:nth-child(3n + 1) {
+    transform: rotate(-2deg);
+    font-size: 0.83rem;
+}
+
+.about-word:nth-child(3n + 2) {
+    transform: rotate(1.3deg);
+}
+
+.about-word:nth-child(3n) {
+    transform: rotate(-0.8deg);
+}
+
+.about-stack {
+    display: grid;
+    gap: 0.9rem;
+}
+
+.about-card {
+    padding: 1rem 1.05rem;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    background: var(--bg);
+}
+
+.about-card-title {
+    margin: 0;
+    font-size: 1.06rem;
+    font-weight: 800;
+}
+
+.about-card-org {
+    margin: 0.3rem 0 0;
+    color: var(--text);
+    font-weight: 700;
+}
+
+.about-card-date {
+    margin: 0.25rem 0 0.85rem;
+    color: var(--muted);
+    font-size: 0.9rem;
+}
+
+.about-card-body {
+    margin: 0;
+    color: var(--text);
+}
+
+.about-meta-label {
+    margin: 0;
+    color: var(--muted);
+    font-size: 0.82rem;
+    font-weight: 700;
+}
+
+.about-chip-list {
+    margin-top: 0.65rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+}
+
+.about-chip {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.28rem 0.56rem;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    background: color-mix(in srgb, var(--bg) 85%, var(--blue-hue));
+    color: var(--text);
+    font-size: 0.76rem;
+}
+
+@media (max-width: 680px) {
+    .about-page {
+        gap: 1.4rem;
+    }
+
+    .about-intro,
+    .about-skill-card,
+    .about-card {
+        padding: 0.9rem;
+    }
+}

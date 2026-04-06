@@ -1,15 +1,11 @@
-/* ========================================
-   Main Stylesheet
-   Imports all CSS modules in order
-   ======================================== */
-
-@import './00-typography.css';
-@import './01-variables.css';
-@import './02-mobile-header.css';
-@import './03-header.css';
-@import './04-home.css';
-@import './05-writing.css';
-@import './06-projects-about.css';
-@import './07-footer.css';
-@import './08-responsive.css';
-@import './09-404.css';
+@import "./01-variables.css";
+@import "./00-typography.css";
+@import "./02-mobile-header.css";
+@import "./03-header.css";
+@import "./04-home.css";
+@import "./05-writing.css";
+@import "./about.css";
+@import "./07-footer.css";
+@import "./08-responsive.css";
+@import "./09-404.css";
+@import "./projects.css";

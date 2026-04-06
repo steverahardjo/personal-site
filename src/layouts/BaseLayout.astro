@@ -1,5 +1,6 @@
 ---
 import JsonLd from "../components/JsonLd.astro";
+import "../styles/index.css";
 
 export interface Props {
     title: string;
@@ -23,7 +24,7 @@ const ogImage = `${siteUrl}/og-image.png`;
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link
-            href="https://fonts.googleapis.com/css?family=Inter"
+            href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght;500;600;700;800&display=swap"
             rel="stylesheet"
         />
         <meta charset="UTF-8" />
@@ -58,8 +59,6 @@ const ogImage = `${siteUrl}/og-image.png`;
             rel="icon"
             href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>👨‍💻</text></svg>"
         />
-        <link rel="stylesheet" href="/styles/index.css" />
-
         <!-- JSON-LD Structured Data -->
         <JsonLd
             name="Steve Jevon Rahardjo"

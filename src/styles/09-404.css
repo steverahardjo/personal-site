@@ -1,5 +1,5 @@
 /* ========================================
-   404 Error Page
+   404 Error Page Styles
    ======================================== */
 
 .error-page {
@@ -13,78 +13,30 @@
 }
 
 .error-title {
-    font-size: 8rem;
+    font-size: 8rem; /* Large error title */
     font-weight: 700;
     color: var(--red);
     margin-bottom: 0.5rem;
-    line-height: 1;
-    text-shadow: 0 4px 12px rgba(220, 38, 38, 0.3);
-    letter-spacing: -0.03em;
+    line-height: 1; /* Adjust line height for title clarity */
 }
 
-.error-text {
-    font-size: var(--text-h2);
-    font-weight: 600;
+.error-message {
+    font-size: var(--text-body); /* Use existing body font size variable */
+    color: var(--text); /* Consistent text color */
+    margin: 1rem 0; /* Spacing around message */
+}
+
+.back-home-link {
+    margin-top: 2rem;
+    padding: 1rem 2rem;
+    background: var(--bg); /* Background for button */
     color: var(--text);
-    margin-bottom: 1rem;
+    border: 1px solid var(--border); /* Consistent with other borders */
+    border-radius: 4px; /* Rounded edges */
+    text-decoration: none; /* Remove underline */
+    transition: background 0.3s; /* Smooth transition for hover effect */
 }
 
-.error-desc {
-    font-size: var(--text-body);
-    color: var(--muted);
-    margin-bottom: 2rem;
-    max-width: 400px;
-}
-
-.error-joke {
-    font-size: var(--text-body-sm);
-    color: var(--muted);
-    font-style: italic;
-    margin-bottom: 2rem;
-    padding: 1rem 1.5rem;
-    background: var(--offwhite);
-    border-radius: 8px;
-    border: 1px solid var(--border);
-    max-width: 450px;
-}
-
-[data-theme="dark"] .error-joke {
-    background: var(--offwhite-dark);
-}
-
-.error-link {
-    font-size: var(--text-body);
-    font-weight: 600;
-    color: var(--red);
-    text-decoration: none;
-    padding: 0.75rem 1.75rem;
-    border: 2px solid var(--red);
-    border-radius: 8px;
-    transition: all 0.2s;
-}
-
-.error-link:hover {
-    background: var(--red);
-    color: #fff;
-    transform: translateY(-2px);
-}
-
-/* Mobile */
-@media (max-width: 600px) {
-    .error-page {
-        padding: 3rem 1rem;
-    }
-
-    .error-title {
-        font-size: 5rem;
-    }
-
-    .error-text {
-        font-size: var(--text-h3);
-    }
-
-    .error-joke {
-        font-size: var(--text-body-sm);
-        padding: 0.875rem 1rem;
-    }
+.back-home-link:hover {
+    background: var(--blue-hue); /* Slight color change on hover */
 }
