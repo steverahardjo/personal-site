@@ -10,9 +10,9 @@
     border-radius: 12px;
     background: linear-gradient(
         145deg,
-        color-mix(in srgb, var(--bg) 92%, var(--offwhite)) 0%,
-        color-mix(in srgb, var(--bg) 97%, #fff) 48%,
-        color-mix(in srgb, var(--bg) 88%, var(--offwhite-dark)) 100%
+        color-mix(in srgb, var(--bg) 60%, var(--offwhite)) 0%,
+        color-mix(in srgb, var(--bg) 60%, #fff) 48%,
+        color-mix(in srgb, var(--bg) 60%, var(--offwhite-dark)) 100%
     );
     overflow: hidden;
     cursor: pointer;
@@ -25,7 +25,7 @@
 
 .project-card:hover {
     transform: translateY(-2px);
-    border-color: color-mix(in srgb, var(--red) 30%, var(--border));
+    border-color: color-mix(in srgb, var(--red) 80%, var(--border));
     box-shadow: 0 10px 24px rgba(0, 0, 0, 0.06);
 }
 

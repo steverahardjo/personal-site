@@ -22,17 +22,7 @@
 
 /* Global Styles */
 body {
-    font-family:
-        "Söhne",
-        "Soehne",
-        "Inter",
-        -apple-system,
-        BlinkMacSystemFont,
-        "Segoe UI",
-        Roboto,
-        "Helvetica Neue",
-        Arial,
-        sans-serif; /* Claude-like UI stack */
+    font-family: "Monoton", "Google Sans Flex", "JetBrainsMono Nerd Font";
     line-height: 1.6; /* Ensures readability */
     min-height: 100vh;
     display: flex;
