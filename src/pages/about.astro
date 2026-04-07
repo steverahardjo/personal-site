@@ -1,4 +1,5 @@
 ---
+import GhCalendar from "../components/GhCalendar.tsx";
 import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
@@ -19,8 +20,11 @@ import BaseLayout from "../layouts/BaseLayout.astro";
                 focused on backend systems and AI-centric development.
             </p>
             <p>
-                I build side projects around <strong>network programming</strong>,
-                <strong>database optimization</strong>, and practical <strong>LLM</strong>
+                I build side projects around <strong>network programming</strong
+                >,
+                <strong>database optimization</strong>, and practical <strong
+                    >LLM</strong
+                >
                 applications.
             </p>
             <p>
@@ -31,10 +35,16 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
         <section class="about-section">
             <h2 class="about-section-title">Skills</h2>
-            <div class="about-skills-grid">
-                <article class="about-skill-card">
-                    <h3 class="about-skill-label">Languages</h3>
-                    <p class="about-skill-sub">Core programming and query languages</p>
+            <div class="about-skill-selector" role="tablist" aria-label="Skill sections">
+                <button class="about-skill-tab is-active" type="button" role="tab" aria-selected="true" data-target="languages">Languages</button>
+                <button class="about-skill-tab" type="button" role="tab" aria-selected="false" data-target="aiml">AI/ML</button>
+                <button class="about-skill-tab" type="button" role="tab" aria-selected="false" data-target="data-tools">Data Tools</button>
+                <button class="about-skill-tab" type="button" role="tab" aria-selected="false" data-target="dev-tools">Dev Tools</button>
+            </div>
+
+            <div class="about-cloud-panels">
+                <article class="about-cloud-panel is-active" data-panel="languages">
+                    <p class="about-cloud-sub">Core programming and query languages</p>
                     <div class="about-word-cloud">
                         <span class="about-word">Python</span>
                         <span class="about-word">Java</span>
@@ -45,9 +55,8 @@ import BaseLayout from "../layouts/BaseLayout.astro";
                     </div>
                 </article>
 
-                <article class="about-skill-card">
-                    <h3 class="about-skill-label">AI/ML</h3>
-                    <p class="about-skill-sub">Applied model and retrieval workflows</p>
+                <article class="about-cloud-panel" data-panel="aiml" hidden>
+                    <p class="about-cloud-sub">Applied model and retrieval workflows</p>
                     <div class="about-word-cloud">
                         <span class="about-word">LLMs</span>
                         <span class="about-word">RAG</span>
@@ -58,9 +67,8 @@ import BaseLayout from "../layouts/BaseLayout.astro";
                     </div>
                 </article>
 
-                <article class="about-skill-card">
-                    <h3 class="about-skill-label">Data Tools</h3>
-                    <p class="about-skill-sub">Streaming, analytics, and data infrastructure</p>
+                <article class="about-cloud-panel" data-panel="data-tools" hidden>
+                    <p class="about-cloud-sub">Streaming, analytics, and data infrastructure</p>
                     <div class="about-word-cloud">
                         <span class="about-word">PySpark</span>
                         <span class="about-word">Kafka</span>
@@ -71,9 +79,8 @@ import BaseLayout from "../layouts/BaseLayout.astro";
                     </div>
                 </article>
 
-                <article class="about-skill-card">
-                    <h3 class="about-skill-label">Dev Tools</h3>
-                    <p class="about-skill-sub">Build, automation, and delivery workflow</p>
+                <article class="about-cloud-panel" data-panel="dev-tools" hidden>
+                    <p class="about-cloud-sub">Build, automation, and delivery workflow</p>
                     <div class="about-word-cloud">
                         <span class="about-word">Git</span>
                         <span class="about-word">Docker</span>
@@ -88,7 +95,9 @@ import BaseLayout from "../layouts/BaseLayout.astro";
         <section class="about-section">
             <h2 class="about-section-title">Education</h2>
             <article class="about-card">
-                <h3 class="about-card-title">Bachelor of Computer Science (Data Science)</h3>
+                <h3 class="about-card-title">
+                    Bachelor of Computer Science (Data Science)
+                </h3>
                 <p class="about-card-org">Monash University Malaysia</p>
                 <p class="about-card-date">Feb 2023 - Nov 2025</p>
 
@@ -110,13 +119,15 @@ import BaseLayout from "../layouts/BaseLayout.astro";
             <h2 class="about-section-title">Experience</h2>
             <div class="about-stack">
                 <article class="about-card">
-                    <h3 class="about-card-title">Data Analyst Trainee (CDP Team)</h3>
+                    <h3 class="about-card-title">
+                        Data Analyst Trainee (CDP Team)
+                    </h3>
                     <p class="about-card-org">SynergyXYZ</p>
                     <p class="about-card-date">Nov 2024 - Feb 2025</p>
                     <p class="about-card-body">
-                        Researched Customer Data Platform vendors, formulated CDP
-                        service offerings, and compiled technical documentation.
-                        Gained experience with Google Ads.
+                        Researched Customer Data Platform vendors, formulated
+                        CDP service offerings, and compiled technical
+                        documentation. Gained experience with Google Ads.
                     </p>
                 </article>
 
@@ -125,11 +136,34 @@ import BaseLayout from "../layouts/BaseLayout.astro";
                     <p class="about-card-org">PPI Monash Malaysia</p>
                     <p class="about-card-date">Jul 2024 - Nov 2025</p>
                     <p class="about-card-body">
-                        Executed website revamp using WordPress, published content,
-                        and assisted in event program coordination.
+                        Executed website revamp using WordPress, published
+                        content, and assisted in event program coordination.
                     </p>
                 </article>
             </div>
         </section>
     </div>
 </BaseLayout>
+
+<script is:inline>
+    const skillTabs = Array.from(document.querySelectorAll(".about-skill-tab"));
+    const skillPanels = Array.from(document.querySelectorAll(".about-cloud-panel"));
+
+    skillTabs.forEach((tab) => {
+        tab.addEventListener("click", () => {
+            const target = tab.dataset.target;
+            if (!target) return;
+
+            skillTabs.forEach((btn) => {
+                btn.classList.toggle("is-active", btn === tab);
+                btn.setAttribute("aria-selected", btn === tab ? "true" : "false");
+            });
+
+            skillPanels.forEach((panel) => {
+                const active = panel.dataset.panel === target;
+                panel.classList.toggle("is-active", active);
+                panel.hidden = !active;
+            });
+        });
+    });
+</script>

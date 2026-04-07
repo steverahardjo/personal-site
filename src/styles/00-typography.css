@@ -22,13 +22,37 @@
 
 /* Global Styles */
 body {
-    font-family: "Source Sans 3", "Segoe UI", Tahoma, Geneva, sans-serif; /* Humanist base font */
+    font-family:
+        "Söhne",
+        "Soehne",
+        "Inter",
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Roboto,
+        "Helvetica Neue",
+        Arial,
+        sans-serif; /* Claude-like UI stack */
     line-height: 1.6; /* Ensures readability */
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
     background: var(--bg);
     color: var(--text);
     transition:
         background-color 0.2s ease,
         color 0.2s ease;
+}
+
+main {
+    flex: 1 0 auto;
+}
+
+button,
+input,
+textarea,
+select {
+    font: inherit;
 }
 
 h1,

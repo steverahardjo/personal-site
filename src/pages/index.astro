@@ -1,6 +1,5 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import GhCalendar from "../components/GhCalendar.tsx";
 
 const jokes = [
     "Why do programmers prefer dark mode? Light attracts bugs. 🐛",
@@ -45,9 +44,6 @@ const randomJoke = jokes[Math.floor(Math.random() * jokes.length)];
                 <p class="joke" id="joke">{randomJoke}</p>
                 <p class="status">current: <span>sleep deprived</span></p>
             </div>
-        </div>
-        <div class="calendar-wrapper" style="margin-top: 2rem;">
-            <GhCalendar client:visible />
         </div>
     </div>
 </BaseLayout>

@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import GhCalendar from "../components/GhCalendar.tsx";
 
 const projects = [
     {
@@ -72,6 +73,9 @@ const projects = [
                     </div>
                 ))
             }
+        </div>
+        <div class="calendar-wrapper" style="margin-top: 2rem;">
+            <GhCalendar client:visible />
         </div>
     </div>
 </BaseLayout>

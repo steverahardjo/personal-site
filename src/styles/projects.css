@@ -8,7 +8,12 @@
     position: relative;
     border: 1px solid var(--border);
     border-radius: 12px;
-    background: var(--bg);
+    background: linear-gradient(
+        145deg,
+        color-mix(in srgb, var(--red) 30%, #000) 0%,
+        color-mix(in srgb, var(--bg) 80%, #fff) 48%,
+        color-mix(in srgb, #000 72%, var(--bg)) 100%
+    );
     overflow: hidden;
     cursor: pointer;
     transition:
@@ -52,7 +57,7 @@
     border: 1px solid var(--border);
     border-radius: 999px;
     color: var(--muted);
-    background: var(--offwhite);
+    background: color-mix(in srgb, var(--bg) 82%, #fff);
 }
 
 .code-button {
@@ -67,7 +72,7 @@
     font-weight: 600;
     color: var(--text);
     border: 1px solid var(--border);
-    background: var(--bg);
+    background: color-mix(in srgb, var(--bg) 86%, #fff);
 }
 
 .code-button:hover {
@@ -82,7 +87,12 @@
     bottom: 0.75rem;
     border: 1px solid var(--border);
     border-radius: 10px;
-    background: var(--offwhite);
+    background: linear-gradient(
+        155deg,
+        color-mix(in srgb, var(--red) 30%, #000) 0%,
+        color-mix(in srgb, var(--bg) 60%, #fff) 44%,
+        color-mix(in srgb, #000 70%, var(--bg)) 100%
+    );
     transform: translateY(16px);
     opacity: 0;
     pointer-events: none;
