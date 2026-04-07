@@ -4,13 +4,44 @@
   const html = document.documentElement;
   const saved = localStorage.getItem("theme") || "light";
 
-  const swallowEmoji = "🐦";
-  const owlEmoji = "/owl.svg";
+  const icons = {
+    light: {
+      src: "/noun-swallow-66934.svg",
+      alt: "Swallow icon",
+    },
+    dark: {
+      src: "/owl.svg",
+      alt: "Owl icon",
+    },
+  };
+
+  const ensureThemeIcon = () => {
+    if (!btn) return null;
+
+    let icon = btn.querySelector("img");
+    if (icon) return icon;
+
+    icon = document.createElement("img");
+    icon.width = 24;
+    icon.height = 24;
+    icon.decoding = "async";
+    icon.style.width = "24px";
+    icon.style.height = "24px";
+    icon.style.objectFit = "contain";
+    icon.style.pointerEvents = "none";
+    btn.replaceChildren(icon);
+    return icon;
+  };
 
   const setThemeIcon = (theme) => {
     if (!btn) return;
     const isDark = theme === "dark";
-    btn.textContent = isDark ? owlEmoji : swallowEmoji;
+    const icon = ensureThemeIcon();
+    const nextIcon = isDark ? icons.dark : icons.light;
+    if (icon) {
+      icon.src = nextIcon.src;
+      icon.alt = nextIcon.alt;
+    }
     btn.setAttribute(
       "aria-label",
       isDark ? "Switch to light mode" : "Switch to dark mode",

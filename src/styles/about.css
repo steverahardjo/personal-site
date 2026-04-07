@@ -9,13 +9,12 @@
     padding: 1.1rem 1.15rem;
     border: 1px solid var(--border);
     border-radius: 12px;
-    background:
-        linear-gradient(
-            145deg,
-            color-mix(in srgb, var(--red) 18%, #000) 0%,
-            color-mix(in srgb, var(--bg) 88%, #fff) 48%,
-            color-mix(in srgb, #000 78%, var(--bg)) 100%
-        );
+    background: linear-gradient(
+        145deg,
+        color-mix(in srgb, var(--bg) 90%, var(--offwhite)) 0%,
+        color-mix(in srgb, var(--bg) 96%, #fff) 55%,
+        color-mix(in srgb, var(--bg) 88%, var(--offwhite-dark)) 100%
+    );
 }
 
 .about-intro p {
@@ -58,7 +57,7 @@
 }
 
 .about-skill-tab:hover {
-    border-color: color-mix(in srgb, var(--red) 45%, var(--border));
+    border-color: color-mix(in srgb, var(--red) 26%, var(--border));
     color: var(--text);
 }
 
@@ -78,12 +77,16 @@
     border: 1px solid var(--border);
     border-radius: 12px;
     background:
-        radial-gradient(circle at 82% 18%, color-mix(in srgb, var(--red) 28%, transparent), transparent 34%),
+        radial-gradient(
+            circle at 82% 18%,
+            color-mix(in srgb, var(--red) 14%, transparent),
+            transparent 34%
+        ),
         linear-gradient(
             155deg,
-            color-mix(in srgb, var(--red) 22%, #000) 0%,
-            color-mix(in srgb, var(--bg) 88%, #fff) 46%,
-            color-mix(in srgb, #000 74%, var(--bg)) 100%
+            color-mix(in srgb, var(--bg) 92%, var(--offwhite)) 0%,
+            color-mix(in srgb, var(--bg) 97%, #fff) 46%,
+            color-mix(in srgb, var(--bg) 88%, var(--offwhite-dark)) 100%
         );
     animation: panelIn 0.25s ease;
 }
@@ -107,8 +110,8 @@
     align-items: center;
     padding: 0.25rem 0.54rem;
     border-radius: 3px;
-    border: 1px solid color-mix(in srgb, var(--red) 32%, var(--border));
-    background: color-mix(in srgb, var(--bg) 90%, var(--red));
+    border: 1px solid color-mix(in srgb, var(--red) 20%, var(--border));
+    background: color-mix(in srgb, var(--bg) 92%, var(--offwhite-dark));
     color: var(--text);
     font-weight: 700;
     font-size: 0.78rem;
@@ -162,13 +165,12 @@
     padding: 1rem 1.05rem;
     border: 1px solid var(--border);
     border-radius: 12px;
-    background:
-        linear-gradient(
-            145deg,
-            color-mix(in srgb, var(--red) 16%, #000) 0%,
-            color-mix(in srgb, var(--bg) 90%, #fff) 52%,
-            color-mix(in srgb, #000 70%, var(--bg)) 100%
-        );
+    background: linear-gradient(
+        145deg,
+        color-mix(in srgb, var(--bg) 92%, var(--offwhite)) 0%,
+        color-mix(in srgb, var(--bg) 97%, #fff) 52%,
+        color-mix(in srgb, var(--bg) 88%, var(--offwhite-dark)) 100%
+    );
 }
 
 .about-card-title {
@@ -214,9 +216,30 @@
     padding: 0.28rem 0.56rem;
     border: 1px solid var(--border);
     border-radius: 999px;
-    background: color-mix(in srgb, var(--bg) 82%, #fff);
+    background: color-mix(in srgb, var(--bg) 86%, var(--offwhite));
     color: var(--text);
     font-size: 0.76rem;
+}
+
+[data-theme="dark"] .about-intro,
+[data-theme="dark"] .about-cloud-panel,
+[data-theme="dark"] .about-card {
+    background:
+        radial-gradient(
+            circle at 82% 18%,
+            color-mix(in srgb, var(--red) 10%, transparent),
+            transparent 34%
+        ),
+        linear-gradient(
+            155deg,
+            color-mix(in srgb, var(--bg) 94%, var(--offwhite)) 0%,
+            color-mix(in srgb, var(--bg) 98%, #000) 46%,
+            color-mix(in srgb, var(--bg) 90%, var(--offwhite-dark)) 100%
+        );
+}
+
+[data-theme="dark"] .about-word {
+    background: color-mix(in srgb, var(--bg) 84%, var(--offwhite-dark));
 }
 
 @media (max-width: 680px) {

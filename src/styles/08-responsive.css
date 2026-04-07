@@ -56,9 +56,6 @@
         padding-top: 5rem;
     }
 
-    .gradient-box {
-        height: 210px;
-    }
 }
 
 @media (min-width: 601px) and (max-width: 900px) {

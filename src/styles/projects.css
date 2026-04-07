@@ -10,9 +10,9 @@
     border-radius: 12px;
     background: linear-gradient(
         145deg,
-        color-mix(in srgb, var(--red) 30%, #000) 0%,
-        color-mix(in srgb, var(--bg) 80%, #fff) 48%,
-        color-mix(in srgb, #000 72%, var(--bg)) 100%
+        color-mix(in srgb, var(--bg) 92%, var(--offwhite)) 0%,
+        color-mix(in srgb, var(--bg) 97%, #fff) 48%,
+        color-mix(in srgb, var(--bg) 88%, var(--offwhite-dark)) 100%
     );
     overflow: hidden;
     cursor: pointer;
@@ -25,7 +25,8 @@
 
 .project-card:hover {
     transform: translateY(-2px);
-    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
+    border-color: color-mix(in srgb, var(--red) 30%, var(--border));
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.06);
 }
 
 .project-card:hover .project-title {
@@ -57,7 +58,7 @@
     border: 1px solid var(--border);
     border-radius: 999px;
     color: var(--muted);
-    background: color-mix(in srgb, var(--bg) 82%, #fff);
+    background: color-mix(in srgb, var(--bg) 86%, var(--offwhite));
 }
 
 .code-button {
@@ -72,7 +73,7 @@
     font-weight: 600;
     color: var(--text);
     border: 1px solid var(--border);
-    background: color-mix(in srgb, var(--bg) 86%, #fff);
+    background: color-mix(in srgb, var(--bg) 88%, var(--offwhite));
 }
 
 .code-button:hover {
@@ -89,9 +90,9 @@
     border-radius: 10px;
     background: linear-gradient(
         155deg,
-        color-mix(in srgb, var(--red) 30%, #000) 0%,
-        color-mix(in srgb, var(--bg) 60%, #fff) 44%,
-        color-mix(in srgb, #000 70%, var(--bg)) 100%
+        color-mix(in srgb, var(--bg) 92%, var(--offwhite)) 0%,
+        color-mix(in srgb, var(--bg) 97%, #fff) 44%,
+        color-mix(in srgb, var(--bg) 90%, var(--offwhite-dark)) 100%
     );
     transform: translateY(16px);
     opacity: 0;
@@ -120,11 +121,25 @@
 }
 
 .project-card.is-active {
-    border-color: rgba(220, 38, 38, 0.4);
+    border-color: color-mix(in srgb, var(--red) 42%, var(--border));
 }
 
 .project-card.is-active .project-popover {
     transform: translateY(0);
     opacity: 1;
     pointer-events: auto;
+}
+
+[data-theme="dark"] .project-card,
+[data-theme="dark"] .project-popover {
+    background: linear-gradient(
+        155deg,
+        color-mix(in srgb, var(--bg) 94%, var(--offwhite)) 0%,
+        color-mix(in srgb, var(--bg) 98%, #000) 44%,
+        color-mix(in srgb, var(--bg) 90%, var(--offwhite-dark)) 100%
+    );
+}
+
+[data-theme="dark"] .project-card:hover {
+    box-shadow: 0 12px 26px rgba(0, 0, 0, 0.24);
 }

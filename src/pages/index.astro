@@ -1,5 +1,7 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import BackgroundGradientAnimationDemo from "../components/background-gradient-animation-demo";
+import TextFlippingBoardDemo from "../components/text-flipping-board-demo";
 
 const jokes = [
     "Why do programmers prefer dark mode? Light attracts bugs. 🐛",
@@ -20,7 +22,7 @@ const randomJoke = jokes[Math.floor(Math.random() * jokes.length)];
     <div class="container home">
         <div class="content">
             <div class="text-section">
-                <h1 class="name">Steve Rahardjo</h1>
+                <TextFlippingBoardDemo client:load />
                 <p class="bio">Currently looking for job 😭</p>
 
                 <div class="links">
@@ -38,9 +40,7 @@ const randomJoke = jokes[Math.floor(Math.random() * jokes.length)];
             </div>
 
             <div class="image-section">
-                <div class="gradient-box" aria-hidden="true">
-                    <div class="gradient-layer"></div>
-                </div>
+                <BackgroundGradientAnimationDemo client:load />
                 <p class="joke" id="joke">{randomJoke}</p>
                 <p class="status">current: <span>sleep deprived</span></p>
             </div>
