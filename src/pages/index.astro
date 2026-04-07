@@ -1,8 +1,6 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import BackgroundGradientAnimationDemo from "../components/background-gradient-animation-demo";
-import TextFlippingBoardDemo from "../components/text-flipping-board-demo";
-
 const jokes = [
     "Why do programmers prefer dark mode? Light attracts bugs. 🐛",
     "Arrays start at 0, not 1. Fight me. 🥊",
@@ -22,7 +20,7 @@ const randomJoke = jokes[Math.floor(Math.random() * jokes.length)];
     <div class="container home">
         <div class="content">
             <div class="text-section">
-                <TextFlippingBoardDemo client:load />
+                <h1 id="typing-name" class="typing"></h1>
                 <p class="bio">Currently looking for job 😭</p>
 
                 <div class="links">
