@@ -20,6 +20,7 @@ export interface Props {
 }
 
 const { title, description, page } = Astro.props;
+const currentYear = new Date().getFullYear();
 
 const siteUrl = "https://sjrah.net";
 const defaultDescription =
@@ -80,7 +81,11 @@ const ogImage = `${siteUrl}/og-image.png`;
         />
     </head>
     <body class={page === "writing" ? "writing-page" : ""}>
-        <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch to dark mode"></button>
+        <button
+            class="theme-toggle"
+            id="themeToggle"
+            type="button"
+            aria-label="Switch to dark mode"></button>
 
         <div class="blue-hue"></div>
 
@@ -199,6 +204,11 @@ const ogImage = `${siteUrl}/og-image.png`;
                             ></path>
                         </svg>
                     </a>
+                </div>
+                <div class="footer-copyright">
+                    <p>
+                        &copy; {currentYear} Steve Jevon Rahardjo. All Rights Reserved.
+                    </p>
                 </div>
             </div>
         </footer>

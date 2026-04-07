@@ -39,6 +39,19 @@
         box-shadow 0.2s;
 }
 
+.footer-copyright {
+    margin-top: 2rem; /* Adds breathing room from the social icons */
+    text-align: center;
+}
+
+.footer-copyright p {
+    font-size: 0.75rem; /* Smaller text */
+    font-weight: 400; /* Light weight */
+    color: #888; /* Muted, lower-contrast grey */
+    letter-spacing: 0.05em; /* Slightly wider for a cleaner look */
+    text-transform: uppercase; /* Makes it feel more like a subtle 'footer' element */
+}
+
 .footer-link:hover {
     transform: translateY(-2px) scale(1.12);
     box-shadow: 0 12px 48px var(--ambient-shadow);
