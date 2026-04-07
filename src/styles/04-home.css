@@ -17,13 +17,13 @@
 
 .text-section {
     display: grid;
-    gap: 0.9rem;
+    gap: 1.1rem;
 }
 
 .name {
     margin: 0;
-    font-size: clamp(2rem, 4.2vw, 3.4rem);
-    line-height: 1.05;
+    font-size: clamp(2.2rem, 4.6vw, 3.5rem);
+    line-height: 1.1;
     letter-spacing: -0.02em;
 }
 
@@ -31,7 +31,8 @@
     margin: 0;
     max-width: 38ch;
     color: var(--muted);
-    font-size: 1.02rem;
+    font-size: 1rem;
+    line-height: 1.6;
 }
 
 .links {
@@ -45,13 +46,13 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding: 0.58rem 0.98rem;
+    padding: 0.6rem 1.05rem;
     border: 1px solid var(--border);
-    border-radius: 10px;
-    background: color-mix(in srgb, var(--bg) 88%, var(--blue-hue));
+    border-radius: 999px;
+    background: transparent;
     color: var(--text);
     text-decoration: none;
-    font-weight: 650;
+    font-weight: 600;
     transition:
         transform 0.18s ease,
         border-color 0.2s,
@@ -60,16 +61,22 @@
 }
 
 .link:hover {
-    border-color: var(--red);
-    color: var(--red);
+    border-color: color-mix(in srgb, var(--outline-variant) 28%, transparent);
+    background: color-mix(in srgb, var(--surface-low) 88%, transparent);
+    color: var(--text);
     transform: translateY(-1px);
 }
 
 .link-red {
     color: #fff;
-    background: var(--red);
-    border: 1px solid var(--red);
-    border-radius: 0;
+    background: var(--primary);
+    border: 1px solid transparent;
+    border-radius: 1.5rem;
+}
+
+.link-red:hover {
+    background: var(--primary-container);
+    color: #fff;
 }
 
 .image-section {
@@ -82,8 +89,20 @@
     font-size: 0.94rem;
     line-height: 1.45;
     color: var(--text);
-    border-left: 3px solid var(--red);
-    padding-left: 0.75rem;
+    border-left: none;
+    padding-left: 0.9rem;
+    position: relative;
+}
+
+.joke::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.1rem;
+    width: 4px;
+    height: 24px;
+    border-radius: 2px;
+    background: var(--primary);
 }
 
 .status {

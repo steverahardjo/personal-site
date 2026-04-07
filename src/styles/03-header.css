@@ -1,19 +1,18 @@
 .header {
     position: sticky;
-    top: 0.7rem;
-    background: color-mix(in srgb, var(--header-bg) 78%, #ffffff);
-    border: 1px solid color-mix(in srgb, var(--border) 68%, #ffffff);
-    border-radius: 14px;
+    top: 0.85rem;
+    background: color-mix(in srgb, var(--surface) 80%, transparent);
+    border: 1px solid var(--border);
+    border-radius: 999px;
     margin: 0 auto;
-    max-width: 760px;
+    max-width: 790px;
     z-index: 100;
     isolation: isolate;
-    backdrop-filter: blur(18px) saturate(160%);
-    -webkit-backdrop-filter: blur(18px) saturate(160%);
+    backdrop-filter: blur(24px) saturate(155%);
+    -webkit-backdrop-filter: blur(24px) saturate(155%);
     box-shadow:
-        0 1px 0 rgba(255, 255, 255, 0.55) inset,
-        0 16px 34px rgba(0, 0, 0, 0.16),
-        0 3px 10px rgba(0, 0, 0, 0.12);
+        0 1px 0 rgba(255, 255, 255, 0.36) inset,
+        0 12px 52px var(--ambient-shadow);
     transition:
         background-color 0.2s ease,
         border-color 0.2s ease,
@@ -26,12 +25,7 @@
     inset: 0;
     border-radius: inherit;
     pointer-events: none;
-    background: linear-gradient(
-        130deg,
-        rgba(255, 255, 255, 0.5) 0%,
-        rgba(255, 255, 255, 0.1) 35%,
-        rgba(255, 255, 255, 0) 58%
-    );
+    background: linear-gradient(140deg, rgba(255, 255, 255, 0.32) 0%, rgba(255, 255, 255, 0.04) 50%, transparent 72%);
     z-index: -1;
 }
 
@@ -59,7 +53,7 @@ html {
 .nav {
     max-width: 720px;
     margin: 0 auto;
-    padding: 0.95rem 1.2rem;
+    padding: 0.9rem 1.5rem;
     display: flex;
     gap: 2rem;
     justify-content: center;
@@ -68,9 +62,9 @@ html {
 .nav-link {
     color: var(--muted);
     text-decoration: none;
-    font-size: 1rem;
+    font-size: var(--text-nav);
 
-    font-weight: 700;
+    font-weight: 600;
     position: relative;
     transition:
         color 0.2s,
@@ -79,7 +73,7 @@ html {
 
 .nav-link:hover {
     color: var(--text);
-    text-shadow: 0 0 14px rgba(255, 255, 255, 0.28);
+    text-shadow: none;
 }
 
 .nav-link.active {
@@ -104,14 +98,14 @@ html {
     height: 44px;
     border-radius: 50%;
     border: 1px solid var(--border);
-    background: var(--bg);
+    background: color-mix(in srgb, var(--surface-lowest) 92%, transparent);
     color: var(--text);
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
     z-index: 101;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 12px 44px var(--ambient-shadow);
     transition:
         transform 0.2s,
         box-shadow 0.2s;
@@ -123,8 +117,8 @@ html {
 }
 
 .theme-toggle:hover {
-    transform: rotate(20deg);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transform: translateY(-1px);
+    box-shadow: 0 14px 50px var(--ambient-shadow);
 }
 
 .blue-hue {
@@ -134,9 +128,9 @@ html {
     z-index: -1;
     pointer-events: none;
     background: linear-gradient(
-        180deg,
-        rgba(59, 130, 246, 0.03) 0%,
-        transparent 50%
+        170deg,
+        color-mix(in srgb, var(--primary) 10%, transparent) 0%,
+        transparent 56%
     );
 }
 

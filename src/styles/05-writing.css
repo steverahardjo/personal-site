@@ -13,23 +13,25 @@
 }
 
 .writing-item {
-    background: var(--offwhite);
-    border: 1px solid var(--border);
+    background: var(--surface-lowest);
+    border: none;
     border-radius: 12px;
-    padding: 1.5rem;
+    padding: 2rem;
     transition: all 0.2s;
+    box-shadow: 0 12px 48px var(--ambient-shadow);
 }
 
 /* Additional styles for improved consistency across all writing items */
 .writing-item:hover {
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 14px 52px var(--ambient-shadow);
     transform: translateY(-2px);
 }
 
 .writing-title {
-    font-size: var(--text-h2);
-    font-weight: bold;
+    font-size: 1.75rem;
+    font-weight: 600;
     margin: 0;
+    line-height: 1.2;
 }
 
 .writing-excerpt {

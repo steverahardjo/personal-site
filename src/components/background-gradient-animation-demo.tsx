@@ -4,20 +4,20 @@ import { BackgroundGradientAnimation } from "@/components/ui/background-gradient
 export default function BackgroundGradientAnimationDemo() {
   return (
     <BackgroundGradientAnimation
-      gradientBackgroundStart="#2a0d0c"
-      gradientBackgroundEnd="#0f0f0f"
+      gradientBackgroundStart="#a41c1a"
+      gradientBackgroundEnd="#c7362f"
       firstColor="199, 54, 47"
-      secondColor="156, 43, 37"
-      thirdColor="255, 255, 255"
-      fourthColor="8, 8, 8"
-      fifthColor="199, 54, 47"
+      secondColor="252, 249, 248"
+      thirdColor="246, 243, 242"
+      fourthColor="28, 27, 27"
+      fifthColor="164, 28, 26"
       pointerColor="199, 54, 47"
       size="85%"
-      blendingValue="hard-light"
-      containerClassName="!relative !h-[210px] sm:!h-[240px] !w-full !overflow-hidden !rounded-[14px] !border !border-red-500/35 !shadow-[0_14px_38px_rgba(0,0,0,0.28)] [&_.animate-first]:[animation-duration:6s] [&_.animate-second]:[animation-duration:7s] [&_.animate-third]:[animation-duration:8s] [&_.animate-fourth]:[animation-duration:7s] [&_.animate-fifth]:[animation-duration:9s]"
+      blendingValue="soft-light"
+      containerClassName="!relative !h-[210px] sm:!h-[240px] !w-full !overflow-hidden !rounded-[14px] !border !border-[color:var(--border)] !shadow-[0_12px_52px_var(--ambient-shadow)] [&_.animate-first]:[animation-duration:7s] [&_.animate-second]:[animation-duration:8s] [&_.animate-third]:[animation-duration:9s] [&_.animate-fourth]:[animation-duration:8s] [&_.animate-fifth]:[animation-duration:10s]"
       interactive
     >
-      <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(247,241,230,0.18),transparent_35%)]" />
+      <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(252,249,248,0.18),transparent_35%)]" />
     </BackgroundGradientAnimation>
   );
 }

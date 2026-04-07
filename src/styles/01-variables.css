@@ -3,16 +3,27 @@
    ======================================== */
 
 :root {
-    /* Light Theme Colors (Red/White/Cream/Black/Gray) */
-    --bg: #fffdf9;
-    --text: #151515;
-    --muted: #666666;
-    --border: #d6d6d6;
-    --red: #c7362f;
-    --blue-hue: rgba(199, 54, 47, 0.1);
-    --offwhite: #f7f1e6;
+    /* Editorial Technologist - Light */
+    --primary: #a41c1a;
+    --primary-container: #c7362f;
+    --surface: #fcf9f8;
+    --surface-low: #f6f3f2;
+    --surface-lowest: #ffffff;
+    --on-surface: #1c1b1b;
+    --secondary: #5f5e5e;
+    --outline-variant: #b9b1ae;
+
+    /* Compatibility tokens used across existing styles */
+    --bg: var(--surface);
+    --text: var(--on-surface);
+    --muted: var(--secondary);
+    --border: color-mix(in srgb, var(--outline-variant) 15%, transparent);
+    --red: var(--primary-container);
+    --blue-hue: rgba(164, 28, 26, 0.08);
+    --offwhite: var(--surface-low);
     --offwhite-dark: #ece6dc;
-    --header-bg: rgba(255, 253, 249, 0.84);
+    --header-bg: color-mix(in srgb, var(--surface) 80%, transparent);
+    --ambient-shadow: rgba(28, 27, 27, 0.06);
 
     /* Font Size Scale (using rem for accessibility) */
     --text-display: 3rem; /* 48px - Large hero titles */
@@ -27,15 +38,25 @@
 }
 
 [data-theme="dark"] {
-    --bg: #121212;
-    --text: #f5f5f5;
-    --muted: #a7a7a7;
-    --border: #3b3b3b;
-    --red: #e45852;
-    --blue-hue: rgba(228, 88, 82, 0.16);
-    --offwhite: #1e1e1e;
-    --offwhite-dark: #2a2a2a;
-    --header-bg: rgba(18, 18, 18, 0.84);
+    --primary: #cf4b45;
+    --primary-container: #e45852;
+    --surface: #151413;
+    --surface-low: #1d1b1a;
+    --surface-lowest: #252220;
+    --on-surface: #f2efee;
+    --secondary: #b5afac;
+    --outline-variant: #8b817d;
+
+    --bg: var(--surface);
+    --text: var(--on-surface);
+    --muted: var(--secondary);
+    --border: color-mix(in srgb, var(--outline-variant) 15%, transparent);
+    --red: var(--primary-container);
+    --blue-hue: rgba(228, 88, 82, 0.14);
+    --offwhite: var(--surface-low);
+    --offwhite-dark: var(--surface-lowest);
+    --header-bg: color-mix(in srgb, var(--surface) 80%, transparent);
+    --ambient-shadow: rgba(0, 0, 0, 0.26);
 }
 
 *,

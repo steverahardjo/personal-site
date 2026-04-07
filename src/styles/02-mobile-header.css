@@ -9,8 +9,8 @@
 
 .mobile-menu-btn {
     position: relative;
-    background: color-mix(in srgb, var(--header-bg) 70%, #ffffff);
-    border: 1px solid color-mix(in srgb, var(--border) 65%, #ffffff);
+    background: color-mix(in srgb, var(--surface) 80%, transparent);
+    border: 1px solid var(--border);
     cursor: pointer;
     padding: 0.5rem;
     display: flex;
@@ -18,12 +18,12 @@
     justify-content: center;
     width: 44px;
     height: 44px;
-    border-radius: 8px;
+    border-radius: 999px;
     box-shadow:
-        0 1px 0 rgba(255, 255, 255, 0.45) inset,
-        0 10px 24px rgba(0, 0, 0, 0.16);
-    backdrop-filter: blur(16px) saturate(150%);
-    -webkit-backdrop-filter: blur(16px) saturate(150%);
+        0 1px 0 rgba(255, 255, 255, 0.3) inset,
+        0 12px 46px var(--ambient-shadow);
+    backdrop-filter: blur(24px) saturate(150%);
+    -webkit-backdrop-filter: blur(24px) saturate(150%);
     transition:
         background 0.2s,
         border-color 0.2s,
@@ -31,7 +31,7 @@
 }
 
 .mobile-menu-btn:hover {
-    background: color-mix(in srgb, var(--header-bg) 62%, #ffffff);
+    background: color-mix(in srgb, var(--surface-lowest) 82%, transparent);
     transform: translateY(-1px);
 }
 
@@ -101,14 +101,14 @@
     gap: 0.25rem;
     margin-top: 0.5rem;
     padding: 0.75rem;
-    border-radius: 12px;
-    border: 1px solid color-mix(in srgb, var(--border) 65%, #ffffff);
-    background: color-mix(in srgb, var(--header-bg) 72%, #ffffff);
-    backdrop-filter: blur(18px) saturate(160%);
-    -webkit-backdrop-filter: blur(18px) saturate(160%);
+    border-radius: 16px;
+    border: 1px solid var(--border);
+    background: color-mix(in srgb, var(--surface) 84%, transparent);
+    backdrop-filter: blur(24px) saturate(160%);
+    -webkit-backdrop-filter: blur(24px) saturate(160%);
     box-shadow:
-        0 1px 0 rgba(255, 255, 255, 0.46) inset,
-        0 14px 28px rgba(0, 0, 0, 0.16);
+        0 1px 0 rgba(255, 255, 255, 0.36) inset,
+        0 12px 52px var(--ambient-shadow);
 }
 
 [data-theme="dark"] .mobile-nav {
@@ -135,12 +135,12 @@
 .mobile-nav-link {
     display: block;
     padding: 0.75rem 1rem;
-    border-radius: 8px;
+    border-radius: 999px;
     color: var(--text);
     text-decoration: none;
     font-size: 1.05rem;
     font-weight: 700;
-    background: rgba(255, 255, 255, 0.36);
+    background: color-mix(in srgb, var(--surface-low) 90%, transparent);
     border: 1px solid transparent;
     transition:
         background 0.2s,
@@ -153,8 +153,8 @@
 }
 
 .mobile-nav-link:hover {
-    background: rgba(255, 255, 255, 0.62);
-    border-color: rgba(255, 255, 255, 0.46);
+    background: color-mix(in srgb, var(--surface-lowest) 88%, transparent);
+    border-color: var(--border);
 }
 
 [data-theme="dark"] .mobile-nav-link:hover {
@@ -164,5 +164,5 @@
 .mobile-nav-link.active {
     color: var(--red);
     font-weight: 600;
-    background: rgba(220, 38, 38, 0.1);
+    background: color-mix(in srgb, var(--red) 12%, var(--surface-low));
 }

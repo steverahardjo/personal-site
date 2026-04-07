@@ -22,8 +22,8 @@
 
 /* Global Styles */
 body {
-    font-family: "Monoton", "Google Sans Flex", "JetBrainsMono Nerd Font";
-    line-height: 1.6; /* Ensures readability */
+    font-family: "Inter", "Geist Variable", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    line-height: 1.6;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -48,12 +48,39 @@ select {
 h1,
 h2,
 h3 {
-    font-weight: bold;
+    font-weight: 600;
     margin-bottom: 0.5rem; /* Consistent spacing */
+    line-height: 1.2;
+    letter-spacing: -0.015em;
+}
+
+.page-title {
+    font-size: clamp(2.4rem, 5vw, 3.5rem);
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin-bottom: 1.1rem;
+}
+
+.page-title span {
+    color: var(--primary);
+}
+
+.section-subtitle {
+    font-size: clamp(1.4rem, 2.4vw, 2rem);
+    font-weight: 600;
+    line-height: 1.25;
+    margin-bottom: 0.9rem;
+}
+
+.project-subtitle {
+    font-size: clamp(1.2rem, 2vw, 1.45rem);
+    line-height: 1.45;
 }
 
 p {
-    margin-bottom: 1rem; /* Consistent spacing for paragraphs */
+    margin-bottom: 1rem;
+    line-height: 1.6;
 }
 
 /* Utility Classes */
@@ -74,10 +101,18 @@ p {
 @media (max-width: 600px) {
     :root {
         --text-display: 2.5rem; /* Smaller display size on mobile */
-        --text-h1: 2rem; /* Smaller h1 size on mobile */
+        --text-h1: 2.2rem; /* Smaller h1 size on mobile */
     }
 
     h1 {
         font-size: var(--text-h1);
+    }
+
+    .page-title {
+        font-size: clamp(2.1rem, 8vw, 2.6rem);
+    }
+
+    .section-subtitle {
+        font-size: clamp(1.25rem, 5vw, 1.55rem);
     }
 }

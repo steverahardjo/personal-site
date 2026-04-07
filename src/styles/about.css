@@ -7,14 +7,15 @@
     display: grid;
     gap: 0.9rem;
     padding: 1.1rem 1.15rem;
-    border: 1px solid var(--border);
+    border: none;
     border-radius: 12px;
     background: linear-gradient(
         145deg,
-        color-mix(in srgb, var(--bg) 60%, var(--offwhite)) 0%,
-        color-mix(in srgb, var(--bg) 60%, #fff) 55%,
-        color-mix(in srgb, var(--bg) 60%, var(--offwhite-dark)) 100%
+        color-mix(in srgb, var(--surface-low) 92%, var(--surface)) 0%,
+        color-mix(in srgb, var(--surface-lowest) 88%, var(--surface)) 55%,
+        color-mix(in srgb, var(--surface-low) 92%, var(--offwhite-dark)) 100%
     );
+    box-shadow: 0 12px 48px var(--ambient-shadow);
 }
 
 .about-intro p {
@@ -29,8 +30,8 @@
 
 .about-section-title {
     margin: 0;
-    font-size: 1.2rem;
-    font-weight: 800;
+    font-size: clamp(1.45rem, 2.4vw, 1.95rem);
+    font-weight: 700;
     letter-spacing: 0.01em;
 }
 
@@ -74,7 +75,7 @@
 
 .about-cloud-panel {
     padding: 1rem;
-    border: 1px solid var(--border);
+    border: none;
     border-radius: 12px;
     background:
         radial-gradient(
@@ -89,6 +90,7 @@
             color-mix(in srgb, var(--bg) 88%, var(--offwhite-dark)) 100%
         );
     animation: panelIn 0.25s ease;
+    box-shadow: 0 12px 48px var(--ambient-shadow);
 }
 
 .about-cloud-sub {
@@ -162,14 +164,16 @@
 
 .about-card {
     padding: 1.5rem;
-    border: 1px solid var(--border);
+    border: none;
     border-radius: 12px;
-    background: var(--bg); /* Keep it clean/flat instead of gradient */
-    transition: border-color 0.2s;
+    background: var(--surface-lowest);
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 12px 48px var(--ambient-shadow);
 }
 
 .about-card:hover {
-    border-color: var(--red); /* Subtle interaction */
+    transform: translateY(-2px);
+    box-shadow: 0 14px 52px var(--ambient-shadow);
 }
 
 .about-card-title {
@@ -179,7 +183,7 @@
 }
 
 .about-card-org {
-    color: var(--red); /* Linking org to your theme color makes it pop */
+    color: var(--primary);
     font-weight: 600;
     font-size: 0.95rem;
 }
@@ -187,7 +191,7 @@
 .about-card-date {
     color: var(--muted);
     font-size: 0.85rem;
-    font-family: monospace; /* Monospace dates look professional for resumes */
+    font-family: "Inter", sans-serif;
     margin-bottom: 1rem;
 }
 
@@ -227,7 +231,7 @@
     background:
         radial-gradient(
             circle at 82% 18%,
-            color-mix(in srgb, var(--red) 50%, transparent),
+            color-mix(in srgb, var(--red) 12%, transparent),
             transparent 34%
         ),
         linear-gradient(

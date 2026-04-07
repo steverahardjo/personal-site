@@ -29,14 +29,14 @@
 .back-home-link {
     margin-top: 2rem;
     padding: 1rem 2rem;
-    background: var(--bg); /* Background for button */
+    background: color-mix(in srgb, var(--surface-lowest) 90%, transparent);
     color: var(--text);
-    border: 1px solid var(--border); /* Consistent with other borders */
-    border-radius: 4px; /* Rounded edges */
+    border: 1px solid var(--border);
+    border-radius: 999px;
     text-decoration: none; /* Remove underline */
     transition: background 0.3s; /* Smooth transition for hover effect */
 }
 
 .back-home-link:hover {
-    background: var(--blue-hue); /* Slight color change on hover */
+    background: color-mix(in srgb, var(--surface-low) 90%, transparent);
 }
