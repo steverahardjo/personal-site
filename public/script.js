@@ -6,11 +6,11 @@
 
   const icons = {
     light: {
-      src: "/noun-swallow-66934.svg",
+      src: "/swallow.svg",
       alt: "Swallow icon",
     },
     dark: {
-      src: "/owl.svg",
+      src: "/owl_v2.svg",
       alt: "Owl icon",
     },
   };
