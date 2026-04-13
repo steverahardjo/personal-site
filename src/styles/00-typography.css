@@ -125,6 +125,46 @@ p {
     padding: 0.2rem;
 }
 
+.retro {
+    font-family: "Orbitron", sans-serif;
+    letter-spacing: 0.15em;
+    font-weight: 800;
+    text-transform: uppercase;
+    font-size: 2rem;
+
+    text-align: center;
+    width: 80%;
+}
+
+/* Typing effect */
+.typing-css {
+    width: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    border-right: 2px solid #fff;
+
+    animation:
+        typing 3s steps(22, end) forwards,
+        blink 1s step-end infinite;
+}
+
+/* Adjust steps to match character count */
+@keyframes typing {
+    from {
+        width: 0;
+    }
+    to {
+        width: 17ch;
+    } /* number of characters */
+}
+
+/* Cursor blink */
+@keyframes blink {
+    50% {
+        border-color: transparent;
+    }
+}
+
 /* Responsive Adjustments */
 @media (max-width: 600px) {
     :root {
