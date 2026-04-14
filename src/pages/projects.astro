@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import GhCalendar from "../components/GhCalendar.tsx";
+import PopupModal from "../components/PopupModal.tsx";
 
 const projects = [
     {
@@ -42,67 +43,47 @@ const projects = [
         <div class="projects-grid">
             {
                 projects.map((project) => (
-                    <div class="project-card js-project-card">
-                        <div class="card-main-content">
-                            <h2 class="project-title">{project.title}</h2>
-                            <div class="stack-tags">
-                                {project.tags.map((tag) => (
-                                    <span class="tag">{tag}</span>
-                                ))}
-                            </div>
-                            <a
-                                href={project.link}
-                                class="code-button"
-                                target="_blank"
-                                onclick="event.stopPropagation()"
-                            >
-                                View Source <span>&lt;/&gt;</span>
-                            </a>
-                        </div>
+                    /* client:load is REQUIRED for the modal to open */
+                    <PopupModal
+                        client:load
+                        title={project.title}
+                        description={project.description}
+                        link={project.link}
+                    >
+                        <div
+                            class="project-card cursor-pointer"
+                            role="button"
+                            tabindex="0"
+                        >
+                            <div class="card-main-content">
+                                <h2 class="project-title">{project.title}</h2>
 
-                        <div class="project-popover">
-                            <div class="popover-inner">
-                                <p class="project-desc">
-                                    {project.description}
-                                </p>
-                                <a href={project.link} class="view-details">
-                                    Full Case Study →
+                                <div class="stack-tags">
+                                    {project.tags.map((tag) => (
+                                        <span class="tag">{tag}</span>
+                                    ))}
+                                </div>
+
+                                {/* onclick stopPropagation prevents the modal from
+                                firing when clicking the specific link */}
+                                <a
+                                    href={project.link}
+                                    class="code-button"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    onclick="event.stopPropagation()"
+                                >
+                                    View Source <span>&lt;/&gt;</span>
                                 </a>
                             </div>
                         </div>
-                    </div>
+                    </PopupModal>
                 ))
             }
         </div>
+
         <div class="calendar-wrapper" style="margin-top: 2rem;">
             <GhCalendar client:visible />
         </div>
     </div>
 </BaseLayout>
-
-<script>
-    const cards = document.querySelectorAll(".js-project-card");
-
-    cards.forEach((card) => {
-        card.addEventListener("click", (e) => {
-            // Check if this card is already open
-            const isActive = card.classList.contains("is-active");
-
-            // Close all other open cards first (Noir clean style)
-            cards.forEach((c) => c.classList.remove("is-active"));
-
-            // If it wasn't active, open it
-            if (!isActive) {
-                card.classList.add("is-active");
-            }
-        });
-    });
-
-    // Close cards if the user clicks anywhere else on the page
-    document.addEventListener("click", (e) => {
-        const target = e.target as HTMLElement;
-        if (!target.closest(".js-project-card")) {
-            cards.forEach((c) => c.classList.remove("is-active"));
-        }
-    });
-</script>

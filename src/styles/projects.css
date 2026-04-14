@@ -119,14 +119,16 @@
     text-decoration: none;
 }
 
-.project-card.is-active {
-    box-shadow: 0 12px 54px var(--ambient-shadow);
+.project-popover {
+    opacity: 0;
+    transform: translateY(6px);
+    transition: all 0.2s ease;
+    pointer-events: none;
 }
 
-.project-card.is-active .project-popover {
-    transform: translateY(0);
+.project-card:hover .project-popover {
     opacity: 1;
-    pointer-events: auto;
+    transform: translateY(0);
 }
 
 [data-theme="dark"] .project-card,
