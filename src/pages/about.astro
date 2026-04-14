@@ -35,16 +35,49 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
         <section class="about-section">
             <h2 class="about-section-title">Skills</h2>
-            <div class="about-skill-selector" role="tablist" aria-label="Skill sections">
-                <button class="about-skill-tab is-active" type="button" role="tab" aria-selected="true" data-target="languages">Languages</button>
-                <button class="about-skill-tab" type="button" role="tab" aria-selected="false" data-target="aiml">AI/ML</button>
-                <button class="about-skill-tab" type="button" role="tab" aria-selected="false" data-target="data-tools">Data Tools</button>
-                <button class="about-skill-tab" type="button" role="tab" aria-selected="false" data-target="dev-tools">Dev Tools</button>
+            <div
+                class="about-skill-selector"
+                role="tablist"
+                aria-label="Skill sections"
+            >
+                <button
+                    class="about-skill-tab is-active"
+                    type="button"
+                    role="tab"
+                    aria-selected="true"
+                    data-target="languages">Languages</button
+                >
+                <button
+                    class="about-skill-tab"
+                    type="button"
+                    role="tab"
+                    aria-selected="false"
+                    data-target="aiml">AI/ML</button
+                >
+                <button
+                    class="about-skill-tab"
+                    type="button"
+                    role="tab"
+                    aria-selected="false"
+                    data-target="data-tools">Data Tools</button
+                >
+                <button
+                    class="about-skill-tab"
+                    type="button"
+                    role="tab"
+                    aria-selected="false"
+                    data-target="dev-tools">Dev Tools</button
+                >
             </div>
 
             <div class="about-cloud-panels">
-                <article class="about-cloud-panel is-active" data-panel="languages">
-                    <p class="about-cloud-sub">Core programming and query languages</p>
+                <article
+                    class="about-cloud-panel is-active"
+                    data-panel="languages"
+                >
+                    <p class="about-cloud-sub">
+                        Core programming and query languages
+                    </p>
                     <div class="about-word-cloud">
                         <span class="about-word">Python</span>
                         <span class="about-word">Java</span>
@@ -56,7 +89,9 @@ import BaseLayout from "../layouts/BaseLayout.astro";
                 </article>
 
                 <article class="about-cloud-panel" data-panel="aiml" hidden>
-                    <p class="about-cloud-sub">Applied model and retrieval workflows</p>
+                    <p class="about-cloud-sub">
+                        Applied model and retrieval workflows
+                    </p>
                     <div class="about-word-cloud">
                         <span class="about-word">LLMs</span>
                         <span class="about-word">RAG</span>
@@ -67,8 +102,14 @@ import BaseLayout from "../layouts/BaseLayout.astro";
                     </div>
                 </article>
 
-                <article class="about-cloud-panel" data-panel="data-tools" hidden>
-                    <p class="about-cloud-sub">Streaming, analytics, and data infrastructure</p>
+                <article
+                    class="about-cloud-panel"
+                    data-panel="data-tools"
+                    hidden
+                >
+                    <p class="about-cloud-sub">
+                        Streaming, analytics, and data infrastructure
+                    </p>
                     <div class="about-word-cloud">
                         <span class="about-word">PySpark</span>
                         <span class="about-word">Kafka</span>
@@ -79,8 +120,14 @@ import BaseLayout from "../layouts/BaseLayout.astro";
                     </div>
                 </article>
 
-                <article class="about-cloud-panel" data-panel="dev-tools" hidden>
-                    <p class="about-cloud-sub">Build, automation, and delivery workflow</p>
+                <article
+                    class="about-cloud-panel"
+                    data-panel="dev-tools"
+                    hidden
+                >
+                    <p class="about-cloud-sub">
+                        Build, automation, and delivery workflow
+                    </p>
                     <div class="about-word-cloud">
                         <span class="about-word">Git</span>
                         <span class="about-word">Docker</span>
@@ -125,9 +172,13 @@ import BaseLayout from "../layouts/BaseLayout.astro";
                     <p class="about-card-org">SynergyXYZ</p>
                     <p class="about-card-date">Nov 2024 - Feb 2025</p>
                     <p class="about-card-body">
-                        Researched Customer Data Platform vendors, formulated
-                        CDP service offerings, and compiled technical
-                        documentation. Gained experience with Google Ads.
+                        Evaluated 20+ CDP vendors to define core service
+                        offerings and solution positioning. Spearheaded client
+                        research and proposal development for major accounts,
+                        while authoring foundational SDK and workflow
+                        documentation for internal platform integration. Gained
+                        hands-on expertise with Google Ads and marketing
+                        technology architectures.
                     </p>
                 </article>
 
@@ -147,7 +198,9 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
 <script is:inline>
     const skillTabs = Array.from(document.querySelectorAll(".about-skill-tab"));
-    const skillPanels = Array.from(document.querySelectorAll(".about-cloud-panel"));
+    const skillPanels = Array.from(
+        document.querySelectorAll(".about-cloud-panel"),
+    );
 
     skillTabs.forEach((tab) => {
         tab.addEventListener("click", () => {
@@ -156,7 +209,10 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
             skillTabs.forEach((btn) => {
                 btn.classList.toggle("is-active", btn === tab);
-                btn.setAttribute("aria-selected", btn === tab ? "true" : "false");
+                btn.setAttribute(
+                    "aria-selected",
+                    btn === tab ? "true" : "false",
+                );
             });
 
             skillPanels.forEach((panel) => {

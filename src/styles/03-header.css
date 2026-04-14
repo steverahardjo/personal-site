@@ -13,19 +13,25 @@
     box-shadow:
         0 1px 0 rgba(255, 255, 255, 0.36) inset,
         0 12px 52px var(--ambient-shadow);
-    transition:
-        background-color 0.2s ease,
-        border-color 0.2s ease,
-        box-shadow 0.2s ease;
-}
 
+    /* ✅ ADD THIS */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1.2rem;
+}
 .header::before {
     content: "";
     position: absolute;
     inset: 0;
     border-radius: inherit;
     pointer-events: none;
-    background: linear-gradient(140deg, rgba(255, 255, 255, 0.32) 0%, rgba(255, 255, 255, 0.04) 50%, transparent 72%);
+    background: linear-gradient(
+        140deg,
+        rgba(255, 255, 255, 0.32) 0%,
+        rgba(255, 255, 255, 0.04) 50%,
+        transparent 72%
+    );
     z-index: -1;
 }
 
@@ -147,12 +153,39 @@ html {
 
 @media (max-width: 600px) {
     .header {
-        display: none;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        padding: 0 16px;
     }
-
     .theme-toggle {
         top: auto;
         bottom: 1rem;
         right: 1rem;
+    }
+}
+
+.nav-logo {
+    width: 50px;
+    height: 50px;
+    flex-shrink: 0;
+    display: block;
+    transition: transform 0.3s ease-in;
+}
+
+.nav-logo:hover {
+    /* 1s: duration (change this to make it faster or slower)
+       linear: consistent speed
+       infinite: keeps going as long as you hover
+    */
+    animation: rotate-forever 2s linear infinite;
+}
+
+@keyframes rotate-forever {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
     }
 }
