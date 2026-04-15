@@ -1,77 +1,71 @@
-// Theme Toggle
-(function () {
+function initSite() {
+  // ========================
+  // Theme Toggle
+  // ========================
   const btn = document.getElementById("themeToggle");
   const html = document.documentElement;
-  const saved = localStorage.getItem("theme") || "light";
 
-  const icons = {
-    light: {
-      src: "/swallow.svg",
-      alt: "Swallow icon",
-    },
-    dark: {
-      src: "/owl_v2.svg",
-      alt: "Owl icon",
-    },
-  };
+  if (btn && !btn.dataset.bound) {
+    btn.dataset.bound = "true";
 
-  const ensureThemeIcon = () => {
-    if (!btn) return null;
+    const icons = {
+      light: { src: "/swallow.svg", alt: "Swallow icon" },
+      dark: { src: "/owl_v2.svg", alt: "Owl icon" },
+    };
 
-    let icon = btn.querySelector("img");
-    if (icon) return icon;
+    const ensureIcon = () => {
+      let icon = btn.querySelector("img");
+      if (!icon) {
+        icon = document.createElement("img");
+        icon.width = 24;
+        icon.height = 24;
+        icon.style.objectFit = "contain";
+        btn.replaceChildren(icon);
+      }
+      return icon;
+    };
 
-    icon = document.createElement("img");
-    icon.width = 24;
-    icon.height = 24;
-    icon.decoding = "async";
-    icon.style.width = "24px";
-    icon.style.height = "24px";
-    icon.style.objectFit = "contain";
-    icon.style.pointerEvents = "none";
-    btn.replaceChildren(icon);
-    return icon;
-  };
+    const setTheme = (theme) => {
+      const icon = ensureIcon();
+      const data = theme === "dark" ? icons.dark : icons.light;
 
-  const setThemeIcon = (theme) => {
-    if (!btn) return;
-    const isDark = theme === "dark";
-    const icon = ensureThemeIcon();
-    const nextIcon = isDark ? icons.dark : icons.light;
-    if (icon) {
-      icon.src = nextIcon.src;
-      icon.alt = nextIcon.alt;
-    }
-    btn.setAttribute(
-      "aria-label",
-      isDark ? "Switch to light mode" : "Switch to dark mode",
-    );
-  };
+      icon.src = data.src;
+      icon.alt = data.alt;
 
-  html.setAttribute("data-theme", saved);
-  setThemeIcon(saved);
+      btn.setAttribute(
+        "aria-label",
+        theme === "dark" ? "Switch to light mode" : "Switch to dark mode",
+      );
+    };
 
-  btn?.addEventListener("click", () => {
-    const current = html.getAttribute("data-theme");
-    const next = current === "dark" ? "light" : "dark";
-    html.setAttribute("data-theme", next);
-    localStorage.setItem("theme", next);
-    setThemeIcon(next);
-  });
-})();
+    const saved = localStorage.getItem("theme") || "light";
+    html.setAttribute("data-theme", saved);
+    setTheme(saved);
 
-// Mobile Menu Toggle
-(function () {
+    btn.addEventListener("click", () => {
+      const current = html.getAttribute("data-theme");
+      const next = current === "dark" ? "light" : "dark";
+
+      html.setAttribute("data-theme", next);
+      localStorage.setItem("theme", next);
+      setTheme(next);
+    });
+  }
+
+  // ========================
+  // Mobile Menu
+  // ========================
   const menuBtn = document.getElementById("mobileMenuBtn");
   const mobileNav = document.getElementById("mobileNav");
 
-  if (menuBtn && mobileNav) {
+  if (menuBtn && mobileNav && !menuBtn.dataset.bound) {
+    menuBtn.dataset.bound = "true";
+
     menuBtn.addEventListener("click", () => {
       menuBtn.classList.toggle("active");
       mobileNav.classList.toggle("open");
     });
 
-    // Close menu when clicking a link
     mobileNav.querySelectorAll(".mobile-nav-link").forEach((link) => {
       link.addEventListener("click", () => {
         menuBtn.classList.remove("active");
@@ -79,103 +73,113 @@
       });
     });
   }
-})();
 
-// Joke Rotator
-const jokes = [
-  "Why do programmers prefer dark mode? Light attracts bugs. 🐛",
-  "Arrays start at 0, not 1. Fight me. 🥊",
-  "Sleep is a blocking call with indefinite timeout. 😴",
-  "My code works, I have no idea why. 🤷",
-  "Debugging: being detective and murderer in the same story. 🔍",
-];
+  // ========================
+  // Joke (runs once per page)
+  // ========================
+  const jokes = [
+    "Why do programmers prefer dark mode? Light attracts bugs. 🐛",
+    "Arrays start at 0, not 1. Fight me. 🥊",
+    "Sleep is a blocking call with indefinite timeout. 😴",
+    "My code works, I have no idea why. 🤷",
+    "Debugging: detective + murderer. 🔍",
+  ];
 
-const jokeEl = document.getElementById("joke");
-if (jokeEl) {
-  jokeEl.textContent = jokes[Math.floor(Math.random() * jokes.length)];
-}
+  const jokeEl = document.getElementById("joke");
+  if (jokeEl) {
+    jokeEl.textContent = jokes[Math.floor(Math.random() * jokes.length)];
+  }
 
-// Active Nav Link Highlight on Scroll (for home page sections)
-(function () {
-  const sections = document.querySelectorAll("section[id]");
-  const navLinks = document.querySelectorAll(".nav-link");
+  // ========================
+  // Active Nav (Home only)
+  // ========================
+  const isHome = document.body.classList.contains("home");
 
-  if (
-    sections.length === 0 ||
-    (!window.location.pathname.endsWith("index.html") &&
-      window.location.pathname !== "/")
-  )
-    return;
+  if (isHome) {
+    const sections = document.querySelectorAll("section[id]");
+    const navLinks = document.querySelectorAll(".nav-link");
 
-  const observerOptions = {
-    root: null,
-    rootMargin: "-100px 0px -60% 0px",
-    threshold: 0,
-  };
+    if (sections.length) {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
 
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        navLinks.forEach((link) => {
-          link.classList.remove("active");
-          if (link.getAttribute("href") === `#${entry.target.id}`) {
-            link.classList.add("active");
-          }
-        });
-      }
-    });
-  }, observerOptions);
+            navLinks.forEach((link) => {
+              link.classList.toggle(
+                "active",
+                link.getAttribute("href") === `#${entry.target.id}`,
+              );
+            });
+          });
+        },
+        {
+          rootMargin: "-100px 0px -60% 0px",
+        },
+      );
 
-  sections.forEach((section) => observer.observe(section));
-})();
+      sections.forEach((s) => observer.observe(s));
+    }
+  }
 
-// Reading Progress Bar (for writing page / blog posts)
-(function () {
-  const writingPage = document.querySelector(".writing-page");
-  const blogPost = document.querySelector(".blog-post");
+  // ========================
+  // Reading Progress
+  // ========================
   const progressBar = document.getElementById("progressBar");
+  const isReadingPage =
+    document.querySelector(".writing-page") ||
+    document.querySelector(".blog-post");
 
-  if (!writingPage && !blogPost) return;
-  if (!progressBar) return;
+  if (progressBar && isReadingPage) {
+    window.addEventListener(
+      "scroll",
+      () => {
+        const max = document.documentElement.scrollHeight - window.innerHeight;
+        const percent = (window.scrollY / max) * 100;
+        progressBar.style.width = `${percent}%`;
+      },
+      { passive: true },
+    );
+  }
 
-  window.addEventListener("scroll", () => {
-    const windowHeight = window.innerHeight;
-    const documentHeight = document.documentElement.scrollHeight - windowHeight;
-    const scrolled = window.scrollY;
-    const progress = (scrolled / documentHeight) * 100;
+  // ========================
+  // Copy Email
+  // ========================
+  document.querySelectorAll('a[href^="mailto:"]').forEach((link) => {
+    if (link.dataset.bound) return;
+    link.dataset.bound = "true";
 
-    progressBar.style.width = `${progress}%`;
-  });
-})();
+    link.addEventListener("click", async (e) => {
+      e.preventDefault();
 
-// Copy Email on Click
-(function () {
-  const emailLinks = document.querySelectorAll('a[href^="mailto:"]');
-
-  emailLinks.forEach((link) => {
-    link.addEventListener("click", (e) => {
       const email = link.getAttribute("href").replace("mailto:", "");
 
-      navigator.clipboard
-        .writeText(email)
-        .then(() => {
-          const originalText = link.textContent;
-          link.textContent = "Copied!";
-          link.style.color = "var(--red)";
+      try {
+        await navigator.clipboard.writeText(email);
 
-          setTimeout(() => {
-            link.textContent = originalText;
-            link.style.color = "";
-          }, 1500);
-        })
-        .catch(() => {
-          // Fallback: let default mailto behavior happen
-        });
+        const old = link.textContent;
+        link.textContent = "Copied!";
+        link.style.color = "var(--red)";
+
+        setTimeout(() => {
+          link.textContent = old;
+          link.style.color = "";
+        }, 1200);
+      } catch {
+        window.location.href = link.href;
+      }
     });
   });
-})();
 
-// Page fade-in on load
-window.addEventListener("load", () => {
+  // ========================
+  // Page ready
+  // ========================
   document.body.classList.add("loaded");
-});
+}
+
+// Run normally
+document.addEventListener("DOMContentLoaded", initSite);
+
+// Run again for SPA / transitions (Astro / PJAX safe)
+document.addEventListener("astro:page-load", initSite);
+document.addEventListener("turbo:load", initSite);
