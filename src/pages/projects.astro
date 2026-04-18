@@ -43,7 +43,6 @@ const projects = [
         <div class="projects-grid">
             {
                 projects.map((project) => (
-                    /* client:load is REQUIRED for the modal to open */
                     <PopupModal
                         client:load
                         title={project.title}

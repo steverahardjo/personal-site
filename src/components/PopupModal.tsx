@@ -1,12 +1,5 @@
-import React from "react";
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog";
+import React, { useEffect, useState } from "react";
+import { ExternalLink, Code } from "lucide-react";
 
 type Props = {
   title: string;
@@ -21,29 +14,58 @@ export default function PopupModal({
   link,
   children,
 }: Props) {
-  return (
-    <Dialog>
-      {/* asChild tells Radix to apply click logic to the div/button you pass in */}
-      <DialogTrigger asChild>{children}</DialogTrigger>
+  const [open, setOpen] = useState(false);
 
-      <DialogContent className="bg-white dark:bg-slate-900">
-        <DialogHeader>
-          <DialogTitle className="text-xl font-bold">{title}</DialogTitle>
-          <DialogDescription className="mt-4 text-slate-600 dark:text-slate-300">
-            {description}
-            <div className="mt-6">
+  // ESC to close
+  useEffect(() => {
+    const handler = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setOpen(false);
+    };
+
+    window.addEventListener("keydown", handler);
+    return () => window.removeEventListener("keydown", handler);
+  }, []);
+
+  return (
+    <>
+      {/* Trigger */}
+      <div
+        onClick={() => setOpen(true)}
+        className="cursor-pointer transition-all duration-300 hover:scale-[1.01] active:scale-[0.99]"
+      >
+        {children}
+      </div>
+
+      {/* Modal */}
+      {open && (
+        <div className="modal-overlay" onClick={() => setOpen(false)}>
+          <div className="modal-card" onClick={(e) => e.stopPropagation()}>
+            {/* Header bar (IDE style) */}
+            <div className="modal-header-bar" />
+
+            {/* Body */}
+            <div className="modal-body">
+              <h2 className="modal-title">{title}</h2>
+
+              <p className="modal-description">{description}</p>
+            </div>
+
+            {/* Footer */}
+            <div className="modal-footer-bar">
               <a
                 href={link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-blue-500 hover:underline font-semibold"
+                className="modal-button"
               >
-                View Project →
+                <Code size={18} />
+                <span>Read my blog</span>
+                <ExternalLink size={14} />
               </a>
             </div>
-          </DialogDescription>
-        </DialogHeader>
-      </DialogContent>
-    </Dialog>
+          </div>
+        </div>
+      )}
+    </>
   );
 }

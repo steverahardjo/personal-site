@@ -1,3 +1,5 @@
+/* --- Projects Grid & Cards --- */
+
 .projects-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -6,141 +8,228 @@
 
 .project-card {
     position: relative;
-    border: none;
+    padding: 1.25rem;
     border-radius: 12px;
     background: linear-gradient(
         145deg,
-        color-mix(in srgb, var(--surface-low) 94%, var(--surface)) 0%,
+        color-mix(in srgb, var(--surface-low) 94%, var(--surface)),
         color-mix(in srgb, var(--surface-lowest) 90%, var(--surface)) 48%,
-        color-mix(in srgb, var(--surface-low) 92%, var(--offwhite-dark)) 100%
+        color-mix(in srgb, var(--surface-low) 92%, var(--offwhite-dark))
     );
     overflow: hidden;
     cursor: pointer;
+    min-height: 220px;
     transition:
         transform 0.2s,
-        box-shadow 0.2s,
-        border-color 0.2s;
-    min-height: 220px;
+        box-shadow 0.2s;
+
+    &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 12px 52px var(--ambient-shadow);
+        .project-title {
+            color: var(--red);
+        }
+        .project-popover {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
 }
 
-.project-card:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 12px 52px var(--ambient-shadow);
+.project-popover {
+    position: absolute;
+    inset: auto 0.75rem 0.75rem 0.75rem;
+    border-radius: 10px;
+    background: inherit;
+    padding: 0.95rem 1rem;
+    transform: translateY(16px);
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.22s ease;
 }
 
-.project-card:hover .project-title {
-    color: var(--red);
-}
-
-.card-main-content {
-    padding: 1.25rem;
-}
-
-.project-title {
-    margin: 0;
-    font-size: clamp(1.2rem, 2vw, 1.45rem);
-    line-height: 1.25;
-}
-
+/* --- Shared Components --- */
 .stack-tags {
-    margin-top: 0.75rem;
     display: flex;
     flex-wrap: wrap;
     gap: 0.5rem;
+    margin-top: 0.75rem;
 }
-
-.tag {
+.tag,
+.code-button,
+.modal-button {
     display: inline-flex;
     align-items: center;
-    padding: 0.25rem 0.5rem;
-    font-size: 0.75rem;
+    gap: 8px;
+
+    /* TUI Shape: Rectangular & Sharp */
+    padding: 0.4rem 0.75rem;
+    border-radius: 2px; /* Slightest rounding or 0 for total block */
     border: 1px solid var(--border);
-    border-radius: 999px;
+
+    /* Typography: Monospace is key */
+    font-family: ui-monospace, "Cascadia Code", "Source Code Pro", monospace;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+
+    background: var(--surface-low);
+    color: var(--muted-foreground);
+    transition: all 0.1s steps(2); /* Snappy, non-fluid transition */
+    cursor: pointer;
+
+    /* Pseudo-element for keyboard hint: [X] style */
+    &::before {
+        content: "[";
+        color: var(--muted);
+        opacity: 0.5;
+    }
+    &::after {
+        content: "]";
+        color: var(--muted);
+        opacity: 0.5;
+    }
+
+    &:hover {
+        background: var(--red);
+        color: white;
+        border-color: var(--red);
+        /* Simple box shadow for 'highlight' effect */
+        box-shadow: 2px 2px 0px var(--ambient-shadow);
+
+        &::before,
+        &::after {
+            color: white;
+            opacity: 1;
+        }
+    }
+
+    &:active {
+        transform: translate(1px, 1px);
+        box-shadow: 0px 0px 0px;
+    }
+
+    /* Primary TUI Action (The "Enter" key look) */
+    &.primary {
+        background: var(--red);
+        color: white;
+        border-color: var(--red);
+
+        &:hover {
+            filter: brightness(1.2);
+            background: var(--red);
+        }
+    }
+}
+.tag {
+    padding: 0.25rem 0.5rem;
     color: var(--muted);
     background: color-mix(in srgb, var(--bg) 86%, var(--offwhite));
+}
+
+/* --- Modal System --- */
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.75);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+    padding: 1.5rem; /* Ensures "floating" look on mobile */
+}
+
+.modal-card {
+    width: 100%;
+    max-width: 520px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+.modal-header-bar,
+.modal-footer-bar {
+    background: var(--surface-low);
+    padding: 0.5rem 1rem;
+    display: flex;
+    align-items: center;
+}
+
+.modal-header-bar {
+    height: 32px;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    border-bottom: 1px solid var(--border);
+}
+
+.modal-body {
+    padding: 1.5rem;
+}
+.modal-title {
+    color: var(--red);
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+/* --- Mobile Specific: Floating & Compact --- */
+@media (max-width: 480px) {
+    .modal-overlay {
+        align-items: flex-end; /* Slides up from bottom */
+        padding: 1rem;
+    }
+
+    .modal-card {
+        max-height: 80vh;
+        border-radius: 16px; /* Rounder look for mobile */
+        margin-bottom: 0.5rem;
+    }
+
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Dark Theme Overrides */
+[data-theme="dark"] .project-card {
+    background: linear-gradient(
+        155deg,
+        color-mix(in srgb, var(--bg) 94%, var(--offwhite)),
+        color-mix(in srgb, var(--bg) 98%, #000) 44%
+    );
+}
+
+body:has(.modal-overlay) {
+    overflow: hidden;
 }
 
 .code-button {
     display: inline-flex;
     align-items: center;
-    gap: 0.4rem;
-    margin-top: 0.9rem;
-    padding: 0.45rem 0.7rem;
+    align-self: flex-start; /* Keeps it from stretching */
+    gap: 0.5rem;
+    margin-top: 1rem;
+    padding: 0.4rem 0.8rem;
     border-radius: 999px;
-    text-decoration: none;
-    font-size: 0.85rem;
-    font-weight: 600;
-    color: var(--text);
     border: 1px solid var(--border);
     background: color-mix(in srgb, var(--bg) 88%, var(--offwhite));
-}
-
-.code-button:hover {
-    border-color: var(--red);
-    color: var(--red);
-}
-
-.project-popover {
-    position: absolute;
-    left: 0.75rem;
-    right: 0.75rem;
-    bottom: 0.75rem;
-    border: none;
-    border-radius: 10px;
-    background: linear-gradient(
-        155deg,
-        color-mix(in srgb, var(--surface-low) 94%, var(--surface)) 0%,
-        color-mix(in srgb, var(--surface-lowest) 90%, var(--surface)) 44%,
-        color-mix(in srgb, var(--surface-low) 92%, var(--offwhite-dark)) 100%
-    );
-    transform: translateY(16px);
-    opacity: 0;
-    pointer-events: none;
-    transition:
-        transform 0.22s ease,
-        opacity 0.22s ease;
-}
-
-.popover-inner {
-    padding: 0.95rem 1rem;
-}
-
-.project-desc {
-    margin: 0;
-    font-size: 0.92rem;
-    color: var(--muted);
-}
-
-.view-details {
-    display: inline-block;
-    margin-top: 0.7rem;
-    font-size: 0.9rem;
-    color: var(--red);
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--text);
     text-decoration: none;
-}
+    transition: all 0.2s;
 
-.project-popover {
-    opacity: 0;
-    transform: translateY(6px);
-    transition: all 0.2s ease;
-    pointer-events: none;
-}
+    &:hover {
+        border-color: var(--red);
+        color: var(--red);
+        background: var(--surface);
+    }
 
-.project-card:hover .project-popover {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-[data-theme="dark"] .project-card,
-[data-theme="dark"] .project-popover {
-    background: linear-gradient(
-        155deg,
-        color-mix(in srgb, var(--bg) 94%, var(--offwhite)) 0%,
-        color-mix(in srgb, var(--bg) 98%, #000) 44%,
-        color-mix(in srgb, var(--bg) 90%, var(--offwhite-dark)) 100%
-    );
-}
-
-[data-theme="dark"] .project-card:hover {
-    box-shadow: 0 12px 54px var(--ambient-shadow);
+    &::before {
+        content: "</>";
+        font-family: monospace;
+        color: var(--red);
+    }
 }
