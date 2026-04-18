@@ -253,3 +253,21 @@ html {
         right: 1rem;
     }
 }
+
+.mobile-nav-link:active {
+    color: var(--red);
+    background: color-mix(in srgb, var(--red) 15%, transparent);
+}
+
+.mobile-nav-link::after {
+    content: "";
+    display: block;
+    width: 0;
+    height: 2px;
+    background: var(--red);
+    transition: width 0.25s;
+}
+
+.mobile-nav-link:hover::after {
+    width: 100%;
+}
