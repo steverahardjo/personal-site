@@ -19,6 +19,7 @@ const randomJoke = jokes[Math.floor(Math.random() * jokes.length)];
     description="Steve Jevon Rahardjo - Data Science graduate specializing in backend systems, AI/ML, and database optimization. Building scalable software solutions."
     page="home"
 >
+    <ClientRouter />
     <div class="container home">
         <div class="content">
             <h1 class="retro typing-css">STEVE RAHARDJO</h1>
@@ -41,7 +42,10 @@ const randomJoke = jokes[Math.floor(Math.random() * jokes.length)];
             </div>
 
             <div class="image-section">
-                <BackgroundGradientAnimationDemo client:load />
+                <BackgroundGradientAnimationDemo
+                    client:load
+                    transition:persist
+                />
                 <p class="joke" id="joke">{randomJoke}</p>
                 <p class="status">current: <span>sleep deprived</span></p>
             </div>

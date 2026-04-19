@@ -130,6 +130,7 @@
 
 /* --- Modal System --- */
 .modal-overlay {
+    backdrop-filter: blur(4px);
     position: fixed;
     inset: 0;
     background: rgba(0, 0, 0, 0.75);
@@ -177,18 +178,44 @@
 /* --- Mobile Specific: Floating & Compact --- */
 @media (max-width: 480px) {
     .modal-overlay {
-        align-items: flex-end; /* Slides up from bottom */
+        align-items: flex-end;
         padding: 1rem;
     }
 
     .modal-card {
         max-height: 80vh;
-        border-radius: 16px; /* Rounder look for mobile */
+        border-radius: 16px;
         margin-bottom: 0.5rem;
     }
 
     .projects-grid {
         grid-template-columns: 1fr;
+    }
+}
+
+@keyframes modal-float {
+    0% {
+        opacity: 0;
+        transform: scale(0.95) translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+@media (max-width: 480px) {
+    .modal-card {
+        animation: modal-slide-up 0.4s cubic-bezier(0, 0.55, 0.45, 1) forwards;
+    }
+}
+
+@keyframes modal-slide-up {
+    0% {
+        transform: translateY(100%);
+    }
+    100% {
+        transform: translateY(0);
     }
 }
 

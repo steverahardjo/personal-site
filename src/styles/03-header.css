@@ -80,8 +80,9 @@ html {
 .nav-link {
     color: var(--muted);
     text-decoration: none;
+    font-family: "Google Sans";
     font-size: var(--text-nav);
-    font-weight: 600;
+    font-weight: 700;
     position: relative;
     transition:
         background 0.25s ease,
