@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+  <!-- Outer ear/head frame -->
+  <circle cx="32" cy="28" r="20"/>
+  <!-- Inner face -->
+  <circle cx="32" cy="28" r="14" stroke-width="1"/>
+  <!-- Left eye frame -->
+  <circle cx="26" cy="25" r="5"/>
+  <!-- Right eye frame -->
+  <circle cx="38" cy="25" r="5"/>
+  <!-- Left pupil -->
+  <circle cx="26" cy="25" r="2" fill="currentColor"/>
+  <!-- Right pupil -->
+  <circle cx="38" cy="25" r="2" fill="currentColor"/>
+  <!-- Beak -->
+  <path d="M29 33 L32 37 L35 33"/>
+  <!-- Body frame -->
+  <path d="M22 38 C24 50 40 50 42 38" stroke-width="1.2"/>
+  <!-- Left wing dot matrix (3x2) -->
+  <circle cx="18" cy="40" r="0.8"/>
+  <circle cx="18" cy="44" r="0.8"/>
+  <circle cx="18" cy="48" r="0.8"/>
+  <circle cx="21" cy="42" r="0.8"/>
+  <circle cx="21" cy="46" r="0.8"/>
+  <!-- Right wing dot matrix -->
+  <circle cx="46" cy="40" r="0.8"/>
+  <circle cx="46" cy="44" r="0.8"/>
+  <circle cx="46" cy="48" r="0.8"/>
+  <circle cx="43" cy="42" r="0.8"/>
+  <circle cx="43" cy="46" r="0.8"/>
+  <!-- Feet -->
+  <line x1="27" y1="52" x2="25" y2="58"/>
+  <line x1="37" y1="52" x2="39" y2="58"/>
+  <!-- Ear tufts -->
+  <line x1="20" y1="14" x2="16" y2="6"/>
+  <line x1="44" y1="14" x2="48" y2="6"/>
+</svg>

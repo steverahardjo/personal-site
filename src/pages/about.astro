@@ -1,225 +1,87 @@
 ---
-import GhCalendar from "../components/GhCalendar.tsx";
 import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
-<BaseLayout
-    title="sjrah.net/about"
-    description="Learn about Steve Jevon Rahardjo - Data Science graduate from Monash University specializing in backend systems, AI/ML, Python, Go, and database technologies."
-    page="about"
->
-    <div class="container page about-page">
-        <h1 class="page-title">
-            <span>About</span>
-        </h1>
+<BaseLayout title="About | Steve Jevon Rahardjo" description="CS graduate from Monash University Malaysia." page="about">
+  <h2 class="text-2xl md:text-3xl font-bold tracking-tight mb-8">About</h2>
 
-        <section class="about-intro">
-            <p>
-                I am a Computer Science graduate from
-                <strong>Monash University Malaysia</strong>
-                focused on backend systems and AI-centric development.
-            </p>
-            <p>
-                I build side projects around <strong>network programming</strong
-                >,
-                <strong>database optimization</strong>, and practical <strong
-                    >LLM</strong
-                >
-                applications.
-            </p>
-            <p>
-                My goal is to ship scalable products with clean engineering and
-                useful AI features.
-            </p>
-        </section>
+  <section class="mb-10">
+    <p class="text-sm md:text-base leading-relaxed text-[var(--muted-foreground)] mb-4">CS graduate from <strong class="text-[var(--text)]">Monash University Malaysia</strong>, focused on backend systems and AI-centric development. I build side projects around network programming, database optimization, and practical LLM applications.</p>
+    <p class="text-sm md:text-base leading-relaxed text-[var(--muted-foreground)]">Goal: ship scalable products with clean engineering.</p>
+  </section>
 
-        <section class="about-section">
-            <h2 class="about-section-title">Skills</h2>
-            <div
-                class="about-skill-selector"
-                role="tablist"
-                aria-label="Skill sections"
-            >
-                <button
-                    class="about-skill-tab is-active"
-                    type="button"
-                    role="tab"
-                    aria-selected="true"
-                    data-target="languages">Languages</button
-                >
-                <button
-                    class="about-skill-tab"
-                    type="button"
-                    role="tab"
-                    aria-selected="false"
-                    data-target="aiml">AI/ML</button
-                >
-                <button
-                    class="about-skill-tab"
-                    type="button"
-                    role="tab"
-                    aria-selected="false"
-                    data-target="data-tools">Data Tools</button
-                >
-                <button
-                    class="about-skill-tab"
-                    type="button"
-                    role="tab"
-                    aria-selected="false"
-                    data-target="dev-tools">Dev Tools</button
-                >
-            </div>
-
-            <div class="about-cloud-panels">
-                <article
-                    class="about-cloud-panel is-active"
-                    data-panel="languages"
-                >
-                    <p class="about-cloud-sub">
-                        Core programming and query languages
-                    </p>
-                    <div class="about-word-cloud">
-                        <span class="about-word">Python</span>
-                        <span class="about-word">Java</span>
-                        <span class="about-word">Go</span>
-                        <span class="about-word">SQL</span>
-                        <span class="about-word">R</span>
-                        <span class="about-word">TypeScript</span>
-                    </div>
-                </article>
-
-                <article class="about-cloud-panel" data-panel="aiml" hidden>
-                    <p class="about-cloud-sub">
-                        Applied model and retrieval workflows
-                    </p>
-                    <div class="about-word-cloud">
-                        <span class="about-word">LLMs</span>
-                        <span class="about-word">RAG</span>
-                        <span class="about-word">Google ADK</span>
-                        <span class="about-word">Hugging Face</span>
-                        <span class="about-word">Scikit-Learn</span>
-                        <span class="about-word">XGBoost</span>
-                    </div>
-                </article>
-
-                <article
-                    class="about-cloud-panel"
-                    data-panel="data-tools"
-                    hidden
-                >
-                    <p class="about-cloud-sub">
-                        Streaming, analytics, and data infrastructure
-                    </p>
-                    <div class="about-word-cloud">
-                        <span class="about-word">PySpark</span>
-                        <span class="about-word">Kafka</span>
-                        <span class="about-word">MongoDB</span>
-                        <span class="about-word">QdrantDB</span>
-                        <span class="about-word">Pandas</span>
-                        <span class="about-word">Matplotlib</span>
-                    </div>
-                </article>
-
-                <article
-                    class="about-cloud-panel"
-                    data-panel="dev-tools"
-                    hidden
-                >
-                    <p class="about-cloud-sub">
-                        Build, automation, and delivery workflow
-                    </p>
-                    <div class="about-word-cloud">
-                        <span class="about-word">Git</span>
-                        <span class="about-word">Docker</span>
-                        <span class="about-word">GitHub Actions</span>
-                        <span class="about-word">Flask</span>
-                        <span class="about-word">BeautifulSoup</span>
-                    </div>
-                </article>
-            </div>
-        </section>
-
-        <section class="about-section">
-            <h2 class="about-section-title">Education</h2>
-            <article class="about-card">
-                <h3 class="about-card-title">
-                    Bachelor of Computer Science (Data Science)
-                </h3>
-                <p class="about-card-org">Monash University Malaysia</p>
-                <p class="about-card-date">Feb 2023 - Nov 2025</p>
-
-                <p class="about-meta-label">Relevant Coursework</p>
-                <div class="about-chip-list">
-                    <span class="about-chip">Data Science</span>
-                    <span class="about-chip">DSA</span>
-                    <span class="about-chip">Data Modelling</span>
-                    <span class="about-chip">Visualization</span>
-                    <span class="about-chip">OOP</span>
-                    <span class="about-chip">Warehousing</span>
-                    <span class="about-chip">Android Dev</span>
-                    <span class="about-chip">Big Data</span>
-                </div>
-            </article>
-        </section>
-
-        <section class="about-section">
-            <h2 class="about-section-title">Experience</h2>
-            <div class="about-stack">
-                <article class="about-card">
-                    <h3 class="about-card-title">
-                        Data Analyst Trainee (CDP Team)
-                    </h3>
-                    <p class="about-card-org">SynergyXYZ</p>
-                    <p class="about-card-date">Nov 2024 - Feb 2025</p>
-                    <p class="about-card-body">
-                        Evaluated 20+ CDP vendors to define core service
-                        offerings and solution positioning. Spearheaded client
-                        research and proposal development for major accounts,
-                        while authoring foundational SDK and workflow
-                        documentation for internal platform integration. Gained
-                        hands-on expertise with Google Ads and marketing
-                        technology architectures.
-                    </p>
-                </article>
-
-                <article class="about-card">
-                    <h3 class="about-card-title">Website Admin (Volunteer)</h3>
-                    <p class="about-card-org">PPI Monash Malaysia</p>
-                    <p class="about-card-date">Jul 2024 - Nov 2025</p>
-                    <p class="about-card-body">
-                        Executed website revamp using WordPress, published
-                        content, and assisted in event program coordination.
-                    </p>
-                </article>
-            </div>
-        </section>
+  <section class="mb-10">
+    <h3 class="text-base md:text-lg font-bold mb-4">Skills</h3>
+    <div class="flex flex-wrap gap-2 mb-4" role="tablist">
+      {[["languages","Languages"],["aiml","AI/ML"],["data-tools","Data Tools"],["dev-tools","Dev Tools"]].map(([id,label],i) => (
+        <button type="button" role="tab" aria-selected={i===0?"true":"false"} data-target={id}
+          class="tab-btn text-xs font-semibold px-3 py-1.5 rounded-full border border-[var(--border)] bg-transparent text-[var(--muted)] cursor-pointer transition-all duration-200 hover:border-[var(--accent)]/50 hover:text-[var(--text)] data-[active=true]:bg-[var(--accent)] data-[active=true]:text-white data-[active=true]:border-[var(--accent)]"
+        >{label}</button>
+      ))}
     </div>
+    <div class="skill-panels">
+      {[
+        ["languages","Core languages",["Python","Java","Go","SQL","R","TypeScript"]],
+        ["aiml","ML & retrieval",["LLMs","RAG","Google ADK","Hugging Face","Scikit-Learn","XGBoost"]],
+        ["data-tools","Streaming & analytics",["PySpark","Kafka","MongoDB","QdrantDB","Pandas","Matplotlib"]],
+        ["dev-tools","Build & delivery",["Git","Docker","GitHub Actions","Flask","BeautifulSoup"]],
+      ].map(([id,sub,words],i) => (
+        <div class="skill-panel p-5 rounded-2xl border border-[var(--border)] bg-[var(--bg)] about-panel" data-panel={id as string} hidden={i!==0}>
+          <p class="text-xs text-[var(--muted-foreground)] mb-3">{sub as string}</p>
+          <div class="flex flex-wrap gap-2">
+            {(words as string[]).map(w => (
+              <span class="text-xs font-medium px-3 py-1.5 rounded-lg border border-[var(--border)] bg-[var(--surface)] text-[var(--text)]">{w}</span>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section class="mb-10">
+    <h3 class="text-base md:text-lg font-bold mb-4">Education</h3>
+    <article class="p-5 rounded-2xl border border-[var(--border)] bg-[var(--bg)]">
+      <h4 class="text-sm font-bold m-0">B.CompSci (Data Science)</h4>
+      <p class="text-xs text-[var(--accent)] font-medium mt-1">Monash University Malaysia</p>
+      <p class="text-[10px] text-[var(--muted-foreground)] mt-0.5">Feb 2023 - Nov 2025</p>
+      <div class="flex flex-wrap gap-1.5 mt-3">
+        {["Data Science","DSA","Data Modelling","Visualization","OOP","Warehousing","Big Data"].map(c => (
+          <span class="text-[10px] font-medium px-2 py-0.5 rounded-full border border-[var(--border)] bg-[var(--surface)] text-[var(--muted)]">{c}</span>
+        ))}
+      </div>
+    </article>
+  </section>
+
+  <section>
+    <h3 class="text-base md:text-lg font-bold mb-4">Experience</h3>
+    <div class="flex flex-col gap-4">
+      <article class="p-5 rounded-2xl border border-[var(--border)] bg-[var(--bg)]">
+        <h4 class="text-sm font-bold m-0">Data Analyst Trainee (CDP Team)</h4>
+        <p class="text-xs text-[var(--accent)] font-medium mt-1">SynergyXYZ</p>
+        <p class="text-[10px] text-[var(--muted-foreground)] mt-0.5">Nov 2024 - Feb 2025</p>
+        <p class="text-xs mt-3 leading-relaxed text-[var(--muted-foreground)]">Evaluated 20+ CDP vendors, led client research, authored SDK and workflow documentation.</p>
+      </article>
+      <article class="p-5 rounded-2xl border border-[var(--border)] bg-[var(--bg)]">
+        <h4 class="text-sm font-bold m-0">Website Admin (Volunteer)</h4>
+        <p class="text-xs text-[var(--accent)] font-medium mt-1">PPI Monash Malaysia</p>
+        <p class="text-[10px] text-[var(--muted-foreground)] mt-0.5">Jul 2024 - Nov 2025</p>
+        <p class="text-xs mt-3 leading-relaxed text-[var(--muted-foreground)]">WordPress revamp, content publishing, event coordination.</p>
+      </article>
+    </div>
+  </section>
 </BaseLayout>
 
 <script is:inline>
-    const skillTabs = Array.from(document.querySelectorAll(".about-skill-tab"));
-    const skillPanels = Array.from(
-        document.querySelectorAll(".about-cloud-panel"),
-    );
-
-    skillTabs.forEach((tab) => {
-        tab.addEventListener("click", () => {
-            const target = tab.dataset.target;
-            if (!target) return;
-
-            skillTabs.forEach((btn) => {
-                btn.classList.toggle("is-active", btn === tab);
-                btn.setAttribute(
-                    "aria-selected",
-                    btn === tab ? "true" : "false",
-                );
-            });
-
-            skillPanels.forEach((panel) => {
-                const active = panel.dataset.panel === target;
-                panel.classList.toggle("is-active", active);
-                panel.hidden = !active;
-            });
-        });
+  document.querySelectorAll(".tab-btn").forEach(btn => {
+    btn.addEventListener("click", () => {
+      const target = btn.dataset.target;
+      document.querySelectorAll(".tab-btn").forEach(b => {
+        b.dataset.active = b === btn ? "true" : "false";
+        b.setAttribute("aria-selected", b === btn ? "true" : "false");
+      });
+      document.querySelectorAll(".skill-panel").forEach(p => {
+        p.hidden = p.dataset.panel !== target;
+      });
     });
+  });
 </script>

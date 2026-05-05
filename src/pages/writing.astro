@@ -1,69 +1,35 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import { getCollection } from "astro:content";
+
+const posts = await getCollection("blog", ({ data }) => !data.draft);
+posts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 ---
 
-<BaseLayout
-    title="Personal Yapping | Steve Jevon Rahardjo"
-    description="Random thoughts and ramblings coming soon."
-    page="writing"
->
-    <div class="container page">
-        <h1 class="page-title">
-            <span>Writing</span>
-        </h1>
+<BaseLayout title="Writing | Steve Jevon Rahardjo" description="Blog posts on backend systems, AI, and data engineering." page="writing">
+  <div class="flex items-center justify-between mb-8">
+    <h2 class="text-2xl md:text-3xl font-bold tracking-tight"><span class="text-[var(--accent)]">Writing</span></h2>
+  </div>
 
-        <div class="coming-soon">
-            <div class="coming-soon-icon">🚧</div>
-            <h2 class="coming-soon-title">Coming Soon</h2>
-            <p class="coming-soon-text">
-                I'm still figuring out what to yap about. Check back later for
-                some unhinged thoughts and ramblings.
+  {posts.length > 0 ? (
+    <div class="flex flex-col gap-1">
+      {posts.map(post => (
+        <article class="group flex items-center justify-between border-b border-[var(--border)] py-5 last:border-0 cursor-pointer">
+          <div>
+            <a href={`/blog/${post.slug}`} class="text-sm md:text-base font-bold text-[var(--text)] no-underline transition-colors group-hover:text-[var(--accent)]">{post.data.title}</a>
+            <p class="mt-1 text-xs text-[var(--muted-foreground)] leading-relaxed">{post.data.description}</p>
+            <p class="mt-2 text-[10px] text-[var(--muted-foreground)] opacity-60 font-mono">
+              {new Date(post.data.pubDate).toLocaleDateString("en-US",{year:"numeric",month:"2-digit",day:"2-digit"})}
+              {post.data.tags?.map(t => <span> — <a href="#" class="hover:text-[var(--accent)] no-underline text-[var(--muted-foreground)]">{t}</a></span>)}
             </p>
-        </div>
+          </div>
+          <span class="text-[var(--border)] group-hover:text-[var(--accent)] transition-all duration-300 group-hover:translate-x-0.5 shrink-0 ml-4">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+          </span>
+        </article>
+      ))}
     </div>
+  ) : (
+    <p class="text-xs text-[var(--muted-foreground)] py-12 text-center">Nothing here yet.</p>
+  )}
 </BaseLayout>
-
-<style>
-    .coming-soon {
-        text-align: center;
-        padding: 4rem 0;
-    }
-
-    .coming-soon-icon {
-        font-size: 4rem;
-        margin-bottom: 1.5rem;
-        animation: bounce 2s ease-in-out infinite;
-    }
-
-    @keyframes bounce {
-        0%,
-        100% {
-            transform: translateY(0);
-        }
-        50% {
-            transform: translateY(-10px);
-        }
-    }
-
-    .coming-soon-title {
-        font-size: clamp(2.1rem, 4vw, 2.6rem);
-        font-weight: 800;
-        color: var(--text);
-        margin-bottom: 1rem;
-        text-transform: uppercase;
-        letter-spacing: 0.08em;
-    }
-
-    .coming-soon-text {
-        font-size: 1rem;
-        line-height: 1.8;
-        color: var(--muted);
-        max-width: 400px;
-        margin: 0 auto;
-        padding: 1rem 1.25rem;
-        background: var(--offwhite);
-        border-radius: 8px;
-        border: 1px solid var(--border);
-        box-shadow: var(--shadow-sm);
-    }
-</style>

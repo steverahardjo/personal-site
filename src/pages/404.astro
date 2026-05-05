@@ -1,25 +1,13 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-
-const errorJokes = [
-    "404: Motivation not found. Try refreshing.",
-    "This page is as empty as my motivation on Monday mornings.",
-    "Error 404: Sleep not found. (This is normal for programmers.)",
-    "The page you're looking for has been refactored into oblivion.",
-    "404: Like my social life, this page doesn't exist.",
-];
-
-const randomJoke = errorJokes[Math.floor(Math.random() * errorJokes.length)];
+const jokes = ["404: Motivation not found.","This page has been refactored.","404: Sleep not found.","Like my social life, this page doesn't exist."];
+const joke = jokes[Math.floor(Math.random()*jokes.length)];
 ---
 
 <BaseLayout title="404 | Page Not Found">
-    <div class="container page error-page">
-        <h1 class="error-title">404</h1>
-        <p class="error-text">Page <span>Not</span> Found</p>
-        <p class="error-desc">
-            The page you're looking for doesn't exist or has been moved.
-        </p>
-        <p class="error-joke">{randomJoke}</p>
-        <a href="/" class="error-link">Back to Home →</a>
-    </div>
+  <div class="text-center py-16">
+    <h1 class="text-5xl font-bold text-[var(--accent)] m-0">404</h1>
+    <p class="text-sm text-[var(--muted-foreground)] mt-4">{joke}</p>
+    <a href="/" class="inline-block mt-8 px-5 py-2.5 text-xs font-semibold rounded-lg border border-[var(--border)] text-[var(--text)] no-underline hover:border-[var(--accent)] hover:text-[var(--accent)] transition-colors">Back Home</a>
+  </div>
 </BaseLayout>

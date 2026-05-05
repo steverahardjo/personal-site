@@ -3,112 +3,31 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 ---
 
 <BaseLayout title="Expense Tracker | Steve Jevon Rahardjo" description="Intelligent Expense Tracking using Google Agent Development Kit">
-  <div class="container page">
-    <a href="/projects" class="back-link">← Back to Projects</a>
-    
-    <article class="project-detail">
-      <header class="project-detail-header">
-        <h1 class="page-title">Expense Tracker with ADK</h1>
-        <p class="project-subtitle">Intelligent Expense Tracking using Google Agent Development Kit</p>
-      </header>
-
-      <section class="project-section">
-        <h2 class="section-subtitle">Overview</h2>
-        <p class="text">
-          An intelligent expense tracking application that leverages Google's Agent Development Kit (ADK)
-          to automate expense categorization and provide financial insights through natural language interactions.
-        </p>
-        <p class="text">
-          The system processes transaction data, automatically categorizes expenses, and allows users to
-          query their spending patterns using conversational AI.
-        </p>
-      </section>
-
-      <section class="project-section">
-        <h2 class="section-subtitle">Features</h2>
-        <ul class="feature-list">
-          <li>Auto-Categorization - AI-powered expense classification</li>
-          <li>Natural Language Queries - Ask questions about spending habits</li>
-          <li>Receipt Processing - OCR integration for receipt scanning</li>
-          <li>Budget Tracking - Monitor spending against set budgets</li>
-          <li>Export Reports - Generate CSV/PDF financial reports</li>
-          <li>Multi-Currency - Support for international transactions</li>
-        </ul>
-      </section>
-
-      <section class="project-section">
-        <h2 class="section-subtitle">Tech Stack</h2>
-        <div class="project-tech">
-          <span class="tech-tag">Python</span>
-          <span class="tech-tag">Google ADK</span>
-          <span class="tech-tag">AI Agents</span>
-          <span class="tech-tag">SQLite</span>
-          <span class="tech-tag">FastAPI</span>
-        </div>
-      </section>
-    </article>
-  </div>
+  <a href="/projects" class="inline-block mb-8 text-xs text-[var(--muted-foreground)] no-underline hover:text-[var(--text)] transition-colors">&larr; Projects</a>
+  <article>
+    <header class="mb-8">
+      <h1 class="text-2xl md:text-3xl font-bold tracking-tight m-0">Expense Tracker</h1>
+      <p class="text-sm text-[var(--muted-foreground)] mt-2">Intelligent Expense Tracking using Google Agent Development Kit</p>
+    </header>
+    <section class="mb-8">
+      <h2 class="text-lg font-bold mb-3">Overview</h2>
+      <p class="text-sm leading-relaxed text-[var(--muted-foreground)]">An intelligent expense tracking application that leverages Google's Agent Development Kit to automate expense categorization and provide financial insights through natural language interactions.</p>
+    </section>
+    <section class="mb-8">
+      <h2 class="text-lg font-bold mb-3">Features</h2>
+      <div class="flex flex-col text-sm text-[var(--muted-foreground)] leading-relaxed">
+        {["AI-powered expense classification","Natural Language Queries","OCR receipt processing","Budget tracking","CSV/PDF export","Multi-currency support"].map(f => (
+          <div class="py-2 border-b border-[var(--border)] last:border-none">{f}</div>
+        ))}
+      </div>
+    </section>
+    <section>
+      <h2 class="text-lg font-bold mb-3">Tech Stack</h2>
+      <div class="flex flex-wrap gap-2">
+        {["Python","Google ADK","AI Agents","SQLite","FastAPI"].map(t => (
+          <span class="text-[10px] font-medium px-2.5 py-1 rounded border border-[var(--border)] bg-[var(--bg)] text-[var(--muted-foreground)]">{t}</span>
+        ))}
+      </div>
+    </section>
+  </article>
 </BaseLayout>
-
-<style>
-  .back-link {
-    display: inline-block;
-    margin-bottom: 2rem;
-    font-size: 0.9rem;
-    font-weight: 500;
-    color: var(--muted);
-    text-decoration: none;
-    transition: color 0.2s;
-  }
-
-  .back-link:hover {
-    color: var(--text);
-  }
-
-  .project-detail {
-    padding: 2rem 0;
-  }
-
-  .project-detail-header {
-    margin-bottom: 2rem;
-  }
-
-  .project-subtitle {
-    font-size: 1.25rem;
-    color: var(--muted);
-    margin-top: 0.5rem;
-  }
-
-  .project-section {
-    margin-bottom: 2rem;
-  }
-
-  .feature-list {
-    list-style: none;
-    padding: 0;
-  }
-
-  .feature-list li {
-    padding: 0.5rem 0;
-    border-bottom: 1px solid var(--border);
-  }
-
-  .feature-list li:last-child {
-    border-bottom: none;
-  }
-
-  .project-tech {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-  }
-
-  .tech-tag {
-    font-size: 0.75rem;
-    padding: 0.25rem 0.75rem;
-    background: var(--bg);
-    border: 1px solid var(--border);
-    border-radius: 100px;
-    color: var(--muted);
-  }
-</style>

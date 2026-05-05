@@ -1,88 +1,66 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import GhCalendar from "../components/GhCalendar.tsx";
-import PopupModal from "../components/PopupModal.tsx";
 
 const projects = [
-    {
-        title: "Patent Analyzer",
-        description:
-            "Architected a full-stack patent analysis platform leveraging TRIZ40 principles. Engineered a multi-service backend featuring automated USPTO retrieval, LLM-based classification with context injection, and a high-performance RAG chatbot powered by Qdrant and Cohere reranking.",
-        tags: ["Python", "Django", "QdrantDB", "RAG"],
-        link: "https://github.com/reneeyst23/patent-analyser-fyp",
-    },
-    {
-        title: "GitAegis",
-        description:
-            "A high-performance Go CLI security engine. Detects exposed secrets using Shannon entropy and Tree-sitter AST parsing. Designed for CI/CD integration with granular TOML configuration and structured JSON reporting.",
-        tags: ["Go", "Cobra", "Tree-sitter", "Github Action", "Security"],
-        link: "https://github.com/steverahardjo/gitaegis",
-        external: true,
-    },
-    {
-        title: "Autonomous Expense Agent",
-        description:
-            "A multi-agent multimodal system utilizing the Google ADK and Model Context Protocol (MCP). Implements YOLO-based computer vision for receipt processing and complex MongoDB transactional logic for automated financial tracking.",
-        tags: ["Python", "MCP", "YOLO", "Google ADK"],
-        link: "/projects/expense-tracker",
-    },
-    {
-        title: "Big Data IoT Pipeline",
-        description:
-            "Built a resilient real-time data ingestion system using Kafka and PySpark. Implemented custom UDFs for anomaly detection across massive IoT sensor streams, backed by a specialized MongoDB warehouse schema.",
-        tags: ["PySpark", "Kafka", "MongoDB", "Matplotlib"],
-        link: "https://github.com/steverahardjo/AWAS_traffic_detector",
-    },
+  { title: "Patent Analyzer", desc: "Full-stack patent analysis platform using TRIZ40, LLM classification, RAG chatbot with Qdrant and Cohere reranking.", tags: ["Python","Django","QdrantDB","RAG"], link: "https://github.com/reneeyst23/patent-analyser-fyp", blog: true },
+  { title: "GitAegis", desc: "Go CLI security engine detecting secrets via Shannon entropy and Tree-sitter AST parsing. CI/CD ready.", tags: ["Go","Cobra","Tree-sitter","Security"], link: "https://github.com/steverahardjo/gitaegis", blog: false },
+  { title: "Autonomous Expense Agent", desc: "Multi-agent multimodal system using Google ADK and MCP. YOLO receipt processing with MongoDB.", tags: ["Python","MCP","YOLO","Google ADK"], link: "/projects/expense-tracker", blog: true },
+  { title: "Big Data IoT Pipeline", desc: "Real-time data ingestion with Kafka and PySpark. Custom UDFs for anomaly detection on IoT streams.", tags: ["PySpark","Kafka","MongoDB","Matplotlib"], link: "https://github.com/steverahardjo/AWAS_traffic_detector", blog: false },
 ];
 ---
 
 <BaseLayout title="Projects | Steve Jevon Rahardjo" page="projects">
-    <div class="container page">
-        <h1 class="page-title">Selected <span>Works</span></h1>
+  <h2 class="text-2xl md:text-3xl font-bold tracking-tight mb-8">Selected <span class="text-[var(--accent)]">Works</span></h2>
 
-        <div class="projects-grid">
-            {
-                projects.map((project) => (
-                    <PopupModal
-                        client:load
-                        title={project.title}
-                        description={project.description}
-                        link={project.link}
-                    >
-                        <div
-                            class="project-card cursor-pointer"
-                            role="button"
-                            tabindex="0"
-                        >
-                            <div class="card-main-content">
-                                <h2 class="project-title">{project.title}</h2>
-
-                                <div class="stack-tags">
-                                    {project.tags.map((tag) => (
-                                        <span class="tag">{tag}</span>
-                                    ))}
-                                </div>
-
-                                {/* onclick stopPropagation prevents the modal from
-                                firing when clicking the specific link */}
-                                <a
-                                    href={project.link}
-                                    class="code-button"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    onclick="event.stopPropagation()"
-                                >
-                                    View Source <span>&lt;/&gt;</span>
-                                </a>
-                            </div>
-                        </div>
-                    </PopupModal>
-                ))
-            }
+  <div class="flex flex-col gap-4">
+    {projects.map((p,i) => (
+      <article class="group p-5 rounded-2xl border border-[var(--border)] bg-[var(--bg)] cursor-pointer transition-all duration-200 hover:-translate-y-0.5 hover:border-[var(--accent)]/30"
+        onclick="this.querySelector('.modal-trigger')?.click()">
+        <div class="flex items-start justify-between gap-4">
+          <div>
+            <h3 class="text-base font-bold m-0 group-hover:text-[var(--accent)] transition-colors">{p.title}</h3>
+            <p class="text-xs text-[var(--muted-foreground)] mt-1 leading-relaxed max-w-prose">{p.desc}</p>
+            <div class="flex flex-wrap gap-1.5 mt-3">
+              {p.tags.map(t => <span class="text-[10px] font-medium px-2 py-0.5 rounded border border-[var(--border)] bg-[var(--surface)] text-[var(--muted-foreground)]">{t}</span>)}
+            </div>
+          </div>
+          <span class="text-[var(--border)] group-hover:text-[var(--accent)] transition-all duration-300 group-hover:translate-x-0.5 shrink-0 mt-1">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+          </span>
         </div>
-
-        <div class="calendar-wrapper" style="margin-top: 2rem;">
-            <GhCalendar client:visible />
+        <div class="flex gap-2 mt-4">
+          <button class="modal-trigger hidden" data-title={p.title} data-desc={p.desc} data-link={p.link} data-blog={String(p.blog)} onclick="event.stopPropagation();openModal(this.dataset)"></button>
+          <a href={p.link} target="_blank" rel="noopener"
+            class="text-xs font-semibold px-3 py-1.5 rounded-lg border border-[var(--border)] bg-[var(--surface)] text-[var(--muted-foreground)] no-underline hover:text-[var(--accent)] hover:border-[var(--accent)] transition-colors"
+            onclick="event.stopPropagation()">Source</a>
         </div>
+      </article>
+    ))}
+  </div>
+
+  <div class="mt-10 rounded-2xl border border-[var(--border)] overflow-hidden">
+    <GhCalendar client:visible />
+  </div>
+
+  <div id="modal" class="modal-overlay hidden" onclick="closeModal(event)">
+    <div class="modal-card">
+      <div class="p-6">
+        <h3 id="modalTitle" class="text-base font-bold text-[var(--accent)]"></h3>
+        <p id="modalDesc" class="text-xs leading-relaxed mt-2 text-[var(--text)]"></p>
+      </div>
+      <div class="px-6 pb-5">
+        <a id="modalLink" href="" target="_blank" rel="noopener"
+          class="inline-flex items-center gap-2 text-xs font-semibold px-4 py-2 rounded-lg border border-[var(--border)] bg-[var(--bg)] text-[var(--text)] no-underline hover:border-[var(--accent)] hover:text-[var(--accent)] transition-colors">
+          <span id="modalBtnText">View Project</span>
+        </a>
+      </div>
     </div>
+  </div>
 </BaseLayout>
+
+<script is:inline>
+  function openModal(d){document.getElementById("modalTitle").textContent=d.title;document.getElementById("modalDesc").textContent=d.desc;document.getElementById("modalLink").href=d.link;document.getElementById("modalBtnText").textContent=d.blog==="true"?"Read blog":"View Source";document.getElementById("modal").classList.remove("hidden")}
+  function closeModal(e){if(e.target===e.currentTarget)document.getElementById("modal").classList.add("hidden")}
+  document.addEventListener("keydown",e=>{if(e.key==="Escape")document.getElementById("modal").classList.add("hidden")});
+</script>

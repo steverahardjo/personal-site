@@ -14,7 +14,7 @@ export default function BackgroundGradientAnimationDemo() {
       pointerColor="199, 54, 47"
       size="85%"
       blendingValue="soft-light"
-      containerClassName="!relative !h-[210px] sm:!h-[240px] !w-full !overflow-hidden !rounded-[14px] !border !border-[color:var(--border)] !shadow-[0_12px_52px_var(--ambient-shadow)] [&_.animate-first]:[animation-duration:7s] [&_.animate-second]:[animation-duration:8s] [&_.animate-third]:[animation-duration:9s] [&_.animate-fourth]:[animation-duration:8s] [&_.animate-fifth]:[animation-duration:10s]"
+      containerClassName="relative h-[210px] sm:h-[240px] w-full overflow-hidden rounded-xl border border-[var(--border)]"
       interactive
     >
       <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(252,249,248,0.18),transparent_35%)]" />

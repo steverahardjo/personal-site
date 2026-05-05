@@ -1,54 +1,37 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import BackgroundGradientAnimationDemo from "../components/background-gradient-animation-demo";
-import { ClientRouter } from "astro:transitions";
-
-const jokes = [
-    "Why do programmers prefer dark mode? Light attracts bugs. 🐛",
-    "Arrays start at 0, not 1. Fight me. 🥊",
-    "Sleep is a blocking call with indefinite timeout. 😴",
-    "My code works, I have no idea why. 🤷",
-    "Debugging: being detective and murderer in the same story. 🔍",
-];
-
-const randomJoke = jokes[Math.floor(Math.random() * jokes.length)];
 ---
 
-<BaseLayout
-    title="sjrah.net"
-    description="Steve Jevon Rahardjo - Data Science graduate specializing in backend systems, AI/ML, and database optimization. Building scalable software solutions."
-    page="home"
->
-    <ClientRouter />
-    <div class="container home">
-        <div class="content">
-            <h1 class="retro typing-css">STEVE RAHARDJO</h1>
-            <div class="text-section">
-                <h1 id="typing-name" class="typing"></h1>
-                <p class="bio">Currently looking for job 😭</p>
+<BaseLayout title="sjrah.net" description="Steve Jevon Rahardjo - building software." page="home">
+  <section class="mb-12">
+    <h2 class="text-2xl md:text-3xl font-bold tracking-tight mb-1">Hi, I'm Steve</h2>
+    <p class="text-sm md:text-base leading-relaxed text-[var(--muted-foreground)]">CS graduate from Monash University, focused on backend systems and AI-centric development.</p>
+  </section>
 
-                <div class="links">
-                    <a href="/resume.pdf" class="link link-red">Resume</a>
-                    <a
-                        href="https://github.com/steverahardjo"
-                        class="link"
-                        target="_blank"
-                        rel="noopener">GitHub</a
-                    >
-                    <a href="mailto:steve.jevon.r@gmail.com" class="link"
-                        >Email</a
-                    >
-                </div>
-            </div>
-
-            <div class="image-section">
-                <BackgroundGradientAnimationDemo
-                    client:load
-                    transition:persist
-                />
-                <p class="joke" id="joke">{randomJoke}</p>
-                <p class="status">current: <span>sleep deprived</span></p>
-            </div>
-        </div>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-12">
+    <div class="flex gap-4 p-5 rounded-2xl border border-[var(--border)] bg-[var(--bg)] transition-all duration-300 hover:border-[var(--accent)]/30 hover:-translate-y-0.5">
+      <div class="flex flex-col">
+        <span class="text-[10px] font-bold tracking-widest text-[var(--muted-foreground)] uppercase">Role</span>
+        <span class="text-sm mt-1">Backend Engineer / Data</span>
+      </div>
     </div>
+    <div class="flex gap-4 p-5 rounded-2xl border border-[var(--border)] bg-[var(--bg)] transition-all duration-300 hover:border-[var(--accent)]/30 hover:-translate-y-0.5">
+      <div class="flex flex-col">
+        <span class="text-[10px] font-bold tracking-widest text-[var(--muted-foreground)] uppercase">Location</span>
+        <span class="text-sm mt-1">Malaysia</span>
+      </div>
+    </div>
+  </div>
+
+  <section>
+    <div class="flex items-center justify-between mb-6">
+      <p class="text-[11px] font-bold tracking-[0.3em] text-[var(--muted-foreground)] uppercase opacity-60">Projects</p>
+    </div>
+    <div class="flex flex-col gap-4">
+      <BackgroundGradientAnimationDemo client:load transition:persist />
+      <p class="text-xs text-[var(--muted-foreground)] m-0 border-l-4 border-[var(--accent)] pl-3" id="joke"></p>
+      <p class="text-xs text-[var(--muted-foreground)] m-0">status: <span class="text-[var(--accent)] font-semibold">sleep deprived</span></p>
+    </div>
+  </section>
 </BaseLayout>

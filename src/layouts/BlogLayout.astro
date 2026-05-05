@@ -1,160 +1,48 @@
 ---
 import BaseLayout from "./BaseLayout.astro";
 
-export interface Props {
-    title: string;
-    description?: string;
-    pubDate: Date;
-    tags?: string[];
-}
+export interface Props { title: string; description?: string; pubDate: Date; tags?: string[]; }
 
 const { title, description, pubDate, tags = [] } = Astro.props;
-
-const formattedDate = new Date(pubDate).toLocaleDateString("en-US", {
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-});
+const date = new Date(pubDate).toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" });
 ---
 
-<BaseLayout
-    title={`${title} | Steve Rahardjo`}
-    description={description}
-    page="writing"
->
-    <article class="container page blog-post">
-        <header class="blog-header">
-            <h1 class="page-title">{title}</h1>
-            <div class="blog-meta">
-                <time datetime={pubDate.toISOString()}>{formattedDate}</time>
-                {
-                    tags.length > 0 && (
-                        <div class="blog-tags">
-                            {tags.map((tag) => (
-                                <span class="tag">{tag}</span>
-                            ))}
-                        </div>
-                    )
-                }
-            </div>
-        </header>
-
-        <div class="progress-bar" id="progressBar"></div>
-
-        <div class="blog-content">
-            <slot />
-        </div>
-
-        <a href="/writing" class="back-link">← Back to Writing</a>
-    </article>
+<BaseLayout title={`${title} | Steve Rahardjo`} description={description} page="writing">
+  <article>
+    <header class="mb-8">
+      <h1 class="text-2xl md:text-3xl font-bold tracking-tight m-0">{title}</h1>
+      <div class="flex items-center gap-3 mt-2 flex-wrap">
+        <time class="text-xs text-[var(--muted-foreground)]" datetime={pubDate.toISOString()}>{date}</time>
+        {tags.map(t => <span class="text-[10px] font-medium px-2 py-0.5 rounded border border-[var(--border)] bg-[var(--bg)] text-[var(--muted-foreground)]">{t}</span>)}
+      </div>
+    </header>
+    <div class="text-sm leading-relaxed [&_h2]:text-lg [&_h2]:font-bold [&_h2]:mt-8 [&_h2]:mb-4 [&_h3]:text-base [&_h3]:font-semibold [&_h3]:mt-6 [&_h3]:mb-3 [&_p]:mb-4 [&_ul]:mb-4 [&_ol]:mb-4 [&_ul]:pl-5 [&_ol]:pl-5 [&_li]:mb-2 [&_code]:text-[11px] [&_code]:bg-[var(--border)] [&_code]:px-1.5 [&_code]:py-0.5 [&_code]:rounded [&_pre]:bg-[var(--bg)] [&_pre]:border [&_pre]:border-[var(--border)] [&_pre]:p-4 [&_pre]:rounded-xl [&_pre]:overflow-x-auto [&_pre]:mb-4 [&_pre_code]:bg-transparent [&_pre_code]:p-0 [&_a]:text-[var(--accent)] [&_a]:no-underline [&_a:hover]:underline">
+      <slot />
+    </div>
+    <a href="/writing" class="inline-block mt-8 text-xs text-[var(--muted-foreground)] no-underline hover:text-[var(--text)] transition-colors">&larr; Back to Writing</a>
+  </article>
 </BaseLayout>
 
-<style>
-    .blog-header {
-        margin-bottom: 2rem;
-    }
+<script is:inline>
+  document.querySelectorAll("pre").forEach(pre => {
+    const wrap = document.createElement("div");
+    wrap.className = "relative group";
+    pre.parentNode.insertBefore(wrap, pre);
+    wrap.appendChild(pre);
 
-    .blog-meta {
-        display: flex;
-        align-items: center;
-        gap: 1rem;
-        flex-wrap: wrap;
-        margin-top: 0.5rem;
-    }
+    const btn = document.createElement("button");
+    btn.className = "absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200 text-[10px] font-mono font-medium px-2 py-1 rounded border border-[var(--border)] bg-[var(--surface)] text-[var(--muted-foreground)] hover:text-[var(--accent)] cursor-pointer";
+    btn.textContent = "copy";
+    btn.setAttribute("aria-label", "Copy code");
+    wrap.appendChild(btn);
 
-    .blog-meta time {
-        font-size: 0.9rem;
-        color: var(--muted);
-    }
-
-    .blog-tags {
-        display: flex;
-        gap: 0.4rem;
-        flex-wrap: wrap;
-    }
-
-    .blog-content {
-        font-family: inherit;
-        font-size: 1rem;
-        line-height: 1.8;
-    }
-
-    .blog-content :global(h1),
-    .blog-content :global(h2),
-    .blog-content :global(h3) {
-        font-family: inherit;
-        font-weight: 700;
-        margin-top: 2rem;
-        margin-bottom: 1rem;
-    }
-
-    .blog-content :global(h1) {
-        font-size: clamp(2.2rem, 4.2vw, 2.8rem);
-    }
-
-    .blog-content :global(h2) {
-        font-size: clamp(1.75rem, 3.1vw, 2.15rem);
-    }
-
-    .blog-content :global(h3) {
-        font-size: clamp(1.35rem, 2.4vw, 1.65rem);
-    }
-
-    .blog-content :global(p) {
-        margin-bottom: 1.5rem;
-    }
-
-    .blog-content :global(ul),
-    .blog-content :global(ol) {
-        margin-bottom: 1.5rem;
-        padding-left: 1.5rem;
-    }
-
-    .blog-content :global(li) {
-        margin-bottom: 0.5rem;
-    }
-
-    .blog-content :global(code) {
-        font-family: "SF Mono", Monaco, "Cascadia Code", monospace;
-        font-size: 0.85em;
-        background: var(--border);
-        padding: 0.2em 0.4em;
-        border-radius: 3px;
-    }
-
-    .blog-content :global(pre) {
-        background: var(--border);
-        padding: 1rem;
-        border-radius: 4px;
-        overflow-x: auto;
-        margin-bottom: 1.5rem;
-    }
-
-    .blog-content :global(pre code) {
-        background: none;
-        padding: 0;
-    }
-
-    .blog-content :global(a) {
-        color: var(--red);
-        text-decoration: none;
-    }
-
-    .blog-content :global(a:hover) {
-        text-decoration: underline;
-    }
-
-    .back-link {
-        display: inline-block;
-        margin-top: 3rem;
-        font-size: 0.9rem;
-        font-weight: 500;
-        color: var(--muted);
-        text-decoration: none;
-        transition: color 0.2s;
-    }
-
-    .back-link:hover {
-        color: var(--text);
-    }
-</style>
+    btn.addEventListener("click", async () => {
+      const code = pre.querySelector("code") || pre;
+      try {
+        await navigator.clipboard.writeText(code.textContent || pre.textContent || "");
+        btn.textContent = "copied!";
+        setTimeout(() => { btn.textContent = "copy"; }, 1500);
+      } catch { btn.textContent = "failed"; }
+    });
+  });
+</script>

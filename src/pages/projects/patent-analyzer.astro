@@ -3,124 +3,35 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 ---
 
 <BaseLayout title="Patent Analyzer | Steve Jevon Rahardjo" description="AI-Powered Patent Document Analysis System using LLMs and RAG.">
-  <div class="container page">
-    <a href="/projects" class="back-link">← Back to Projects</a>
-    
-    <article class="project-detail">
-      <header class="project-detail-header">
-        <h1 class="page-title">Patent Analyzer</h1>
-        <p class="project-subtitle">AI-Powered Patent Document Analysis System</p>
-      </header>
-
-      <section class="project-section">
-        <h2 class="section-subtitle">Overview</h2>
-        <p class="text">
-          The Patent Analysis System is an intelligent platform designed to analyze and interact with
-          patent documents using advanced natural language processing and machine learning techniques.
-        </p>
-        <p class="text">
-          The system leverages vector databases, semantic search, and large language models to provide
-          accurate, context-aware responses to queries about patent content.
-        </p>
-      </section>
-
-      <section class="project-section">
-        <h2 class="section-subtitle">Features</h2>
-        <ul class="feature-list">
-          <li>PDF Upload - Process patent documents in PDF format</li>
-          <li>Vector Embeddings - Convert patent text to semantic vectors</li>
-          <li>Q{"&"}A Chatbot - Ask questions and get intelligent answers</li>
-          <li>Topic Classification - Automatic categorization of patents</li>
-          <li>TRIZ Analysis - Extract innovation principles from claims</li>
-          <li>Dockerized - Easy deployment with Docker Compose</li>
-        </ul>
-      </section>
-
-      <section class="project-section">
-        <h2 class="section-subtitle">Architecture</h2>
-        <p class="text">The system consists of multiple services:</p>
-        <ul class="feature-list">
-          <li>Backend API - FastAPI server handling document processing</li>
-          <li>Vector Database - Storage for semantic embeddings</li>
-          <li>LLM Service - Language model for question answering</li>
-          <li>Frontend - React-based UI for interaction</li>
-        </ul>
-      </section>
-
-      <section class="project-section">
-        <h2 class="section-subtitle">Tech Stack</h2>
-        <div class="project-tech">
-          <span class="tech-tag">Python</span>
-          <span class="tech-tag">FastAPI</span>
-          <span class="tech-tag">NLP</span>
-          <span class="tech-tag">Vector DB</span>
-          <span class="tech-tag">Docker</span>
-          <span class="tech-tag">React</span>
-        </div>
-      </section>
-    </article>
-  </div>
+  <a href="/projects" class="inline-block mb-8 text-xs text-[var(--muted-foreground)] no-underline hover:text-[var(--text)] transition-colors">&larr; Projects</a>
+  <article>
+    <header class="mb-8">
+      <h1 class="text-2xl md:text-3xl font-bold tracking-tight m-0">Patent Analyzer</h1>
+      <p class="text-sm text-[var(--muted-foreground)] mt-2">AI-Powered Patent Document Analysis System</p>
+    </header>
+    <section class="mb-8">
+      <h2 class="text-lg font-bold mb-3">Overview</h2>
+      <p class="text-sm leading-relaxed text-[var(--muted-foreground)]">An intelligent platform for analyzing patent documents using advanced NLP and machine learning. Leverages vector databases, semantic search, and LLMs for context-aware responses.</p>
+    </section>
+    <section class="mb-8">
+      <h2 class="text-lg font-bold mb-3">Features</h2>
+      <div class="flex flex-col text-sm text-[var(--muted-foreground)] leading-relaxed">
+        {["PDF upload & processing","Vector embeddings for semantic search","Q&A chatbot with context","Automatic topic classification","TRIZ innovation principle extraction","Dockerized deployment"].map(f => (
+          <div class="py-2 border-b border-[var(--border)] last:border-none">{f}</div>
+        ))}
+      </div>
+    </section>
+    <section class="mb-8">
+      <h2 class="text-lg font-bold mb-3">Architecture</h2>
+      <p class="text-sm leading-relaxed text-[var(--muted-foreground)]">Multi-service: Backend API (FastAPI), Vector Database (Qdrant), LLM Service, React Frontend.</p>
+    </section>
+    <section>
+      <h2 class="text-lg font-bold mb-3">Tech Stack</h2>
+      <div class="flex flex-wrap gap-2">
+        {["Python","FastAPI","NLP","Vector DB","Docker","React"].map(t => (
+          <span class="text-[10px] font-medium px-2.5 py-1 rounded border border-[var(--border)] bg-[var(--bg)] text-[var(--muted-foreground)]">{t}</span>
+        ))}
+      </div>
+    </section>
+  </article>
 </BaseLayout>
-
-<style>
-  .back-link {
-    display: inline-block;
-    margin-bottom: 2rem;
-    font-size: 0.9rem;
-    font-weight: 500;
-    color: var(--muted);
-    text-decoration: none;
-    transition: color 0.2s;
-  }
-
-  .back-link:hover {
-    color: var(--text);
-  }
-
-  .project-detail {
-    padding: 2rem 0;
-  }
-
-  .project-detail-header {
-    margin-bottom: 2rem;
-  }
-
-  .project-subtitle {
-    font-size: 1.25rem;
-    color: var(--muted);
-    margin-top: 0.5rem;
-  }
-
-  .project-section {
-    margin-bottom: 2rem;
-  }
-
-  .feature-list {
-    list-style: none;
-    padding: 0;
-  }
-
-  .feature-list li {
-    padding: 0.5rem 0;
-    border-bottom: 1px solid var(--border);
-  }
-
-  .feature-list li:last-child {
-    border-bottom: none;
-  }
-
-  .project-tech {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-  }
-
-  .tech-tag {
-    font-size: 0.75rem;
-    padding: 0.25rem 0.75rem;
-    background: var(--bg);
-    border: 1px solid var(--border);
-    border-radius: 100px;
-    color: var(--muted);
-  }
-</style>
