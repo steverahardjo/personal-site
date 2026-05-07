@@ -1,3 +1,5 @@
+h1, h2, h3, h4, h5, h6 { font-family: "Pixelify Sans Variable", "Pixelify Sans", monospace; }
+
 @keyframes typing { from { width: 0 } to { width: 17ch } }
 @keyframes blink { 50% { border-color: transparent } }
 @keyframes fade-up { from { opacity: 0; transform: translateY(12px) } to { opacity: 1; transform: translateY(0) } }

@@ -1,11 +1,13 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 @import "@fontsource-variable/jetbrains-mono";
+@import "@fontsource-variable/pixelify-sans";
 
 @custom-variant dark (&:is([data-theme="dark"] *));
 
 @theme inline {
   --font-mono: "JetBrains Mono Variable", "JetBrains Mono", ui-monospace, monospace;
+  --font-pixel: "Pixelify Sans Variable", "Pixelify Sans", monospace;
   --color-border: var(--border);
   --color-muted: var(--muted);
   --color-muted-foreground: var(--muted-foreground);

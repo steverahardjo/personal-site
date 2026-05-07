@@ -15,11 +15,11 @@ const projects = [
 
   <div class="flex flex-col gap-4">
     {projects.map((p,i) => (
-      <article class="group p-5 rounded-2xl border border-[var(--border)] bg-[var(--bg)] cursor-pointer transition-all duration-200 hover:-translate-y-0.5 hover:border-[var(--accent)]/30"
-        onclick="this.querySelector('.modal-trigger')?.click()">
+      <a href={p.link} target="_blank" rel="noopener"
+        class="group p-5 rounded-2xl border border-[var(--border)] bg-[var(--bg)] no-underline transition-all duration-200 hover:-translate-y-0.5 hover:border-[var(--accent)]/30">
         <div class="flex items-start justify-between gap-4">
           <div>
-            <h3 class="text-base font-bold m-0 group-hover:text-[var(--accent)] transition-colors">{p.title}</h3>
+            <h3 class="text-base font-bold m-0 text-[var(--text)] group-hover:text-[var(--accent)] transition-colors">{p.title}</h3>
             <p class="text-xs text-[var(--muted-foreground)] mt-1 leading-relaxed max-w-prose">{p.desc}</p>
             <div class="flex flex-wrap gap-1.5 mt-3">
               {p.tags.map(t => <span class="text-[10px] font-medium px-2 py-0.5 rounded border border-[var(--border)] bg-[var(--surface)] text-[var(--muted-foreground)]">{t}</span>)}
@@ -30,37 +30,13 @@ const projects = [
           </span>
         </div>
         <div class="flex gap-2 mt-4">
-          <button class="modal-trigger hidden" data-title={p.title} data-desc={p.desc} data-link={p.link} data-blog={String(p.blog)} onclick="event.stopPropagation();openModal(this.dataset)"></button>
-          <a href={p.link} target="_blank" rel="noopener"
-            class="text-xs font-semibold px-3 py-1.5 rounded-lg border border-[var(--border)] bg-[var(--surface)] text-[var(--muted-foreground)] no-underline hover:text-[var(--accent)] hover:border-[var(--accent)] transition-colors"
-            onclick="event.stopPropagation()">Source</a>
+          <span class="inline-flex text-xs font-semibold px-3 py-1.5 rounded-lg border border-[var(--border)] bg-[var(--surface)] text-[var(--muted-foreground)] group-hover:text-[var(--accent)] group-hover:border-[var(--accent)] transition-colors">{p.blog ? "Read blog" : "Source"}</span>
         </div>
-      </article>
+      </a>
     ))}
   </div>
 
   <div class="mt-10 rounded-2xl border border-[var(--border)] overflow-hidden">
     <GhCalendar client:visible />
   </div>
-
-  <div id="modal" class="modal-overlay hidden" onclick="closeModal(event)">
-    <div class="modal-card">
-      <div class="p-6">
-        <h3 id="modalTitle" class="text-base font-bold text-[var(--accent)]"></h3>
-        <p id="modalDesc" class="text-xs leading-relaxed mt-2 text-[var(--text)]"></p>
-      </div>
-      <div class="px-6 pb-5">
-        <a id="modalLink" href="" target="_blank" rel="noopener"
-          class="inline-flex items-center gap-2 text-xs font-semibold px-4 py-2 rounded-lg border border-[var(--border)] bg-[var(--bg)] text-[var(--text)] no-underline hover:border-[var(--accent)] hover:text-[var(--accent)] transition-colors">
-          <span id="modalBtnText">View Project</span>
-        </a>
-      </div>
-    </div>
-  </div>
 </BaseLayout>
-
-<script is:inline>
-  function openModal(d){document.getElementById("modalTitle").textContent=d.title;document.getElementById("modalDesc").textContent=d.desc;document.getElementById("modalLink").href=d.link;document.getElementById("modalBtnText").textContent=d.blog==="true"?"Read blog":"View Source";document.getElementById("modal").classList.remove("hidden")}
-  function closeModal(e){if(e.target===e.currentTarget)document.getElementById("modal").classList.add("hidden")}
-  document.addEventListener("keydown",e=>{if(e.key==="Escape")document.getElementById("modal").classList.add("hidden")});
-</script>

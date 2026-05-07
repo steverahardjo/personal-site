@@ -1,12 +1,16 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import BackgroundGradientAnimationDemo from "../components/background-gradient-animation-demo";
+import CurrentProject from "../components/current-project";
 ---
 
 <BaseLayout title="sjrah.net" description="Steve Jevon Rahardjo - building software." page="home">
-  <section class="mb-12">
-    <h2 class="text-2xl md:text-3xl font-bold tracking-tight mb-1">Hi, I'm Steve</h2>
-    <p class="text-sm md:text-base leading-relaxed text-[var(--muted-foreground)]">CS graduate from Monash University, focused on backend systems and AI-centric development.</p>
+  <section class="relative mb-12">
+    <div class="absolute inset-0 pointer-events-none opacity-[0.025]"
+      style="background-image: radial-gradient(circle, var(--accent) 0.8px, transparent 0.8px); background-size: 14px 14px;"></div>
+    <div class="relative z-10">
+      <h2 class="text-2xl md:text-3xl font-bold tracking-tight mb-1">Hi, I'm Steve</h2>
+      <p class="text-sm md:text-base leading-relaxed text-[var(--muted-foreground)]">CS graduate in Data Science from Monash University. Building backend systems, AI tools, and data pipelines with Python, Go, and TypeScript.</p>
+    </div>
   </section>
 
   <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-12">
@@ -29,7 +33,7 @@ import BackgroundGradientAnimationDemo from "../components/background-gradient-a
       <p class="text-[11px] font-bold tracking-[0.3em] text-[var(--muted-foreground)] uppercase opacity-60">Projects</p>
     </div>
     <div class="flex flex-col gap-4">
-      <BackgroundGradientAnimationDemo client:load transition:persist />
+      <CurrentProject client:load />
       <p class="text-xs text-[var(--muted-foreground)] m-0 border-l-4 border-[var(--accent)] pl-3" id="joke"></p>
       <p class="text-xs text-[var(--muted-foreground)] m-0">status: <span class="text-[var(--accent)] font-semibold">sleep deprived</span></p>
     </div>
