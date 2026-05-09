@@ -16,10 +16,10 @@ const pageDescription = description || "Steve Jevon Rahardjo - building software
 const ogImage = `${siteUrl}/og-image.png`;
 
 const navItems = [
-  { id: "home", href: "/", label: "Home", sub: "Index", icon: "M12 3L3 8.5V21h7v-7h4v7h7V8.5L12 3z" },
-  { id: "about", href: "/about", label: "About", sub: "Bio", icon: "M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" },
-  { id: "projects", href: "/projects", label: "Projects", sub: "Works", icon: "M20 6h-8l-2-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm0 12H4V8h16v10z" },
-  { id: "writing", href: "/writing", label: "Writing", sub: "Blog", icon: "M14 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8l-6-6zm4 18H6V4h7v5h5v11z" },
+  { id: "home", href: "/", label: "Home", icon: "M12 3L3 8.5V21h7v-7h4v7h7V8.5L12 3z" },
+  { id: "about", href: "/about", label: "About", icon: "M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" },
+  { id: "projects", href: "/projects", label: "Projects", icon: "M20 6h-8l-2-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm0 12H4V8h16v10z" },
+  { id: "writing", href: "/writing", label: "Writing", icon: "M14 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8l-6-6zm4 18H6V4h7v5h5v11z" },
 ];
 ---
 
@@ -50,35 +50,53 @@ const navItems = [
       linkedin="https://linkedin.com/in/steve-jevon-rahardjo"
     />
   </head>
-  <body class="flex items-center justify-center min-h-[100dvh] p-2 md:p-6 bg-[var(--bg)]">
-    <div class="flex w-full max-w-5xl flex-col md:flex-row border border-[var(--border)] md:rounded-3xl overflow-hidden shadow-sm bg-[var(--surface)]">
+  <body class="flex items-center justify-center min-h-[100dvh] bg-[var(--bg)]">
+    <div class="flex w-full max-w-5xl flex-col md:flex-row min-h-[100dvh] md:min-h-0 md:border md:border-[var(--border)] md:rounded-3xl md:my-6 overflow-hidden shadow-sm bg-[var(--surface)]">
 
-      <!-- Sidebar -->
-      <aside class="relative flex w-full flex-col border-b md:border-b-0 md:w-[35%] md:border-r border-[var(--border)] p-6 md:p-10 sidebar-scroll md:max-h-[calc(100dvh-3rem)] md:overflow-y-auto overflow-hidden"
+      <!-- Mobile Top Bar (visible only on mobile) -->
+      <aside class="relative md:hidden flex items-center justify-between px-4 py-3 border-b border-[var(--border)]"
         style="background: color-mix(in srgb, var(--surface) 97%, var(--accent));">
-        <!-- Dot-matrix texture overlay -->
+        <div class="absolute inset-0 pointer-events-none opacity-[0.03]"
+          style="background-image: radial-gradient(circle, var(--accent) 0.8px, transparent 0.8px); background-size: 12px 12px;"></div>
+        <div class="relative z-10 flex items-center gap-3">
+          <img src="/favicon-v2.svg" alt="sjrah" class="w-8 h-8" />
+          <div class="flex flex-col leading-tight">
+            <span class="text-xs font-bold tracking-tight">Steve Jevon Rahardjo</span>
+            <span class="text-[9px] text-[var(--muted-foreground)]">Backend Engineer / Data</span>
+          </div>
+        </div>
+        <button id="themeToggle" type="button" aria-label="Toggle theme"
+          class="relative w-11 h-6 rounded-full border border-[var(--border)] bg-transparent cursor-pointer transition-all duration-300 hover:border-[var(--accent)]/50 flex items-center px-0.5"
+        >
+          <span id="themeIcon" class="w-4 h-4 rounded-full bg-[var(--text)] transition-transform duration-300 flex items-center justify-center">
+            <img src="/owl.svg" alt="" class="w-3 h-3" style="filter: invert(1) brightness(10);" />
+          </span>
+        </button>
+      </aside>
+
+      <!-- Desktop Sidebar (hidden on mobile) -->
+      <aside class="relative hidden md:flex w-full md:w-[35%] flex-col border-b md:border-b-0 md:border-r border-[var(--border)] p-6 md:p-10 sidebar-scroll md:max-h-[calc(100dvh-3rem)] md:overflow-y-auto overflow-hidden"
+        style="background: color-mix(in srgb, var(--surface) 97%, var(--accent));">
         <div class="absolute inset-0 pointer-events-none opacity-[0.03]"
           style="background-image: radial-gradient(circle, var(--accent) 0.8px, transparent 0.8px); background-size: 12px 12px;"></div>
 
         <div class="relative z-10 flex flex-col h-full">
-          <!-- Logo + Glyph Toggle Row -->
           <div class="flex items-center justify-between mb-6 md:mb-10">
             <img src="/favicon-v2.svg" alt="sjrah" class="w-10 h-10 md:w-11 md:h-11" />
-            <button id="themeToggle" type="button" aria-label="Toggle theme"
+            <button id="themeToggle-desktop" type="button" aria-label="Toggle theme"
               class="relative w-11 h-6 rounded-full border border-[var(--border)] bg-transparent cursor-pointer transition-all duration-300 hover:border-[var(--accent)]/50 flex items-center px-0.5"
             >
-              <span id="themeIcon" class="w-4 h-4 rounded-full bg-[var(--text)] transition-transform duration-300 flex items-center justify-center">
+              <span class="w-4 h-4 rounded-full bg-[var(--text)] transition-transform duration-300 flex items-center justify-center">
                 <img src="/owl.svg" alt="" class="w-3 h-3" style="filter: invert(1) brightness(10);" />
               </span>
             </button>
           </div>
 
-          <!-- Name + Tagline -->
           <div class="mb-6 md:mb-10">
             <h1 class="text-sm md:text-base font-bold tracking-tight m-0">Steve Jevon Rahardjo</h1>
-            <p class="mt-2 hidden md:block text-[11px] text-[var(--muted-foreground)] leading-relaxed">CS graduate in Data Science from Monash University. Building backend systems, AI tools, and data pipelines.</p>
+            <p class="mt-2 text-[11px] text-[var(--muted-foreground)] leading-relaxed">CS graduate in Data Science from Monash University. Building backend systems, AI tools, and data pipelines.</p>
             <a href="/resume.pdf" target="_blank" rel="noopener noreferrer"
-              class="mt-3 hidden md:inline-flex items-center gap-1.5 px-3 py-1 rounded-md text-[10px] font-semibold tracking-wide uppercase no-underline transition-all duration-200 bg-[var(--accent)] text-white hover:brightness-110 active:scale-[0.97]"
+              class="mt-3 inline-flex items-center gap-1.5 px-3 py-1 rounded-md text-[10px] font-semibold tracking-wide uppercase no-underline transition-all duration-200 bg-[var(--accent)] text-white hover:brightness-110 active:scale-[0.97]"
             >
               <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
@@ -90,9 +108,8 @@ const navItems = [
             </a>
           </div>
 
-          <!-- Navigation with glyph icons -->
-          <nav class="flex flex-wrap gap-1.5 md:flex-col md:gap-0.5">
-            {navItems.map(({ id, href, label, sub, icon }) => (
+          <nav class="flex flex-col gap-0.5">
+            {navItems.map(({ id, href, label, icon }) => (
               <a href={href}
                 class={`flex items-center gap-3 w-full px-3 py-2.5 rounded-xl text-sm font-medium no-underline transition-all duration-200 group ${
                   page === id
@@ -103,16 +120,12 @@ const navItems = [
                 <svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                   <path d={icon} />
                 </svg>
-                <div class="flex flex-col leading-tight">
-                  <span class="text-sm font-medium">{label}</span>
-                  <span class="text-[9px] tracking-[0.15em] uppercase opacity-50">{sub}</span>
-                </div>
-                <svg class="w-3.5 h-3.5 ml-auto hidden md:block opacity-0 -translate-x-2 transition-all duration-200 group-hover:opacity-100 group-hover:translate-x-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+                <span class="text-sm font-medium">{label}</span>
+                <svg class="w-3.5 h-3.5 ml-auto opacity-0 -translate-x-2 transition-all duration-200 group-hover:opacity-100 group-hover:translate-x-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
               </a>
             ))}
           </nav>
 
-          <!-- Social + Footer -->
           <div class="mt-auto pt-8 md:pt-14">
             <div class="flex items-center gap-3 text-[var(--muted-foreground)]">
               <a href="https://github.com/steverahardjo" target="_blank" rel="noopener" aria-label="GitHub" class="hover:text-[var(--accent)] transition-colors">
@@ -131,13 +144,44 @@ const navItems = [
       </aside>
 
       <!-- Content -->
-      <main class="flex-1 bg-[var(--surface)] content-scroll md:max-h-[calc(100dvh-3rem)] md:overflow-y-auto">
-        <div class="max-w-2xl mx-auto p-8 md:p-16">
+      <main class="flex-1 bg-[var(--surface)] content-scroll md:max-h-[calc(100dvh-3rem)] md:overflow-y-auto pb-20 md:pb-0">
+        <div class="max-w-2xl mx-auto p-6 md:p-16">
           <slot />
         </div>
       </main>
 
     </div>
+
+    <!-- Mobile Bottom Tab Bar -->
+    <nav class="md:hidden fixed bottom-0 left-0 right-0 z-50 flex items-center justify-around px-2 py-1 border-t border-[var(--border)] bg-[var(--surface)]/90 backdrop-blur-lg"
+      style="padding-bottom: max(0.25rem, env(safe-area-inset-bottom));">
+      {navItems.map(({ id, href, label, icon }) => (
+        <a href={href}
+          class={`flex flex-col items-center gap-0.5 px-3 py-1.5 rounded-lg no-underline transition-all duration-200 min-w-0 ${
+            page === id
+              ? "text-[var(--accent)]"
+              : "text-[var(--muted-foreground)] hover:text-[var(--text)]"
+          }`}
+        >
+          <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d={icon} />
+          </svg>
+          <span class="text-[9px] font-medium tracking-wide whitespace-nowrap">{label}</span>
+        </a>
+      ))}
+      <a href="/resume.pdf" target="_blank" rel="noopener noreferrer"
+        class="flex flex-col items-center gap-0.5 px-3 py-1.5 rounded-lg no-underline transition-all duration-200 text-[var(--muted-foreground)] hover:text-[var(--text)] min-w-0"
+      >
+        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+          <polyline points="14 2 14 8 20 8" />
+          <line x1="16" y1="13" x2="8" y2="13" />
+          <line x1="16" y1="17" x2="8" y2="17" />
+        </svg>
+        <span class="text-[9px] font-medium tracking-wide whitespace-nowrap">Resume</span>
+      </a>
+    </nav>
+
     <script src="/script.js" defer></script>
   </body>
 </html>
