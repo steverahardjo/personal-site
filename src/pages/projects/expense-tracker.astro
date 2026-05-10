@@ -2,32 +2,95 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 ---
 
-<BaseLayout title="Expense Tracker | Steve Jevon Rahardjo" description="Intelligent Expense Tracking using Google Agent Development Kit">
+<BaseLayout title="Deneb | Steve Jevon Rahardjo" description="Full-stack personal finance tracker — Multi-agent ADK backend + Tauri/Svelte mobile app">
   <a href="/projects" class="inline-block mb-8 text-xs text-[var(--muted-foreground)] no-underline hover:text-[var(--text)] transition-colors">&larr; Projects</a>
   <article>
     <header class="mb-8">
-      <h1 class="text-2xl md:text-3xl font-bold tracking-tight m-0">Expense Tracker</h1>
-      <p class="text-sm text-[var(--muted-foreground)] mt-2">Intelligent Expense Tracking using Google Agent Development Kit</p>
+      <h1 class="text-2xl md:text-3xl font-bold tracking-tight m-0">Deneb</h1>
+      <p class="text-sm text-[var(--muted-foreground)] mt-2">Full-stack personal finance tracker — multi-agent AI backend meets a mobile-first Tauri app</p>
     </header>
+
     <section class="mb-8">
       <h2 class="text-lg font-bold mb-3">Overview</h2>
-      <p class="text-sm leading-relaxed text-[var(--muted-foreground)]">An intelligent expense tracking application that leverages Google's Agent Development Kit to automate expense categorization and provide financial insights through natural language interactions.</p>
+      <p class="text-sm leading-relaxed text-[var(--muted-foreground)]">
+        Deneb is a daily-use personal finance system built in two layers. A Python backend powered by Google ADK (Agent Development Kit) orchestrates a multi-agent pipeline for expense extraction, retrieval, and visualisation — accessible via Telegram. A Tauri 2 + Svelte 5 mobile frontend provides a native-feeling iOS-style UI for managing finances on the go. The name comes from Deneb (alpha Cygni), and the app carries a subtle swan/bird theme throughout its design.
+      </p>
     </section>
+
     <section class="mb-8">
-      <h2 class="text-lg font-bold mb-3">Features</h2>
+      <h2 class="text-lg font-bold mb-3">Architecture</h2>
+
+      <h3 class="text-sm font-bold mb-2 mt-4">Backend — Multi-Agent Orchestration</h3>
+      <p class="text-sm leading-relaxed text-[var(--muted-foreground)] mb-3">
+        A Google ADK Runner manages five agents that collaborate to process financial data:
+      </p>
       <div class="flex flex-col text-sm text-[var(--muted-foreground)] leading-relaxed">
-        {["AI-powered expense classification","Natural Language Queries","OCR receipt processing","Budget tracking","CSV/PDF export","Multi-currency support"].map(f => (
-          <div class="py-2 border-b border-[var(--border)] last:border-none">{f}</div>
-        ))}
+        <div class="py-2 border-b border-[var(--border)]"><strong>Root Agent</strong> (gemini-2.5-flash) — Orchestrator routing intents to the correct sub-agent or responding directly to chat queries</div>
+        <div class="py-2 border-b border-[var(--border)]"><strong>Saver Agent</strong> — Parses text, receipt photos, PDFs, and voice recordings into structured expenses. Extracts item, amount, currency, category, payment method, and optional blob attachments</div>
+        <div class="py-2 border-b border-[var(--border)]"><strong>Retriever Agent</strong> — Translates natural language into MongoDB query filters (date ranges, categories, comparison operators) and fetches expenses on demand</div>
+        <div class="py-2 border-b border-[var(--border)]"><strong>Bank Agent</strong> — Handles bank statement reconciliation, monthly CSV exports, and discrepancy reporting</div>
+        <div class="py-2 border-b border-[var(--border)] last:border-none"><strong>Visualizer Agent</strong> — Leverages Google ADK's BuiltInCodeExecutor to generate Matplotlib charts (bar, line, pie) from expense data</div>
+      </div>
+
+      <h3 class="text-sm font-bold mb-2 mt-4">Backend Infrastructure</h3>
+      <p class="text-sm leading-relaxed text-[var(--muted-foreground)] mb-3">
+        The backend runs as a Telegram bot (aiogram) deployed to Cloud Run. Incoming messages — text, photos, PDFs, voice notes — are routed through the ADK pipeline. Receipt images are stored in Google Cloud Storage with signed URLs, expenses persist in MongoDB via the Beanie ODM, and observability is handled by AgentOps. Multi-user sessions are isolated by Telegram chat ID.
+      </p>
+
+      <h3 class="text-sm font-bold mb-2 mt-4">Mobile Frontend — Deneb App</h3>
+      <p class="text-sm leading-relaxed text-[var(--muted-foreground)] mb-3">
+        A Tauri 2 shell wrapping a SvelteKit 2 SPA with Framework7 9's iOS theme. Designed as a daily check-in tool — 30-second glance shows net worth, recent spend, and upcoming bills.
+      </p>
+      <div class="flex flex-col text-sm text-[var(--muted-foreground)] leading-relaxed">
+        <div class="py-2 border-b border-[var(--border)]"><strong>Dashboard</strong> — Welcome card, cash flow strip, account pie chart, scrollable cards (recent transactions, bills, category breakdown), and a daily budget modal</div>
+        <div class="py-2 border-b border-[var(--border)]"><strong>Records</strong> — Transaction ledger with search, period filters (1W/1M/3M/1Y), date range, amount slider, and lazy-loaded Nivo charts (line trend, pie categories, monthly stacked bar)</div>
+        <div class="py-2 border-b border-[var(--border)]"><strong>Expense Form</strong> — Add expense or income with currency, category, payment method, QR scanner, and camera buttons</div>
+        <div class="py-2 border-b border-[var(--border)]"><strong>AI Chat</strong> — Connects to the ADK backend. Dashboard cards support long-press to open a context picker that pre-fills financial data into the chat</div>
+        <div class="py-2 border-b border-[var(--border)]"><strong>Notifications</strong> — Security, payment, investment, and alert notifications</div>
+        <div class="py-2 border-b border-[var(--border)] last:border-none"><strong>Lock Screen</strong> — Biometric (fingerprint on mobile) + passcode unlock flow</div>
+      </div>
+
+      <h3 class="text-sm font-bold mb-2 mt-4">Mobile Key Design Patterns</h3>
+      <p class="text-sm leading-relaxed text-[var(--muted-foreground)]">
+        State management uses Svelte 5 runes exclusively — no external library. Module-level singletons for theme (dark/light mode with localStorage persistence), toast notifications, and a signup state machine. The navigation uses a custom bottom-sheet drawer (not Framework7's built-in panel) with frosted-glass floating action bar. Charts are lazy-loaded via dynamic import on scroll expand. Tauri plugins provide barcode scanning, biometric auth, deep linking, geolocation, and native notifications.
+      </p>
+    </section>
+
+    <section class="mb-8">
+      <h2 class="text-lg font-bold mb-3">Key Features</h2>
+      <div class="flex flex-col text-sm text-[var(--muted-foreground)] leading-relaxed">
+        <div class="py-2 border-b border-[var(--border)]">Multi-modal expense entry via Telegram (text, photo, PDF, voice)</div>
+        <div class="py-2 border-b border-[var(--border)]">AI-powered natural language querying of expenses</div>
+        <div class="py-2 border-b border-[var(--border)]">Receipt image upload to GCS with signed URL sharing</div>
+        <div class="py-2 border-b border-[var(--border)]">Bank statement reconciliation and monthly CSV export</div>
+        <div class="py-2 border-b border-[var(--border)]">Automated chart generation from expense data</div>
+        <div class="py-2 border-b border-[var(--border)]">Mobile-first iOS-style dashboard with dark mode</div>
+        <div class="py-2 border-b border-[var(--border)]">Long-press context picker → AI chat with financial data pre-fill</div>
+        <div class="py-2 border-b border-[var(--border)]">QRIS barcode scanning for automated expense capture</div>
+        <div class="py-2 border-b border-[var(--border)]">Biometric + passcode lock screen security</div>
+        <div class="py-2 border-b border-[var(--border)] last:border-none">Multi-currency support (USD, MYR, GBP, JPY, IDR)</div>
       </div>
     </section>
+
     <section>
       <h2 class="text-lg font-bold mb-3">Tech Stack</h2>
-      <div class="flex flex-wrap gap-2">
-        {["Python","Google ADK","AI Agents","SQLite","FastAPI"].map(t => (
-          <span class="text-[10px] font-medium px-2.5 py-1 rounded border border-[var(--border)] bg-[var(--bg)] text-[var(--muted-foreground)]">{t}</span>
-        ))}
+      <div class="flex flex-wrap gap-2 mb-4">
+        <span class="text-[10px] font-medium px-2.5 py-1 rounded border border-[var(--border)] bg-[var(--bg)] text-[var(--muted-foreground)]">Google ADK</span>
+        <span class="text-[10px] font-medium px-2.5 py-1 rounded border border-[var(--border)] bg-[var(--bg)] text-[var(--muted-foreground)]">Python</span>
+        <span class="text-[10px] font-medium px-2.5 py-1 rounded border border-[var(--border)] bg-[var(--bg)] text-[var(--muted-foreground)]">Tauri 2</span>
+        <span class="text-[10px] font-medium px-2.5 py-1 rounded border border-[var(--border)] bg-[var(--bg)] text-[var(--muted-foreground)]">Svelte 5</span>
+        <span class="text-[10px] font-medium px-2.5 py-1 rounded border border-[var(--border)] bg-[var(--bg)] text-[var(--muted-foreground)]">Framework7 9</span>
+        <span class="text-[10px] font-medium px-2.5 py-1 rounded border border-[var(--border)] bg-[var(--bg)] text-[var(--muted-foreground)]">Rust</span>
+        <span class="text-[10px] font-medium px-2.5 py-1 rounded border border-[var(--border)] bg-[var(--bg)] text-[var(--muted-foreground)]">MongoDB</span>
+        <span class="text-[10px] font-medium px-2.5 py-1 rounded border border-[var(--border)] bg-[var(--bg)] text-[var(--muted-foreground)]">GCS</span>
+        <span class="text-[10px] font-medium px-2.5 py-1 rounded border border-[var(--border)] bg-[var(--bg)] text-[var(--muted-foreground)]">Nivo</span>
+        <span class="text-[10px] font-medium px-2.5 py-1 rounded border border-[var(--border)] bg-[var(--bg)] text-[var(--muted-foreground)]">Telegram Bot</span>
+        <span class="text-[10px] font-medium px-2.5 py-1 rounded border border-[var(--border)] bg-[var(--bg)] text-[var(--muted-foreground)]">Cloud Run</span>
+        <span class="text-[10px] font-medium px-2.5 py-1 rounded border border-[var(--border)] bg-[var(--bg)] text-[var(--muted-foreground)]">AgentOps</span>
       </div>
+      <p class="text-xs text-[var(--muted-foreground)] mt-4">
+        <a href="https://github.com/steverahardjo/adk_exp_tracker" target="_blank" class="text-[var(--accent)] underline">View on GitHub</a>
+      </p>
     </section>
   </article>
 </BaseLayout>
