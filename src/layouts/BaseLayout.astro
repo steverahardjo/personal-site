@@ -50,19 +50,19 @@ const navItems = [
       linkedin="https://linkedin.com/in/steve-jevon-rahardjo"
     />
   </head>
-  <body class="flex items-center justify-center min-h-[100dvh] p-2 md:p-6 bg-[var(--bg)]">
-    <div class="flex w-full max-w-7xl flex-col md:flex-row min-h-[100dvh] md:min-h-0 md:border md:border-[var(--border)] md:rounded-3xl overflow-hidden shadow-sm bg-[var(--surface)]">
+  <body class="flex items-center justify-center min-h-[100dvh] p-3 md:p-8 bg-[var(--bg)]">
+    <div class="flex w-full max-w-7xl flex-col md:flex-row min-h-[100dvh] md:min-h-0 md:border md:border-[var(--border)] md:rounded-3xl overflow-hidden shadow-[var(--shadow-lg)] bg-[var(--surface)]">
 
       <!-- Mobile Top Bar (visible only on mobile) -->
-      <aside class="relative md:hidden flex items-center justify-between px-4 py-3 border-b border-[var(--border)]"
+      <aside class="relative md:hidden flex items-center justify-between px-5 py-4 border-b border-[var(--border)]"
         style="background: color-mix(in srgb, var(--surface) 97%, var(--accent));">
-        <div class="absolute inset-0 pointer-events-none opacity-[0.03]"
+        <div class="absolute inset-0 pointer-events-none opacity-[0.04]"
           style="background-image: radial-gradient(circle, var(--accent) 0.8px, transparent 0.8px); background-size: 12px 12px;"></div>
         <div class="relative z-10 flex items-center gap-3">
           <img src="/favicon-v2.svg" alt="sjrah" class="w-8 h-8" />
           <div class="flex flex-col leading-tight">
             <span class="text-xs font-bold tracking-tight">Steve Jevon Rahardjo</span>
-            <span class="text-[9px] text-[var(--muted-foreground)]">Backend Engineer / Data</span>
+            <span class="text-[11px] text-[var(--muted-foreground)]">Backend Engineer / Data</span>
           </div>
         </div>
         <button id="themeToggle" type="button" aria-label="Toggle theme"
@@ -75,9 +75,9 @@ const navItems = [
       </aside>
 
       <!-- Desktop Sidebar (hidden on mobile) -->
-      <aside class="relative hidden md:flex w-full md:w-[35%] flex-col border-b md:border-b-0 md:border-r border-[var(--border)] p-6 md:p-10 sidebar-scroll md:max-h-[calc(100dvh-3rem)] md:overflow-y-auto overflow-hidden"
+      <aside class="relative hidden md:flex w-full md:w-[35%] flex-col border-b md:border-b-0 md:border-r border-[var(--border)] p-8 md:p-12 sidebar-scroll md:max-h-[calc(100dvh-3rem)] md:overflow-y-auto overflow-hidden"
         style="background: color-mix(in srgb, var(--surface) 97%, var(--accent));">
-        <div class="absolute inset-0 pointer-events-none opacity-[0.03]"
+        <div class="absolute inset-0 pointer-events-none opacity-[0.04]"
           style="background-image: radial-gradient(circle, var(--accent) 0.8px, transparent 0.8px); background-size: 12px 12px;"></div>
 
         <div class="relative z-10 flex flex-col h-full">
@@ -92,11 +92,11 @@ const navItems = [
             </button>
           </div>
 
-          <div class="mb-6 md:mb-10">
-            <h1 class="text-sm md:text-base font-bold tracking-tight m-0">Steve Jevon Rahardjo</h1>
-            <p class="mt-2 text-[11px] text-[var(--muted-foreground)] leading-relaxed">CS graduate in Data Science from Monash University. Building backend systems, AI tools, and data pipelines.</p>
+          <div class="mb-8 md:mb-14">
+            <h1 class="text-base md:text-lg font-bold tracking-tight m-0">Steve Jevon Rahardjo</h1>
+            <p class="mt-2 text-xs text-[var(--muted-foreground)] leading-relaxed">CS graduate in Data Science from Monash University. Building backend systems, AI tools, and data pipelines.</p>
             <a href="/resume.pdf" target="_blank" rel="noopener noreferrer"
-              class="mt-3 inline-flex items-center gap-1.5 px-3 py-1 rounded-md text-[10px] font-semibold tracking-wide uppercase no-underline transition-all duration-200 bg-[var(--accent)] text-white hover:brightness-110 active:scale-[0.97]"
+              class="mt-3 inline-flex items-center gap-1.5 px-4 py-1.5 rounded-md text-xs font-semibold tracking-wide uppercase no-underline transition-all duration-200 bg-[var(--accent)] text-white hover:brightness-110 active:scale-[0.97]"
             >
               <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
@@ -108,10 +108,10 @@ const navItems = [
             </a>
           </div>
 
-          <nav class="flex flex-col gap-0.5">
+          <nav class="flex flex-col gap-1">
             {navItems.map(({ id, href, label, icon }) => (
               <a href={href}
-                class={`flex items-center gap-3 w-full px-3 py-2.5 rounded-xl text-sm font-medium no-underline transition-all duration-200 group ${
+                class={`flex items-center gap-3 w-full px-4 py-3 rounded-xl text-sm font-medium no-underline transition-all duration-200 group ${
                   page === id
                     ? "text-[var(--accent)] bg-[var(--accent)]/8"
                     : "text-[var(--muted-foreground)] hover:text-[var(--text)] hover:bg-[var(--border)]/30"
@@ -126,7 +126,7 @@ const navItems = [
             ))}
           </nav>
 
-          <div class="mt-auto pt-8 md:pt-14">
+          <div class="mt-auto pt-10 md:pt-16">
             <div class="flex items-center gap-3 text-[var(--muted-foreground)]">
               <a href="https://github.com/steverahardjo" target="_blank" rel="noopener" aria-label="GitHub" class="hover:text-[var(--accent)] transition-colors">
                 <svg viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
@@ -138,14 +138,14 @@ const navItems = [
                 <svg viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4"><path d="M0 3v18h24v-18h-24zm21.518 2l-9.518 7.713-9.518-7.713h19.036zm-19.518 14v-11.817l10 8.104 10-8.104v11.817h-20z"/></svg>
               </a>
             </div>
-            <p class="mt-6 text-[9px] text-[var(--muted-foreground)] tracking-wider">&copy; {currentYear} SJR.</p>
+            <p class="mt-6 text-[11px] text-[var(--muted-foreground)] tracking-wider">&copy; {currentYear} SJR.</p>
           </div>
         </div>
       </aside>
 
       <!-- Content -->
       <main class="flex-1 bg-[var(--surface)] content-scroll md:max-h-[calc(100dvh-3rem)] md:overflow-y-auto pb-20 md:pb-0">
-        <div class="max-w-2xl mx-auto p-6 md:p-16">
+        <div class="max-w-2xl mx-auto p-8 md:p-16">
           <slot />
         </div>
       </main>
@@ -166,7 +166,7 @@ const navItems = [
           <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
             <path d={icon} />
           </svg>
-          <span class="text-[9px] font-medium tracking-wide whitespace-nowrap">{label}</span>
+          <span class="text-[11px] font-medium tracking-wide whitespace-nowrap">{label}</span>
         </a>
       ))}
       <a href="/resume.pdf" target="_blank" rel="noopener noreferrer"
@@ -178,7 +178,7 @@ const navItems = [
           <line x1="16" y1="13" x2="8" y2="13" />
           <line x1="16" y1="17" x2="8" y2="17" />
         </svg>
-        <span class="text-[9px] font-medium tracking-wide whitespace-nowrap">Resume</span>
+        <span class="text-[11px] font-medium tracking-wide whitespace-nowrap">Resume</span>
       </a>
     </nav>
 

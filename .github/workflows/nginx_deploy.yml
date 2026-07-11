@@ -1,0 +1,7 @@
+name: Deploy in Nginx with ECS2
+
+on:
+  push:
+    branches:
+      - main
+      -

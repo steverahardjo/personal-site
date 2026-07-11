@@ -10,14 +10,14 @@ export default function CurrentProject() {
   ];
 
   return (
-    <div class="rounded-2xl border border-[var(--border)] bg-[var(--surface)] overflow-hidden transition-all duration-300 hover:border-[var(--accent)]/30">
+    <div class="rounded-2xl border border-[var(--border)] bg-[var(--surface)] overflow-hidden shadow-[var(--shadow-sm)] transition-all duration-300 hover:shadow-[var(--shadow-md)] hover:border-[var(--accent)]/30">
       <div class="p-5 sm:p-6">
         <div class="flex items-center gap-2 mb-1">
           <span class="relative flex h-2 w-2">
-            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
-            <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
+            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-[var(--accent)] opacity-75" />
+            <span class="relative inline-flex rounded-full h-2 w-2 bg-[var(--accent)]" />
           </span>
-          <span class="text-[10px] font-bold tracking-[0.2em] text-[var(--muted-foreground)] uppercase">
+          <span class="text-[11px] font-bold tracking-[0.2em] text-[var(--muted-foreground)] uppercase">
             In Progress
           </span>
         </div>
@@ -32,13 +32,13 @@ export default function CurrentProject() {
             </p>
           </div>
           <div class="flex -space-x-2">
-            <span class="inline-flex items-center px-2 py-0.5 rounded text-[9px] font-bold tracking-wide uppercase bg-[var(--accent)]/10 text-[var(--accent)]">
+            <span class="inline-flex items-center px-2.5 py-0.5 rounded text-[11px] font-bold tracking-wide uppercase bg-[var(--accent)]/10 text-[var(--accent)]">
               React
             </span>
-            <span class="inline-flex items-center px-2 py-0.5 rounded text-[9px] font-bold tracking-wide uppercase bg-emerald-500/10 text-emerald-600">
+            <span class="inline-flex items-center px-2.5 py-0.5 rounded text-[11px] font-bold tracking-wide uppercase bg-[var(--accent-secondary)]/15 text-[var(--accent-secondary)]">
               Go
             </span>
-            <span class="inline-flex items-center px-2 py-0.5 rounded text-[9px] font-bold tracking-wide uppercase bg-blue-500/10 text-blue-600">
+            <span class="inline-flex items-center px-2.5 py-0.5 rounded text-[11px] font-bold tracking-wide uppercase bg-[var(--accent)]/10 text-[var(--accent)]">
               AI
             </span>
           </div>
@@ -56,8 +56,8 @@ export default function CurrentProject() {
               <span
                 class={`shrink-0 w-4 h-4 rounded-full flex items-center justify-center ${
                   f.done
-                    ? "bg-emerald-500/10 text-emerald-600"
-                    : "bg-[var(--border)] text-[var(--muted-foreground)]"
+                    ? "bg-[var(--accent-secondary)]/15 text-[var(--accent-secondary)]"
+                    : "bg-[var(--surface-low)] text-[var(--muted-foreground)]"
                 }`}
               >
                 {f.done ? (

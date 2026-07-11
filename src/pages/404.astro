@@ -5,9 +5,9 @@ const joke = jokes[Math.floor(Math.random()*jokes.length)];
 ---
 
 <BaseLayout title="404 | Page Not Found">
-  <div class="text-center py-16">
+  <div class="text-center py-20">
     <h1 class="text-5xl font-bold text-[var(--accent)] m-0">404</h1>
-    <p class="text-sm text-[var(--muted-foreground)] mt-4">{joke}</p>
+    <p class="text-base text-[var(--muted-foreground)] mt-4">{joke}</p>
     <a href="/" class="inline-block mt-8 px-5 py-2.5 text-xs font-semibold rounded-lg border border-[var(--border)] text-[var(--text)] no-underline hover:border-[var(--accent)] hover:text-[var(--accent)] transition-colors">Back Home</a>
   </div>
 </BaseLayout>

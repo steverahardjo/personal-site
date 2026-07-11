@@ -1,5 +1,21 @@
-h1, h2, h3, h4, h5, h6 { font-family: "Pixelify Sans Variable", "Pixelify Sans", monospace; }
+/* Heading font: Pixelify Sans for all h1-h6 */
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Pixelify Sans Variable", "Pixelify Sans", monospace;
+}
 
-@keyframes panel-in { from { opacity: 0; transform: translateY(6px) } }
+/* Panel-in animation — slower, smoother */
+@keyframes panel-in {
+  from { opacity: 0; transform: translateY(12px); }
+}
 
-.about-panel { animation: panel-in 0.25s ease; }
+.about-panel {
+  animation: panel-in 0.35s var(--ease-smooth);
+}
+
+/* Card entrance stagger */
+.card-entrance {
+  animation: panel-in 0.4s var(--ease-smooth) both;
+}
+.card-entrance:nth-child(2) { animation-delay: 0.05s; }
+.card-entrance:nth-child(3) { animation-delay: 0.1s; }
+.card-entrance:nth-child(4) { animation-delay: 0.15s; }

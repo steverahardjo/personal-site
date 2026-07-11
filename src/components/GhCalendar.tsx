@@ -5,12 +5,10 @@ export default function GhCalendar() {
   const [isDark, setIsDark] = useState(false);
 
   useEffect(() => {
-    // Check initial theme
     const html = document.documentElement;
     const currentTheme = html.getAttribute("data-theme");
     setIsDark(currentTheme === "dark");
 
-    // Listen for theme changes
     const observer = new MutationObserver(() => {
       const theme = html.getAttribute("data-theme");
       setIsDark(theme === "dark");
@@ -23,23 +21,20 @@ export default function GhCalendar() {
 
   return (
     <section
+      class="p-6 rounded-xl border border-[var(--border)]"
       style={{
-        padding: "1.5rem",
-        background: isDark ? "#161b22" : "#ffffff",
-        borderRadius: "12px",
-        border: isDark ? "1px solid #30363d" : "1px solid #e0e0e0",
+        background: "var(--surface)",
         transition: "all 0.3s ease",
       }}
     >
       <GitHubCalendar
         username="steverahardjo"
-        blockSize={12}
+        blockSize={14}
         blockRadius={3}
-        fontSize={14}
-        style={{ filter: isDark ? "none" : "none" }}
+        fontSize={15}
         theme={{
-          light: ["#ebedf0", "#9be9a8", "#40c463", "#30a14e", "#216e39"],
-          dark: ["#161b22", "#0e4429", "#006d32", "#26a641", "#39d353"],
+          light: ["#f4efe8", "#d4dcc8", "#a9c09a", "#7ea46c", "#53883e"],
+          dark: ["#272320", "#1a3a1a", "#2a552a", "#3a703a", "#4a8b4a"],
         }}
         colorScheme={isDark ? "dark" : "light"}
       />

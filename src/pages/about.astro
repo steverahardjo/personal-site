@@ -3,19 +3,19 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
 <BaseLayout title="About | Steve Jevon Rahardjo" description="CS graduate from Monash University Malaysia." page="about">
-  <h2 class="text-2xl md:text-3xl font-bold tracking-tight mb-8">About</h2>
+  <h2 class="text-2xl md:text-3xl font-bold tracking-tight mb-10">About</h2>
 
   <section class="mb-10">
-    <p class="text-sm md:text-base leading-relaxed text-[var(--muted-foreground)] mb-4">CS graduate from <strong class="text-[var(--text)]">Monash University Malaysia</strong>, focused on backend systems and AI-centric development. I build side projects around network programming, database optimization, and practical LLM applications.</p>
+    <p class="text-sm md:text-base leading-relaxed text-[var(--muted-foreground)] mb-5">CS graduate from <strong class="text-[var(--text)]">Monash University Malaysia</strong>, focused on backend systems and AI-centric development. I build side projects around network programming, database optimization, and practical LLM applications.</p>
     <p class="text-sm md:text-base leading-relaxed text-[var(--muted-foreground)]">Goal: ship scalable products with clean engineering.</p>
   </section>
 
   <section class="mb-10">
-    <h3 class="text-base md:text-lg font-bold mb-4">Skills</h3>
+    <h3 class="text-base md:text-lg font-bold mb-6">Skills</h3>
     <div class="flex flex-wrap gap-2 mb-4" role="tablist">
       {[["languages","Languages"],["aiml","AI/ML"],["data-tools","Data Tools"],["dev-tools","Dev Tools"]].map(([id,label],i) => (
         <button type="button" role="tab" aria-selected={i===0?"true":"false"} data-target={id}
-          class="tab-btn text-xs font-semibold px-3 py-1.5 rounded-full border border-[var(--border)] bg-transparent text-[var(--muted)] cursor-pointer transition-all duration-200 hover:border-[var(--accent)]/50 hover:text-[var(--text)] data-[active=true]:bg-[var(--accent)] data-[active=true]:text-white data-[active=true]:border-[var(--accent)]"
+          class="tab-btn text-sm font-semibold px-4 py-2 rounded-full border border-[var(--border)] bg-transparent text-[var(--muted)] cursor-pointer transition-all duration-200 hover:border-[var(--accent)]/50 hover:text-[var(--text)] data-[active=true]:bg-[var(--accent)] data-[active=true]:text-white data-[active=true]:border-[var(--accent)]"
         >{label}</button>
       ))}
     </div>
@@ -26,8 +26,8 @@ import BaseLayout from "../layouts/BaseLayout.astro";
         ["data-tools","Streaming & analytics",["PySpark","Kafka","MongoDB","QdrantDB","Pandas","Matplotlib"]],
         ["dev-tools","Build & delivery",["Git","Docker","GitHub Actions","Flask","BeautifulSoup"]],
       ].map(([id,sub,words],i) => (
-        <div class="skill-panel p-5 rounded-2xl border border-[var(--border)] bg-[var(--bg)] about-panel" data-panel={id as string} hidden={i!==0}>
-          <p class="text-xs text-[var(--muted-foreground)] mb-3">{sub as string}</p>
+        <div class="skill-panel p-6 rounded-2xl border border-[var(--border)] bg-[var(--surface-low)] shadow-[var(--shadow-sm)] about-panel" data-panel={id as string} hidden={i!==0}>
+          <p class="text-xs text-[var(--muted-foreground)] mb-4">{sub as string}</p>
           <div class="flex flex-wrap gap-2">
             {(words as string[]).map(w => (
               <span class="text-xs font-medium px-3 py-1.5 rounded-lg border border-[var(--border)] bg-[var(--surface)] text-[var(--text)]">{w}</span>
@@ -40,13 +40,13 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
   <section class="mb-10">
     <h3 class="text-base md:text-lg font-bold mb-4">Education</h3>
-    <article class="p-5 rounded-2xl border border-[var(--border)] bg-[var(--bg)]">
+    <article class="p-6 rounded-2xl border border-[var(--border)] bg-[var(--surface-low)] shadow-[var(--shadow-sm)]">
       <h4 class="text-sm font-bold m-0">B.CompSci (Data Science)</h4>
       <p class="text-xs text-[var(--accent)] font-medium mt-1">Monash University Malaysia</p>
-      <p class="text-[10px] text-[var(--muted-foreground)] mt-0.5">Feb 2023 - Nov 2025</p>
+      <p class="text-xs text-[var(--muted-foreground)] mt-0.5">Feb 2023 - Nov 2025</p>
       <div class="flex flex-wrap gap-1.5 mt-3">
         {["Data Science","DSA","Data Modelling","Visualization","OOP","Warehousing","Big Data"].map(c => (
-          <span class="text-[10px] font-medium px-2 py-0.5 rounded-full border border-[var(--border)] bg-[var(--surface)] text-[var(--muted)]">{c}</span>
+          <span class="text-[11px] font-medium px-2 py-0.5 rounded-full border border-[var(--border)] bg-[var(--surface)] text-[var(--muted)]">{c}</span>
         ))}
       </div>
     </article>
@@ -55,16 +55,16 @@ import BaseLayout from "../layouts/BaseLayout.astro";
   <section>
     <h3 class="text-base md:text-lg font-bold mb-4">Experience</h3>
     <div class="flex flex-col gap-4">
-      <article class="p-5 rounded-2xl border border-[var(--border)] bg-[var(--bg)]">
+      <article class="p-6 rounded-2xl border border-[var(--border)] bg-[var(--surface-low)] shadow-[var(--shadow-sm)]">
         <h4 class="text-sm font-bold m-0">Data Analyst Trainee (CDP Team)</h4>
         <p class="text-xs text-[var(--accent)] font-medium mt-1">SynergyXYZ</p>
-        <p class="text-[10px] text-[var(--muted-foreground)] mt-0.5">Nov 2024 - Feb 2025</p>
+        <p class="text-xs text-[var(--muted-foreground)] mt-0.5">Nov 2024 - Feb 2025</p>
         <p class="text-xs mt-3 leading-relaxed text-[var(--muted-foreground)]">Evaluated 20+ CDP vendors, led client research, authored SDK and workflow documentation.</p>
       </article>
-      <article class="p-5 rounded-2xl border border-[var(--border)] bg-[var(--bg)]">
+      <article class="p-6 rounded-2xl border border-[var(--border)] bg-[var(--surface-low)] shadow-[var(--shadow-sm)]">
         <h4 class="text-sm font-bold m-0">Website Admin (Volunteer)</h4>
         <p class="text-xs text-[var(--accent)] font-medium mt-1">PPI Monash Malaysia</p>
-        <p class="text-[10px] text-[var(--muted-foreground)] mt-0.5">Jul 2024 - Nov 2025</p>
+        <p class="text-xs text-[var(--muted-foreground)] mt-0.5">Jul 2024 - Nov 2025</p>
         <p class="text-xs mt-3 leading-relaxed text-[var(--muted-foreground)]">WordPress revamp, content publishing, event coordination.</p>
       </article>
     </div>
