@@ -1,5 +1,6 @@
 ---
 import JsonLd from "../components/JsonLd.astro";
+import ThemePicker from "../components/ThemePicker";
 import "../styles/tailwind.css";
 import "../styles/style.css";
 
@@ -24,7 +25,7 @@ const navItems = [
 ---
 
 <!doctype html>
-<html lang="en" data-theme="light">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -42,6 +43,9 @@ const navItems = [
     <meta property="twitter:image" content={ogImage} />
     <title>{title}</title>
     <link rel="icon" href="/favicon-v2.svg" type="image/svg+xml" />
+    <script>
+      (function(){var t=localStorage.getItem("theme-palette")||"original";document.documentElement.setAttribute("data-theme",t);})();
+    </script>
     <JsonLd
       name="Steve Jevon Rahardjo"
       jobTitle="Software Engineer"
@@ -65,13 +69,6 @@ const navItems = [
             <span class="text-[11px] text-[var(--muted-foreground)]">Backend Engineer / Data</span>
           </div>
         </div>
-        <button id="themeToggle" type="button" aria-label="Toggle theme"
-          class="relative w-11 h-6 rounded-full border border-[var(--border)] bg-transparent cursor-pointer transition-all duration-300 hover:border-[var(--accent)]/50 flex items-center px-0.5"
-        >
-          <span id="themeIcon" class="w-4 h-4 rounded-full bg-[var(--text)] transition-transform duration-300 flex items-center justify-center">
-            <img src="/owl.svg" alt="" class="w-3 h-3" style="filter: invert(1) brightness(10);" />
-          </span>
-        </button>
       </aside>
 
       <!-- Desktop Sidebar (hidden on mobile) -->
@@ -83,13 +80,6 @@ const navItems = [
         <div class="relative z-10 flex flex-col h-full">
           <div class="flex items-center justify-between mb-6 md:mb-10">
             <img src="/favicon-v2.svg" alt="sjrah" class="w-10 h-10 md:w-11 md:h-11" />
-            <button id="themeToggle-desktop" type="button" aria-label="Toggle theme"
-              class="relative w-11 h-6 rounded-full border border-[var(--border)] bg-transparent cursor-pointer transition-all duration-300 hover:border-[var(--accent)]/50 flex items-center px-0.5"
-            >
-              <span class="w-4 h-4 rounded-full bg-[var(--text)] transition-transform duration-300 flex items-center justify-center">
-                <img src="/owl.svg" alt="" class="w-3 h-3" style="filter: invert(1) brightness(10);" />
-              </span>
-            </button>
           </div>
 
           <div class="mb-8 md:mb-14">
@@ -182,6 +172,7 @@ const navItems = [
       </a>
     </nav>
 
+    <ThemePicker client:load />
     <script src="/script.js" defer></script>
   </body>
 </html>

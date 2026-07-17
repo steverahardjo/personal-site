@@ -1,27 +1,27 @@
 import { useState, useEffect } from "react";
 import { GitHubCalendar } from "react-github-calendar";
 
+const darkThemes = new Set(["tokyo-midnight", "quartz", "emerald"]);
+
 export default function GhCalendar() {
   const [isDark, setIsDark] = useState(false);
 
   useEffect(() => {
     const html = document.documentElement;
-    const currentTheme = html.getAttribute("data-theme");
-    setIsDark(currentTheme === "dark");
+    const getTheme = () => {
+      const theme = html.getAttribute("data-theme") || "original";
+      setIsDark(darkThemes.has(theme));
+    };
+    getTheme();
 
-    const observer = new MutationObserver(() => {
-      const theme = html.getAttribute("data-theme");
-      setIsDark(theme === "dark");
-    });
-
+    const observer = new MutationObserver(() => getTheme());
     observer.observe(html, { attributes: true, attributeFilter: ["data-theme"] });
-
     return () => observer.disconnect();
   }, []);
 
   return (
     <section
-      class="p-6 rounded-xl border border-[var(--border)]"
+      className="p-6 rounded-xl border border-[var(--border)]"
       style={{
         background: "var(--surface)",
         transition: "all 0.3s ease",
