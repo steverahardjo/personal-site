@@ -54,6 +54,10 @@
   --surface-low: #272320;
 }
 
+[data-theme="dark"] body {
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpolygon points='12,2 21,7 21,17 12,22 3,17 3,7' fill='none' stroke='%23cf4b45' stroke-width='1.5' stroke-linejoin='round'/%3E%3C/svg%3E") 12 12, auto;
+}
+
 * { scrollbar-width: thin; scrollbar-color: var(--border) transparent; }
 
 body {
@@ -63,9 +67,12 @@ body {
   line-height: 1.7;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: auto;
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpolygon points='12,2 21,7 21,17 12,22 3,17 3,7' fill='none' stroke='%23c7362f' stroke-width='1.5' stroke-linejoin='round'/%3E%3C/svg%3E") 12 12, auto;
 }
 
 ::selection { background: color-mix(in srgb, var(--accent) 30%, transparent); }
+
+a, button, [role="button"], input, textarea, select { cursor: inherit; }
 
 /* Code blocks and inline code keep JetBrains Mono */
 code, pre, samp, kbd {
