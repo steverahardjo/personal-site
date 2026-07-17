@@ -5,8 +5,8 @@
 
 @import "./themes/original.css";
 @import "./themes/tokyo-midnight.css";
-@import "./themes/quartz.css";
-@import "./themes/emerald.css";
+@import "./themes/dracula.css";
+@import "./themes/blood-moon.css";
 
 @theme inline {
   --font-sans: "Inter Variable", "Inter", system-ui, sans-serif;
@@ -34,6 +34,10 @@ body {
 ::selection { background: color-mix(in srgb, var(--accent) 30%, transparent); }
 
 a, button, [role="button"], input, textarea, select { cursor: inherit; }
+
+pre.astro-code {
+  transition: background-color 200ms ease;
+}
 
 /* Code blocks and inline code keep JetBrains Mono */
 code, pre, samp, kbd {

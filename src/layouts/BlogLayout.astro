@@ -16,7 +16,7 @@ const date = new Date(pubDate).toLocaleDateString("en-US", { year: "numeric", mo
         {tags.map(t => <span class="text-[11px] font-medium px-2.5 py-1 rounded border border-[var(--border)] bg-[var(--bg)] text-[var(--muted-foreground)]">{t}</span>)}
       </div>
     </header>
-    <div class="text-base leading-[1.75] [&_h2]:text-xl [&_h2]:font-bold [&_h2]:mt-10 [&_h2]:mb-4 [&_h3]:text-lg [&_h3]:font-semibold [&_h3]:mt-8 [&_h3]:mb-3 [&_p]:mb-5 [&_ul]:mb-5 [&_ol]:mb-5 [&_ul]:pl-6 [&_ol]:pl-6 [&_li]:mb-2 [&_code]:text-sm [&_code]:bg-[var(--surface-low)] [&_code]:px-1.5 [&_code]:py-0.5 [&_code]:rounded [&_pre]:bg-[var(--surface-low)] [&_pre]:border [&_pre]:border-[var(--border)] [&_pre]:p-6 [&_pre]:rounded-xl [&_pre]:overflow-x-auto [&_pre]:mb-6 [&_pre_code]:bg-transparent [&_pre_code]:p-0 [&_a]:text-[var(--accent)] [&_a]:no-underline [&_a:hover]:underline">
+    <div class="text-base leading-[1.75] [&_h2]:text-xl [&_h2]:font-bold [&_h2]:mt-10 [&_h2]:mb-4 [&_h3]:text-lg [&_h3]:font-semibold [&_h3]:mt-8 [&_h3]:mb-3 [&_p]:mb-5 [&_ul]:mb-5 [&_ol]:mb-5 [&_ul]:pl-6 [&_ol]:pl-6 [&_li]:mb-2 [&_code]:text-sm [&_code]:bg-[var(--surface-low)] [&_code]:px-1.5 [&_code]:py-0.5 [&_code]:rounded [&_pre]:border [&_pre]:border-[var(--border)] [&_pre]:p-6 [&_pre]:rounded-xl [&_pre]:overflow-x-auto [&_pre]:mb-6 [&_pre_code]:bg-transparent [&_pre_code]:p-0 [&_a]:text-[var(--accent)] [&_a]:no-underline [&_a:hover]:underline">
       <slot />
     </div>
     <a href="/writing" class="inline-block mt-10 text-xs text-[var(--muted-foreground)] no-underline hover:text-[var(--text)] transition-colors">&larr; Back to Writing</a>

@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { GitHubCalendar } from "react-github-calendar";
 
-const darkThemes = new Set(["tokyo-midnight", "quartz", "emerald"]);
+const darkThemes = new Set(["tokyo-midnight", "dracula", "blood-moon"]);
 
 export default function GhCalendar() {
   const [isDark, setIsDark] = useState(false);

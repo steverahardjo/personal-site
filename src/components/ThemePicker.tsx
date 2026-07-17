@@ -10,20 +10,20 @@ const themes = [
   {
     id: "tokyo-midnight",
     label: "Tokyo Midnight",
-    color: "#4f8fff",
-    description: "Deep indigo & neon blue",
+    color: "#7aa2f7",
+    description: "Neon blue nightscape",
   },
   {
-    id: "quartz",
-    label: "Quartz",
-    color: "#f472b6",
-    description: "Rose quartz & plum",
+    id: "dracula",
+    label: "Dracula",
+    color: "#bd93f9",
+    description: "Purple twilight haze",
   },
   {
-    id: "emerald",
-    label: "Emerald",
-    color: "#34d399",
-    description: "Forest green & teal",
+    id: "blood-moon",
+    label: "Blood Moon",
+    color: "#dc143c",
+    description: "Black void & crimson",
   },
 ] as const;
 

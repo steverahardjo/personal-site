@@ -14,7 +14,7 @@ export default defineConfig({
   integrations: [sitemap(), react()],
   markdown: {
     shikiConfig: {
-      theme: "github-dark",
+      theme: "css-variables",
     },
   },
 });
