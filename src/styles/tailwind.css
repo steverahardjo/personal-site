@@ -1,5 +1,5 @@
 @import "tailwindcss";
-@import "@fontsource-variable/inter";
+@import "@fontsource-variable/libre-baskerville";
 @import "@fontsource-variable/jetbrains-mono";
 
 @import "./themes/original.css";
@@ -8,7 +8,7 @@
 @import "./themes/blood-moon.css";
 
 @theme inline {
-  --font-sans: "Inter Variable", "Inter", system-ui, sans-serif;
+  --font-sans: "Libre Baskerville Variable", "Libre Baskerville", "Times New Roman", ui-serif, Georgia, serif;
   --font-mono: "JetBrains Mono Variable", "JetBrains Mono", ui-monospace, monospace;
   --color-border: var(--border);
   --color-muted: var(--muted);
@@ -20,7 +20,7 @@
 body {
   background: var(--bg);
   color: var(--text);
-  font-family: "Inter Variable", "Inter", system-ui, sans-serif;
+  font-family: "Libre Baskerville Variable", "Libre Baskerville", "Times New Roman", ui-serif, Georgia, serif;
   line-height: 1.7;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: auto;

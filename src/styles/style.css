@@ -1,1 +1,7 @@
-* { transition: background-color 200ms ease, color 200ms ease, border-color 200ms ease; }
+body {
+  transition: background-color 200ms ease, color 200ms ease;
+}
+
+pre.astro-code {
+  transition: background-color 200ms ease;
+}

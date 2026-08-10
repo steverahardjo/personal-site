@@ -54,32 +54,42 @@ const navItems = [
       linkedin="https://linkedin.com/in/steve-jevon-rahardjo"
     />
   </head>
-  <body class="min-h-[100dvh] bg-[var(--bg)] transition-colors duration-200">
-    <header class="sticky top-0 z-40 border-b border-[var(--border)] bg-[var(--bg)]/85 backdrop-blur-sm">
-      <div class="max-w-4xl mx-auto px-6 h-14 flex items-center justify-between">
-        <a href="/" class="flex items-center gap-2.5 no-underline">
-          <img src="/favicon-v2.svg" alt="" class="w-5 h-5" />
-          <span class="text-sm font-semibold tracking-tight text-[var(--text)]">Steve Jevon Rahardjo</span>
-        </a>
-        <nav class="flex items-center gap-0.5">
-          {navItems.map(({ id, href, label }) => (
-            <a href={href} class={`text-xs font-medium px-3 py-1.5 rounded-md transition-colors no-underline ${
-              page === id
-                ? "bg-[var(--accent)]/10 text-[var(--accent)]"
-                : "text-[var(--muted-foreground)] hover:text-[var(--text)] hover:bg-[var(--border)]/30"
-            }`}>
-              {label}
-            </a>
-          ))}
+  <body class="min-h-[100dvh] bg-[var(--bg)]">
+    <!-- Tab bar: fixed top, only the paper tabs show -->
+    <header class="sticky top-0 z-40 bg-[var(--bg)]">
+      <div class="max-w-2xl mx-auto px-6 pt-4">
+        <div class="flex items-end">
+          <!-- Name badge -->
+          <a href="/" class="flex items-center gap-2 no-underline mr-4 mb-1 shrink-0">
+            <img src="/favicon-v2.svg" alt="" class="w-4 h-4 opacity-70" />
+            <span class="text-[11px] font-semibold tracking-tight text-[var(--muted-foreground)] hidden sm:inline">Steve Jevon Rahardjo</span>
+          </a>
+
+          <!-- Folder tab navigation -->
+          <nav class="flex items-end gap-px overflow-x-auto">
+            {navItems.map(({ id, href, label }) => (
+              <a href={href}
+                class={`relative shrink-0 px-4 pt-2 pb-2 text-[11px] font-semibold tracking-wide uppercase no-underline transition-colors duration-150 border border-b-0 border-[var(--border)] ${
+                  page === id
+                    ? "bg-[var(--surface)] text-[var(--accent)] z-10 rounded-t-md"
+                    : "bg-[var(--surface-low)] text-[var(--muted-foreground)] hover:text-[var(--text)] rounded-t-md"
+                }`}
+              >
+                {label}
+              </a>
+            ))}
+          </nav>
+
+          <!-- Resume tab (file action) -->
           <a href="/resume.pdf" target="_blank" rel="noopener noreferrer"
-            class="text-xs font-medium px-3 py-1.5 rounded-md border border-[var(--border)] text-[var(--muted-foreground)] hover:text-[var(--text)] hover:border-[var(--accent)]/40 transition-colors no-underline ml-1.5">
+            class="shrink-0 px-4 pt-2 pb-2 text-[11px] font-semibold tracking-wide uppercase no-underline transition-colors duration-150 bg-[var(--surface-low)] text-[var(--muted-foreground)] hover:text-[var(--text)] border border-b-0 border-[var(--border)] rounded-t-md ml-auto">
             Resume
           </a>
-        </nav>
+        </div>
       </div>
     </header>
 
-    <main class="max-w-2xl mx-auto px-6 py-12 md:py-20">
+    <main class="max-w-2xl mx-auto px-6 py-12 md:py-20 bg-[var(--surface)] border-x border-b border-[var(--border)]">
       <slot />
     </main>
 
