@@ -1,12 +1,13 @@
 export default function CurrentProject() {
   const features = [
-    { label: "Multi-currency expense tracking", done: true },
-    { label: "Email OTP authentication", done: true },
-    { label: "AI-powered receipt scanning (YOLO)", done: true },
-    { label: "Smart categorization & budgets", done: true },
-    { label: "Multi-agent AI assistant (Google ADK)", done: true },
-    { label: "Bank sync integration", done: false },
-    { label: "Monthly report export", done: false },
+    { label: "Supervisor-based multi-agent architecture", done: true },
+    { label: "LLM meal parsing + 7,323-item Food DB", done: true },
+    { label: "VLM food photo analysis", done: true },
+    { label: "Weekly analytics with LLM insights", done: true },
+    { label: "React dashboard + state engine (9 modes)", done: true },
+    { label: "Go backend with Google ADK v2", done: true },
+    { label: "Meal Planner agent (stub)", done: false },
+    { label: "Eatery Search via Google Places (stub)", done: false },
   ];
 
   return (
@@ -25,10 +26,10 @@ export default function CurrentProject() {
         <div className="flex items-center justify-between gap-3 mb-4">
           <div>
             <h3 className="text-base sm:text-lg font-bold tracking-tight text-[var(--text)]">
-              Deneb
+              Nutribot
             </h3>
             <p className="text-xs text-[var(--muted-foreground)]">
-              Full-stack expense tracking platform
+              Multi-agent AI nutrition assistant
             </p>
           </div>
           <div className="flex -space-x-2">
@@ -45,9 +46,10 @@ export default function CurrentProject() {
         </div>
 
         <p className="text-xs leading-relaxed text-[var(--muted-foreground)] mb-4">
-          A modular expense tracker with a Go backend, React frontend, and
-          multi-agent AI system for receipt scanning, categorization, and
-          financial insights.
+          A full-stack nutrition platform with a supervisor-based multi-agent
+          architecture, meal logging via text and photos, weekly analytics, and
+          a React dashboard — with both Django + LangGraph and Go + Google ADK
+          backends sharing the same schema.
         </p>
 
         <div className="flex flex-col gap-1.5">
