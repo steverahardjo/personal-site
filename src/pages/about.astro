@@ -5,7 +5,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 <BaseLayout title="About | Steve Jevon Rahardjo" description="CS graduate from Monash University Malaysia." page="about">
   <h1 class="text-xl md:text-2xl font-bold tracking-tight mb-12">About</h1>
 
-  <section class="mb-12">
+  <section class="mb-12 max-w-3xl">
     <p class="text-sm md:text-base leading-relaxed text-[var(--muted-foreground)] mb-5">CS graduate from <strong class="text-[var(--text)]">Monash University Malaysia</strong>, focused on backend systems and AI-centric development. I build side projects around network programming, database optimization, and practical LLM applications.</p>
     <p class="text-sm md:text-base leading-relaxed text-[var(--muted-foreground)]">Goal: ship scalable products with clean engineering.</p>
   </section>
@@ -19,7 +19,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
         >{label}</button>
       ))}
     </div>
-    <div class="skill-panels">
+    <div class="skill-panels grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
       {[
         ["languages","Core languages",["Python","Java","Go","SQL","R","TypeScript"]],
         ["aiml","ML & retrieval",["LLMs","RAG","Google ADK","Hugging Face","Scikit-Learn","XGBoost"]],
@@ -38,37 +38,39 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     </div>
   </section>
 
-  <section class="mb-12">
-    <h3 class="text-sm font-semibold tracking-wider text-[var(--muted-foreground)] uppercase mb-5">Education</h3>
-    <article class="p-6 border border-[var(--border)] bg-[var(--surface)]">
-      <h4 class="text-sm font-bold m-0">B.CompSci (Data Science)</h4>
-      <p class="text-xs text-[var(--accent)] font-medium mt-1">Monash University Malaysia</p>
-      <p class="text-xs text-[var(--muted-foreground)] mt-0.5">Feb 2023 - Nov 2025</p>
-      <div class="flex flex-wrap gap-1.5 mt-4">
-        {["Data Science","DSA","Data Modelling","Visualization","OOP","Warehousing","Big Data"].map(c => (
-          <span class="text-[11px] font-medium px-2 py-0.5 border border-[var(--border)] text-[var(--muted-foreground)]">{c}</span>
-        ))}
-      </div>
-    </article>
-  </section>
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+    <section>
+      <h3 class="text-sm font-semibold tracking-wider text-[var(--muted-foreground)] uppercase mb-5">Education</h3>
+      <article class="p-6 border border-[var(--border)] bg-[var(--surface)]">
+        <h4 class="text-sm font-bold m-0">B.CompSci (Data Science)</h4>
+        <p class="text-xs text-[var(--accent)] font-medium mt-1">Monash University Malaysia</p>
+        <p class="text-xs text-[var(--muted-foreground)] mt-0.5">Feb 2023 - Nov 2025</p>
+        <div class="flex flex-wrap gap-1.5 mt-4">
+          {["Data Science","DSA","Data Modelling","Visualization","OOP","Warehousing","Big Data"].map(c => (
+            <span class="text-[11px] font-medium px-2 py-0.5 border border-[var(--border)] text-[var(--muted-foreground)]">{c}</span>
+          ))}
+        </div>
+      </article>
+    </section>
 
-  <section>
-    <h3 class="text-sm font-semibold tracking-wider text-[var(--muted-foreground)] uppercase mb-5">Experience</h3>
-    <div class="flex flex-col gap-4">
-      <article class="p-6 border border-[var(--border)] bg-[var(--surface)]">
-        <h4 class="text-sm font-bold m-0">Data Analyst Trainee (CDP Team)</h4>
-        <p class="text-xs text-[var(--accent)] font-medium mt-1">SynergyXYZ</p>
-        <p class="text-xs text-[var(--muted-foreground)] mt-0.5">Nov 2024 - Feb 2025</p>
-        <p class="text-xs mt-3 leading-relaxed text-[var(--muted-foreground)]">Evaluated 20+ CDP vendors, led client research, authored SDK and workflow documentation.</p>
-      </article>
-      <article class="p-6 border border-[var(--border)] bg-[var(--surface)]">
-        <h4 class="text-sm font-bold m-0">Website Admin (Volunteer)</h4>
-        <p class="text-xs text-[var(--accent)] font-medium mt-1">PPI Monash Malaysia</p>
-        <p class="text-xs text-[var(--muted-foreground)] mt-0.5">Jul 2024 - Nov 2025</p>
-        <p class="text-xs mt-3 leading-relaxed text-[var(--muted-foreground)]">WordPress revamp, content publishing, event coordination.</p>
-      </article>
-    </div>
-  </section>
+    <section>
+      <h3 class="text-sm font-semibold tracking-wider text-[var(--muted-foreground)] uppercase mb-5">Experience</h3>
+      <div class="flex flex-col gap-4">
+        <article class="p-6 border border-[var(--border)] bg-[var(--surface)]">
+          <h4 class="text-sm font-bold m-0">Data Analyst Trainee (CDP Team)</h4>
+          <p class="text-xs text-[var(--accent)] font-medium mt-1">SynergyXYZ</p>
+          <p class="text-xs text-[var(--muted-foreground)] mt-0.5">Nov 2024 - Feb 2025</p>
+          <p class="text-xs mt-3 leading-relaxed text-[var(--muted-foreground)]">Evaluated 20+ CDP vendors, led client research, authored SDK and workflow documentation.</p>
+        </article>
+        <article class="p-6 border border-[var(--border)] bg-[var(--surface)]">
+          <h4 class="text-sm font-bold m-0">Website Admin (Volunteer)</h4>
+          <p class="text-xs text-[var(--accent)] font-medium mt-1">PPI Monash Malaysia</p>
+          <p class="text-xs text-[var(--muted-foreground)] mt-0.5">Jul 2024 - Nov 2025</p>
+          <p class="text-xs mt-3 leading-relaxed text-[var(--muted-foreground)]">WordPress revamp, content publishing, event coordination.</p>
+        </article>
+      </div>
+    </section>
+  </div>
 </BaseLayout>
 
 <script is:inline>

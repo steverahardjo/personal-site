@@ -15,7 +15,7 @@ const projects = [
   <h1 class="text-xl md:text-2xl font-bold tracking-tight mb-2">Selected <span class="text-[var(--accent)]">Work</span></h1>
   <p class="text-sm text-[var(--muted-foreground)] mb-12">Things I've built and shipped.</p>
 
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-16">
+  <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 mb-16">
     {projects.map((p) => (
       <a href={p.link} target="_blank" rel="noopener"
         class="group p-6 border border-[var(--border)] bg-[var(--surface)] no-underline transition-colors duration-150 hover:border-[var(--accent)]/40">
