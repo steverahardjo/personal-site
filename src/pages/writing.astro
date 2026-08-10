@@ -7,26 +7,25 @@ posts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 ---
 
 <BaseLayout title="Writing | Steve Jevon Rahardjo" description="Blog posts on backend systems, AI, and data engineering." page="writing">
-  <div class="flex items-center justify-between mb-10">
-    <h2 class="text-2xl md:text-3xl font-bold tracking-tight"><span class="text-[var(--accent)]">Writing</span></h2>
-  </div>
+  <h1 class="text-xl md:text-2xl font-bold tracking-tight mb-2"><span class="text-[var(--accent)]">Writing</span></h1>
+  <p class="text-sm text-[var(--muted-foreground)] mb-12">Notes on systems, AI, and engineering.</p>
 
   {posts.length > 0 ? (
-    <div class="flex flex-col gap-1">
+    <div class="flex flex-col">
       {posts.map(post => (
-        <article class="group flex items-center justify-between border-b border-[var(--border)] py-6 last:border-0 cursor-pointer">
+        <a href={`/blog/${post.slug}`} class="group flex items-start justify-between py-5 border-b border-[var(--border)] last:border-b-0 no-underline">
           <div>
-            <a href={`/blog/${post.slug}`} class="text-base md:text-lg font-bold text-[var(--text)] no-underline transition-colors group-hover:text-[var(--accent)]">{post.data.title}</a>
-            <p class="mt-1.5 text-xs text-[var(--muted-foreground)] leading-relaxed">{post.data.description}</p>
-            <p class="mt-2 text-xs text-[var(--muted-foreground)] opacity-60">
-              {new Date(post.data.pubDate).toLocaleDateString("en-US",{year:"numeric",month:"2-digit",day:"2-digit"})}
-              {post.data.tags?.map(t => <span> — <a href="#" class="hover:text-[var(--accent)] no-underline text-[var(--muted-foreground)]">{t}</a></span>)}
+            <h3 class="text-sm font-bold text-[var(--text)] group-hover:text-[var(--accent)] transition-colors m-0">{post.data.title}</h3>
+            <p class="mt-1 text-xs text-[var(--muted-foreground)] leading-relaxed">{post.data.description}</p>
+            <p class="mt-2 text-[11px] text-[var(--muted-foreground)]">
+              {new Date(post.data.pubDate).toLocaleDateString("en-US",{year:"numeric",month:"short",day:"numeric"})}
+              {post.data.tags?.map(t => <span> · <span class="text-[var(--muted-foreground)]">{t}</span></span>)}
             </p>
           </div>
-          <span class="text-[var(--border)] group-hover:text-[var(--accent)] transition-all duration-300 group-hover:translate-x-0.5 shrink-0 ml-4">
+          <span class="text-[var(--border)] group-hover:text-[var(--accent)] transition-colors shrink-0 mt-1 ml-4">
             <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
           </span>
-        </article>
+        </a>
       ))}
     </div>
   ) : (

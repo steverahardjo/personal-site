@@ -11,15 +11,15 @@
     "lint:fix": "eslint . --fix"
   },
   "dependencies": {
-    "@astrojs/react": "^5.0.0",
-    "@astrojs/sitemap": "^3.7.0",
+    "@astrojs/react": "^6.0.2",
+    "@astrojs/sitemap": "^3.7.3",
     "@fontsource-variable/inter": "^5.2.8",
     "@fontsource-variable/jetbrains-mono": "^5.2.8",
     "@fontsource-variable/pixelify-sans": "^5.2.7",
     "@tailwindcss/vite": "^4.2.2",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
-    "astro": "^5.17.1",
+    "astro": "^7.2.0",
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
     "react-github-calendar": "^5.0.5",

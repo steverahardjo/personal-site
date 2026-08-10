@@ -10,7 +10,7 @@ export default function CurrentProject() {
   ];
 
   return (
-    <div className="rounded-2xl border border-[var(--border)] bg-[var(--surface)] overflow-hidden shadow-[var(--shadow-sm)] transition-all duration-300 hover:shadow-[var(--shadow-md)] hover:border-[var(--accent)]/30">
+    <div className="border border-[var(--border)] bg-[var(--surface)] transition-colors duration-150 hover:border-[var(--accent)]/30">
       <div className="p-5 sm:p-6">
         <div className="flex items-center gap-2 mb-1">
           <span className="relative flex h-2 w-2">
@@ -32,13 +32,13 @@ export default function CurrentProject() {
             </p>
           </div>
           <div className="flex -space-x-2">
-            <span className="inline-flex items-center px-2.5 py-0.5 rounded text-[11px] font-bold tracking-wide uppercase bg-[var(--accent)]/10 text-[var(--accent)]">
+            <span className="inline-flex items-center px-2.5 py-0.5 border border-[var(--border)] text-[11px] font-bold tracking-wide uppercase text-[var(--accent)]">
               React
             </span>
-            <span className="inline-flex items-center px-2.5 py-0.5 rounded text-[11px] font-bold tracking-wide uppercase bg-[var(--accent-secondary)]/15 text-[var(--accent-secondary)]">
+            <span className="inline-flex items-center px-2.5 py-0.5 border border-[var(--border)] text-[11px] font-bold tracking-wide uppercase text-[var(--accent-secondary)]">
               Go
             </span>
-            <span className="inline-flex items-center px-2.5 py-0.5 rounded text-[11px] font-bold tracking-wide uppercase bg-[var(--accent)]/10 text-[var(--accent)]">
+            <span className="inline-flex items-center px-2.5 py-0.5 border border-[var(--border)] text-[11px] font-bold tracking-wide uppercase text-[var(--accent)]">
               AI
             </span>
           </div>
@@ -99,9 +99,9 @@ export default function CurrentProject() {
       <div className="border-t border-[var(--border)] px-5 sm:px-6 py-3 flex items-center justify-between">
         <a
           href="/writing"
-          className="text-[11px] font-medium text-[var(--accent)] no-underline hover:underline underline-offset-2 transition-all"
+          className="text-[11px] font-medium text-[var(--accent)] no-underline hover:underline underline-offset-2"
         >
-          Read about the build →
+          Read about the build
         </a>
         <a
           href="https://github.com/steverahardjo"
@@ -109,7 +109,7 @@ export default function CurrentProject() {
           rel="noopener noreferrer"
           className="text-[11px] text-[var(--muted-foreground)] no-underline hover:text-[var(--text)] transition-colors"
         >
-          View on GitHub →
+          View on GitHub
         </a>
       </div>
     </div>
