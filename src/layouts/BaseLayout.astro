@@ -2,7 +2,6 @@
 import JsonLd from "../components/JsonLd.astro";
 import ThemePicker from "../components/ThemePicker";
 import "../styles/tailwind.css";
-import "../styles/style.css";
 
 export interface Props {
   title: string;
@@ -43,8 +42,8 @@ const navItems = [
     <meta property="twitter:image" content={ogImage} />
     <title>{title}</title>
     <link rel="icon" href="/favicon-v2.svg" type="image/svg+xml" />
-    <script>
-      (function(){var t=localStorage.getItem("theme-palette")||"original";document.documentElement.setAttribute("data-theme",t);})();
+    <script is:inline>
+      (function(){try{var t=localStorage.getItem("theme-palette");if(["original","tokyo-midnight","dracula","blood-moon"].indexOf(t)<0)t="original";document.documentElement.setAttribute("data-theme",t);}catch(e){document.documentElement.setAttribute("data-theme","original");}})();
     </script>
     <JsonLd
       name="Steve Jevon Rahardjo"

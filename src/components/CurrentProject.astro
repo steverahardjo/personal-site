@@ -1,0 +1,117 @@
+---
+const features = [
+  { label: "Supervisor-based multi-agent architecture", done: true },
+  { label: "LLM meal parsing + 7,323-item Food DB", done: true },
+  { label: "VLM food photo analysis", done: true },
+  { label: "Weekly analytics with LLM insights", done: true },
+  { label: "React dashboard + state engine (9 modes)", done: true },
+  { label: "Go backend with Google ADK v2", done: true },
+  { label: "Meal Planner agent (stub)", done: false },
+  { label: "Eatery Search via Google Places (stub)", done: false },
+];
+---
+
+<div class="border border-[var(--border)] bg-[var(--surface)] transition-colors duration-150 hover:border-[var(--accent)]/30">
+  <div class="p-5 sm:p-6">
+    <div class="flex items-center gap-2 mb-1">
+      <span class="relative flex h-2 w-2">
+        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-[var(--accent)] opacity-75" />
+        <span class="relative inline-flex rounded-full h-2 w-2 bg-[var(--accent)]" />
+      </span>
+      <span class="text-[11px] font-bold tracking-[0.2em] text-[var(--muted-foreground)] uppercase">
+        In Progress
+      </span>
+    </div>
+
+    <div class="flex items-center justify-between gap-3 mb-4">
+      <div>
+        <h3 class="text-base sm:text-lg font-bold tracking-tight text-[var(--text)]">
+          Nutribot
+        </h3>
+        <p class="text-xs text-[var(--muted-foreground)]">
+          Multi-agent AI nutrition assistant
+        </p>
+      </div>
+      <div class="flex -space-x-2">
+        <span class="inline-flex items-center px-2.5 py-0.5 border border-[var(--border)] text-[11px] font-bold tracking-wide uppercase text-[var(--accent)]">
+          React
+        </span>
+        <span class="inline-flex items-center px-2.5 py-0.5 border border-[var(--border)] text-[11px] font-bold tracking-wide uppercase text-[var(--accent-secondary)]">
+          Go
+        </span>
+        <span class="inline-flex items-center px-2.5 py-0.5 border border-[var(--border)] text-[11px] font-bold tracking-wide uppercase text-[var(--accent)]">
+          AI
+        </span>
+      </div>
+    </div>
+
+    <p class="text-xs leading-relaxed text-[var(--muted-foreground)] mb-4">
+      A full-stack nutrition platform with a supervisor-based multi-agent
+      architecture, meal logging via text and photos, weekly analytics, and
+      a React dashboard — with both Django + LangGraph and Go + Google ADK
+      backends sharing the same schema.
+    </p>
+
+    <div class="flex flex-col gap-1.5">
+      {features.map((f) => (
+        <div class="flex items-center gap-2.5 text-xs">
+          <span
+            class={`shrink-0 w-4 h-4 rounded-full flex items-center justify-center ${
+              f.done
+                ? "bg-[var(--accent-secondary)]/15 text-[var(--accent-secondary)]"
+                : "bg-[var(--surface-low)] text-[var(--muted-foreground)]"
+            }`}
+          >
+            {f.done ? (
+              <svg
+                class="w-2.5 h-2.5"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="3"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <polyline points="20 6 9 17 4 12" />
+              </svg>
+            ) : (
+              <svg
+                class="w-2.5 h-2.5"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <line x1="5" y1="12" x2="19" y2="12" />
+              </svg>
+            )}
+          </span>
+          <span
+            class={`${f.done ? "text-[var(--text)]" : "text-[var(--muted-foreground)]"}`}
+          >
+            {f.label}
+          </span>
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <div class="border-t border-[var(--border)] px-5 sm:px-6 py-3 flex items-center justify-between">
+    <a
+      href="/writing"
+      class="text-[11px] font-medium text-[var(--accent)] no-underline hover:underline underline-offset-2"
+    >
+      Read about the build
+    </a>
+    <a
+      href="https://github.com/steverahardjo"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="text-[11px] text-[var(--muted-foreground)] no-underline hover:text-[var(--text)] transition-colors"
+    >
+      View on GitHub
+    </a>
+  </div>
+</div>

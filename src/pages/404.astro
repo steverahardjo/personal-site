@@ -1,13 +1,19 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-const jokes = ["404: Motivation not found.","This page has been refactored.","404: Sleep not found.","Like my social life, this page doesn't exist."];
-const joke = jokes[Math.floor(Math.random()*jokes.length)];
 ---
 
 <BaseLayout title="404 | Page Not Found">
   <div class="text-center py-20">
     <h1 class="text-4xl font-bold text-[var(--accent)] m-0">404</h1>
-    <p class="text-sm text-[var(--muted-foreground)] mt-3">{joke}</p>
+    <p class="text-sm text-[var(--muted-foreground)] mt-3" id="joke404"></p>
     <a href="/" class="inline-block mt-6 text-xs font-medium text-[var(--muted-foreground)] no-underline hover:text-[var(--accent)] transition-colors">Back Home</a>
   </div>
 </BaseLayout>
+
+<script is:inline>
+  (function () {
+    const jokes = ["404: Motivation not found.","This page has been refactored.","404: Sleep not found.","Like my social life, this page doesn't exist."];
+    const el = document.getElementById("joke404");
+    if (el) el.textContent = jokes[Math.floor(Math.random() * jokes.length)];
+  })();
+</script>

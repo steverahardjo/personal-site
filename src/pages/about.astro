@@ -12,9 +12,9 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
   <section class="mb-12">
     <h3 class="text-sm font-semibold tracking-wider text-[var(--muted-foreground)] uppercase mb-5">Skills</h3>
-    <div class="flex flex-wrap gap-1.5 mb-5" role="tablist">
+    <div class="flex flex-wrap gap-1.5 mb-5" role="tablist" aria-label="Skills">
       {[["languages","Languages"],["aiml","AI/ML"],["data-tools","Data Tools"],["dev-tools","Dev Tools"]].map(([id,label],i) => (
-        <button type="button" role="tab" aria-selected={i===0?"true":"false"} data-target={id}
+        <button type="button" role="tab" id={`tab-${id}`} aria-selected={i===0?"true":"false"} aria-controls={`panel-${id}`} tabindex={i===0?0:-1} data-target={id}
           class="tab-btn text-xs font-medium px-3 py-1.5 border border-[var(--border)] bg-transparent text-[var(--muted-foreground)] cursor-pointer transition-colors duration-150 hover:border-[var(--accent)]/50 hover:text-[var(--text)] data-[active=true]:bg-[var(--accent)] data-[active=true]:text-white data-[active=true]:border-[var(--accent)]"
         >{label}</button>
       ))}
@@ -26,7 +26,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
         ["data-tools","Streaming & analytics",["PySpark","Kafka","MongoDB","QdrantDB","Pandas","Matplotlib"]],
         ["dev-tools","Build & delivery",["Git","Docker","GitHub Actions","Flask","BeautifulSoup"]],
       ].map(([id,sub,words],i) => (
-        <div class="skill-panel p-6 border border-[var(--border)] bg-[var(--surface)]" data-panel={id as string} hidden={i!==0}>
+        <div class="skill-panel p-6 border border-[var(--border)] bg-[var(--surface)]" role="tabpanel" id={`panel-${id}`} aria-labelledby={`tab-${id}`} data-panel={id as string} hidden={i!==0}>
           <p class="text-xs text-[var(--muted-foreground)] mb-4">{sub as string}</p>
           <div class="flex flex-wrap gap-2">
             {(words as string[]).map(w => (
@@ -74,16 +74,38 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 </BaseLayout>
 
 <script is:inline>
-  document.querySelectorAll(".tab-btn").forEach(btn => {
-    btn.addEventListener("click", () => {
-      const target = btn.dataset.target;
-      document.querySelectorAll(".tab-btn").forEach(b => {
-        b.dataset.active = b === btn ? "true" : "false";
-        b.setAttribute("aria-selected", b === btn ? "true" : "false");
-      });
-      document.querySelectorAll(".skill-panel").forEach(p => {
-        p.hidden = p.dataset.panel !== target;
-      });
+  const tabs = Array.from(document.querySelectorAll(".tab-btn"));
+  const panels = Array.from(document.querySelectorAll(".skill-panel"));
+
+  function select(target) {
+    tabs.forEach(b => {
+      const on = b.dataset.target === target;
+      b.dataset.active = on ? "true" : "false";
+      b.setAttribute("aria-selected", on ? "true" : "false");
+      b.tabIndex = on ? 0 : -1;
+    });
+    panels.forEach(p => {
+      p.hidden = p.dataset.panel !== target;
+    });
+  }
+
+  tabs.forEach(tab => {
+    tab.addEventListener("click", () => {
+      select(tab.dataset.target);
+      tab.focus();
+    });
+    tab.addEventListener("keydown", e => {
+      const i = tabs.indexOf(tab);
+      let next = null;
+      if (e.key === "ArrowRight") next = tabs[(i + 1) % tabs.length];
+      else if (e.key === "ArrowLeft") next = tabs[(i - 1 + tabs.length) % tabs.length];
+      else if (e.key === "Home") next = tabs[0];
+      else if (e.key === "End") next = tabs[tabs.length - 1];
+      if (next) {
+        e.preventDefault();
+        select(next.dataset.target);
+        next.focus();
+      }
     });
   });
 </script>

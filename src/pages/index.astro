@@ -1,6 +1,6 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import CurrentProject from "../components/current-project";
+import CurrentProject from "../components/CurrentProject.astro";
 ---
 
 <BaseLayout title="sjrah.net" description="Steve Jevon Rahardjo - building software." page="home">
@@ -33,7 +33,7 @@ import CurrentProject from "../components/current-project";
       <p class="text-xs font-semibold tracking-[0.2em] text-[var(--muted-foreground)] uppercase">Current Project</p>
     </div>
     <div class="max-w-3xl">
-      <CurrentProject client:load />
+      <CurrentProject />
     </div>
     <p class="text-xs text-[var(--muted-foreground)] m-0 border-l-2 border-[var(--accent)] pl-3 mt-4" id="joke"></p>
     <p class="text-xs text-[var(--muted-foreground)] m-0 mt-1">status: <span class="text-[var(--accent)] font-semibold">sleep deprived</span></p>

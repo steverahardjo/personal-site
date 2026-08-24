@@ -29,32 +29,34 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 Two layouts, both in `src/layouts/`:
 
-- **`BaseLayout.astro`** — The shell for every page. Provides: `<head>` with SEO/OG meta, JSON-LD Person schema, desktop sidebar (nav + social links + resume button + theme toggle), mobile top bar, mobile bottom tab bar, and a `<slot />` for page content. Accepts `title`, `description`, and `page` (nav highlight ID) props.
-- **`BlogLayout.astro`** — Wraps `BaseLayout` for blog posts. Adds article header (title, date, tags), prose styling for rendered markdown, a "Back to Writing" link, and inline `<script>` that adds copy-to-clipboard buttons to `<pre>` blocks.
+- **`BaseLayout.astro`** — The shell for every page. Provides: `<head>` with SEO/OG meta, JSON-LD Person schema, a pre-paint theme script, a top header with nav tabs + Resume link, footer with social links + copyright, the `ThemePicker` React island, and a `<slot />` for page content. Accepts `title`, `description`, and `page` (nav highlight ID) props.
+- **`BlogLayout.astro`** — Wraps `BaseLayout` for blog posts. Adds article header (title, date, tags), prose styling for rendered markdown, a "Back to Writing" link, and inline `<script>` that adds copy-to-clipboard buttons to `<pre>` blocks plus optional Mermaid/Typst rendering.
 
 ### Pages (file-based routing)
 
 | Route | File | Notes |
 |-------|------|-------|
-| `/` | `src/pages/index.astro` | Home — bio, stat cards, `CurrentProject` React island |
+| `/` | `src/pages/index.astro` | Home — bio, stat cards, `CurrentProject` static card |
 | `/about` | `src/pages/about.astro` | Skills (tabbed panels), education, experience — all static data |
 | `/projects` | `src/pages/projects.astro` | Project cards + `GhCalendar` React island (`client:visible`) |
 | `/writing` | `src/pages/writing.astro` | Blog index from content collection |
 | `/blog/[slug]` | `src/pages/blog/[slug]/index.astro` | Dynamic route via `getStaticPaths`, renders markdown via `BlogLayout` |
-| `/404` | `src/pages/404.astro` | Random joke from hardcoded array |
+| `/404` | `src/pages/404.astro` | Random joke picked client-side from hardcoded array |
 
 **Note:** `src/pages/projects/` is gitignored — individual project pages are generated or managed separately.
 
-### React components (`src/components/`)
+### Components (`src/components/`)
 
-- **`current-project.tsx`** — Static project card for "Deneb" with feature checklist. Uses React for the JSX structure but has no interactivity beyond hover states handled by Tailwind.
+- **`CurrentProject.astro`** — Static project card for "Nutribot" with feature checklist. Pure Astro markup, no hydration.
 - **`GhCalendar.tsx`** — GitHub contribution heatmap via `react-github-calendar`. Uses `useState` + `MutationObserver` on `data-theme` to switch between light/dark calendar themes reactively.
+- **`ThemePicker.tsx`** — Floating palette switcher (React island, `client:load`). Reads/writes `localStorage["theme-palette"]`, sets `data-theme` on `<html>`, and highlights the active palette.
+- **`JsonLd.astro`** — Person schema emitted as `<script type="application/ld+json">` via `set:html`.
 
 ### Theming
 
-Custom CSS properties on `:root` and `[data-theme="dark"]` in `src/styles/tailwind.css`. Key variables: `--bg`, `--text`, `--muted`, `--muted-foreground`, `--border`, `--accent`, `--surface`. The Tailwind `@theme inline` block maps these to utility classes like `bg-[var(--surface)]`, `text-[var(--accent)]`, etc.
+Palettes live in `src/styles/themes/*.css`, each scoped to `[data-theme="X"]` (e.g. `original`, `tokyo-midnight`, `dracula`, `blood-moon`). `original.css` also defines `:root` so an invalid stored value falls back gracefully. Key variables: `--bg`, `--text`, `--muted`, `--muted-foreground`, `--border`, `--accent`, `--surface`. The Tailwind `@theme inline` block maps these to utility classes like `bg-[var(--surface)]`, `text-[var(--accent)]`, etc.
 
-Theme toggle is handled by vanilla JS in `public/script.js`: reads/writes `localStorage.theme`, sets `data-theme` on `<html>`, and syncs toggle knob position across both mobile and desktop buttons. The `astro:page-load` event re-runs init for SPA navigation.
+A pre-paint inline `<script is:inline>` in `BaseLayout`'s head sets `data-theme` from `localStorage` (validated against the known palette ids) before first render. The `ThemePicker` React island handles switching afterward.
 
 ### Content collection
 
@@ -62,12 +64,12 @@ Theme toggle is handled by vanilla JS in `public/script.js`: reads/writes `local
 
 ### Deployment
 
-GitHub Actions workflow (`.github/workflows/nginx_deploy.yml`) deploys on push to `main`. The site runs on EC2 behind Nginx (config at `.github/workflows/sjrah.net.conf`) which reverse-proxies `:4321`. Site URL is `https://sjrah.net`.
+GitHub Actions workflow (`.github/workflows/deploy.yml`) deploys on push to `main` via `withastro/action` + `actions/deploy-pages` to **GitHub Pages**. Site URL is `https://sjrah.net`.
 
 ### Static assets
 
-- `public/resume.pdf` — linked from sidebar and mobile nav
+- `public/resume.pdf` — linked from header nav
 - `public/favicon-v2.svg` — site icon
-- `public/owl.svg` — theme toggle indicator
-- `public/script.js` — minified theme + joke init script
+- `public/og-image.png` — OG/Twitter share image
+- `public/script.js` — home page joke init script
 - `public/robots.txt` — allows all crawlers

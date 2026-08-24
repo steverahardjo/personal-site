@@ -25,9 +25,4 @@ const structuredData = {
 };
 ---
 
-<script is:inline>
-  const script = document.createElement('script');
-  script.type = 'application/ld+json';
-  script.textContent = JSON.stringify(structuredData);
-  document.head.appendChild(script);
-</script>
+<script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
