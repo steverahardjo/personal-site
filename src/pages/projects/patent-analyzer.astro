@@ -1,41 +1,16 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import ProjectOverlay from '../../components/ProjectOverlay.astro';
+
+const summary = `Built an AI-powered patent analysis platform from scratch: a FastAPI backend that embeds and indexes patent documents in Qdrant for semantic search, answers questions via RAG with Cohere reranking, classifies documents with LLMs, and extracts TRIZ innovation principles — all wrapped in a React frontend and Dockerized for deployment.`;
 ---
 
 <BaseLayout title="Patent Analyzer | Steve Jevon Rahardjo" description="AI-Powered Patent Document Analysis System using LLMs and RAG.">
-  <a href="/projects" class="inline-block mb-10 text-xs text-[var(--muted-foreground)] no-underline hover:text-[var(--text)] transition-colors">&larr; Projects</a>
-  <article class="max-w-3xl">
-    <header class="mb-10">
-      <h1 class="text-xl md:text-2xl font-bold tracking-tight m-0">Patent Analyzer</h1>
-      <p class="text-sm text-[var(--muted-foreground)] mt-2">AI-Powered Patent Document Analysis System</p>
-    </header>
-
-    <section class="mb-10">
-      <h2 class="text-sm font-semibold tracking-wider text-[var(--muted-foreground)] uppercase mb-4">Overview</h2>
-      <p class="text-sm leading-relaxed text-[var(--muted-foreground)]">An intelligent platform for analyzing patent documents using advanced NLP and machine learning. Leverages vector databases, semantic search, and LLMs for context-aware responses.</p>
-    </section>
-
-    <section class="mb-10">
-      <h2 class="text-sm font-semibold tracking-wider text-[var(--muted-foreground)] uppercase mb-4">Features</h2>
-      <div class="flex flex-col text-xs text-[var(--muted-foreground)] leading-relaxed">
-        {["PDF upload & processing","Vector embeddings for semantic search","Q&A chatbot with context","Automatic topic classification","TRIZ innovation principle extraction","Dockerized deployment"].map(f => (
-          <div class="py-2 border-b border-[var(--border)] last:border-none">{f}</div>
-        ))}
-      </div>
-    </section>
-
-    <section class="mb-10">
-      <h2 class="text-sm font-semibold tracking-wider text-[var(--muted-foreground)] uppercase mb-4">Architecture</h2>
-      <p class="text-sm leading-relaxed text-[var(--muted-foreground)]">Multi-service: Backend API (FastAPI), Vector Database (Qdrant), LLM Service, React Frontend.</p>
-    </section>
-
-    <section>
-      <h2 class="text-sm font-semibold tracking-wider text-[var(--muted-foreground)] uppercase mb-4">Tech Stack</h2>
-      <div class="flex flex-wrap gap-2">
-        {["Python","FastAPI","NLP","Vector DB","Docker","React"].map(t => (
-          <span class="text-xs font-medium px-2.5 py-1 border border-[var(--border)] text-[var(--muted-foreground)]">{t}</span>
-        ))}
-      </div>
-    </section>
-  </article>
+  <ProjectOverlay
+    title="Patent Analyzer"
+    tagline="AI-powered patent document analysis with LLMs and RAG"
+    summary={summary}
+    tags={["Python","FastAPI","QdrantDB","RAG","LLMs","React","Docker"]}
+    github="https://github.com/reneeyst23/patent-analyser-fyp"
+  />
 </BaseLayout>
