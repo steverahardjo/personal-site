@@ -2,15 +2,45 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ProjectOverlay from '../../components/ProjectOverlay.astro';
 
-const summary = `Built an AI-powered patent analysis platform from scratch: a FastAPI backend that embeds and indexes patent documents in Qdrant for semantic search, answers questions via RAG with Cohere reranking, classifies documents with LLMs, and extracts TRIZ innovation principles — all wrapped in a React frontend and Dockerized for deployment.`;
+const summary = `EcoPatent Analyzer is a patent analysis platform. It scrapes patent data from the USPTO website. It classifies inventions with the 40 TRIZ principles. A chatbot answers questions with hybrid search in a Qdrant vector database. The system reranks the results with Cohere. It stores patent data in Azure Cosmos DB and Azure Blob Storage.`;
+
+const features = [
+  "The system scrapes the full patent text from the USPTO website.",
+  "It classifies the patent with the 40 TRIZ principles.",
+  "It runs a chatbot with hybrid dense and sparse search.",
+  "It reranks the search results with Cohere.",
+  "It generates a PDF report of the analysis.",
+  "It stores patent data in Azure Cosmos DB and Azure Blob Storage.",
+];
+
+const workflow = [
+  "Upload a patent PDF.",
+  "Let the system scrape the full patent text.",
+  "Let the system classify the patent with TRIZ.",
+  "Ask a question in the chatbot.",
+  "Read the answer and the PDF report.",
+];
+
+const stack = [
+  "Backend: Python 3.13, Django 6, Django REST Framework",
+  "Frontend: React 18, TypeScript, Vite, Tailwind CSS",
+  "Models: OpenAI GPT-4o, TogetherAI DeepSeek",
+  "Vector store: Qdrant Cloud",
+  "Reranker: Cohere rerank-english-v3.0",
+  "Storage: Azure Cosmos DB, Azure Blob Storage",
+  "Scraping: Selenium, BeautifulSoup",
+];
 ---
 
 <BaseLayout title="Patent Analyzer | Steve Jevon Rahardjo" description="AI-Powered Patent Document Analysis System using LLMs and RAG.">
   <ProjectOverlay
     title="Patent Analyzer"
-    tagline="AI-powered patent document analysis with LLMs and RAG"
+    tagline="AI patent document analysis with large language models and hybrid search"
     summary={summary}
-    tags={["Python","FastAPI","QdrantDB","RAG","LLMs","React","Docker"]}
+    tags={["Python","Django","QdrantDB","RAG","Cohere","React","Docker"]}
+    features={features}
+    workflow={workflow}
+    stack={stack}
     github="https://github.com/reneeyst23/patent-analyser-fyp"
   />
 </BaseLayout>

@@ -1,41 +1,41 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import CurrentProject from "../components/CurrentProject.astro";
 ---
 
-<BaseLayout title="sjrah.net" description="Steve Jevon Rahardjo - building software." page="home">
-  <section class="mb-16 max-w-3xl">
-    <h1 class="text-xl md:text-2xl font-bold tracking-tight mb-3">Hi, I'm Steve</h1>
-    <p class="text-sm md:text-base leading-relaxed text-[var(--muted-foreground)]">CS graduate in Data Science from Monash University. Building backend systems, AI tools, and data pipelines with Python, Go, and TypeScript.</p>
+<BaseLayout title="sjrah.net" description="Steve Jevon Rahardjo - backend and data engineer." page="home">
+  <section class="mb-20 md:mb-28">
+    <h1 class="text-4xl md:text-6xl font-bold tracking-tight leading-[1.05]">
+      Steve Jevon<br />Rahardjo.
+    </h1>
+    <p class="mt-6 max-w-[58ch] text-sm md:text-base leading-relaxed text-[var(--muted-foreground)]">
+      CS graduate in Data Science from Monash University. Building backend systems,
+      AI tools, and data pipelines with Python, Go, and TypeScript.
+    </p>
   </section>
 
-  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-16">
-    <div class="p-5 border border-[var(--border)] bg-[var(--surface)]">
-      <span class="text-[11px] font-semibold tracking-wider text-[var(--muted-foreground)] uppercase">Role</span>
-      <p class="text-sm mt-1 font-medium">Backend Engineer / Data</p>
-    </div>
-    <div class="p-5 border border-[var(--border)] bg-[var(--surface)]">
-      <span class="text-[11px] font-semibold tracking-wider text-[var(--muted-foreground)] uppercase">Location</span>
-      <p class="text-sm mt-1 font-medium">Indonesia</p>
-    </div>
-    <div class="p-5 border border-[var(--border)] bg-[var(--surface)]">
-      <span class="text-[11px] font-semibold tracking-wider text-[var(--muted-foreground)] uppercase">Education</span>
-      <p class="text-sm mt-1 font-medium">B.CompSci, Monash</p>
-    </div>
-    <div class="p-5 border border-[var(--border)] bg-[var(--surface)]">
-      <span class="text-[11px] font-semibold tracking-wider text-[var(--muted-foreground)] uppercase">Focus</span>
-      <p class="text-sm mt-1 font-medium">Backend & AI Systems</p>
-    </div>
-  </div>
+  <section class="mb-20 md:mb-28">
+    <dl class="grid grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-8 border-t border-[var(--border)] pt-6">
+      <div>
+        <dt class="font-mono text-[11px] tracking-wider text-[var(--muted-foreground)] uppercase">Role</dt>
+        <dd class="m-0 mt-2 text-sm font-medium text-[var(--text)]">Backend Engineer / Data</dd>
+      </div>
+      <div>
+        <dt class="font-mono text-[11px] tracking-wider text-[var(--muted-foreground)] uppercase">Location</dt>
+        <dd class="m-0 mt-2 text-sm font-medium text-[var(--text)]">Indonesia</dd>
+      </div>
+      <div>
+        <dt class="font-mono text-[11px] tracking-wider text-[var(--muted-foreground)] uppercase">Education</dt>
+        <dd class="m-0 mt-2 text-sm font-medium text-[var(--text)]">B.CompSci, Monash</dd>
+      </div>
+      <div>
+        <dt class="font-mono text-[11px] tracking-wider text-[var(--muted-foreground)] uppercase">Focus</dt>
+        <dd class="m-0 mt-2 text-sm font-medium text-[var(--text)]">Backend &amp; AI Systems</dd>
+      </div>
+    </dl>
+  </section>
 
   <section>
-    <div class="flex items-center justify-between mb-6">
-      <p class="text-xs font-semibold tracking-[0.2em] text-[var(--muted-foreground)] uppercase">Current Project</p>
-    </div>
-    <div class="max-w-3xl">
-      <CurrentProject />
-    </div>
-    <p class="text-xs text-[var(--muted-foreground)] m-0 border-l-2 border-[var(--accent)] pl-3 mt-4" id="joke"></p>
-    <p class="text-xs text-[var(--muted-foreground)] m-0 mt-1">status: <span class="text-[var(--accent)] font-semibold">sleep deprived</span></p>
+    <p class="text-xs text-[var(--muted-foreground)] m-0 border-l-2 border-[var(--accent)] pl-3" id="joke"></p>
+    <p class="font-mono text-xs text-[var(--muted-foreground)] m-0 mt-2">status: <span class="text-[var(--accent)] font-semibold">sleep deprived</span></p>
   </section>
 </BaseLayout>

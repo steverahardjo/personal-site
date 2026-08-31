@@ -3,33 +3,35 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import GhCalendar from "../components/GhCalendar.tsx";
 
 const projects = [
-  { title: "Patent Analyzer", desc: "Full-stack patent analysis platform using TRIZ40, LLM classification, RAG chatbot with Qdrant and Cohere reranking.", tags: ["Python","Django","QdrantDB","RAG"], link: "https://github.com/reneeyst23/patent-analyser-fyp", blog: true },
-  { title: "GitAegis", desc: "Go CLI security engine detecting secrets via Shannon entropy and Tree-sitter AST parsing. CI/CD ready.", tags: ["Go","Cobra","Tree-sitter","Security"], link: "https://github.com/steverahardjo/gitaegis", blog: false },
-  { title: "Deneb", desc: "Full-stack personal finance tracker with Google ADK multi-agent backend, Telegram bot, and Tauri/Svelte mobile app.", tags: ["Python","Google ADK","Svelte 5","Tauri 2"], link: "/projects/expense-tracker", blog: true },
-  { title: "Big Data IoT Pipeline", desc: "Real-time data ingestion with Kafka and PySpark. Custom UDFs for anomaly detection on IoT streams.", tags: ["PySpark","Kafka","MongoDB","Matplotlib"], link: "https://github.com/steverahardjo/AWAS_traffic_detector", blog: false },
-  {title:"Skilltune", desc: "Browser extension powered by Langchain-based agentic system to enable users to adjust their resume based on certain job posting.", tags:["Opencode", "Python", "JavaScript", "Langchain", "DeepSeek"], link:"https://github.com/steverahardjo/Skilltune", blog:false}
+  { title: "Patent Analyzer", desc: "Full-stack patent analysis platform using TRIZ40, LLM classification, RAG chatbot with Qdrant and Cohere reranking.", tags: ["Python","Django","QdrantDB","RAG"], link: "/projects/patent-analyzer" },
+  { title: "GitAegis", desc: "Go CLI security engine detecting secrets via Shannon entropy and Tree-sitter AST parsing. CI/CD ready.", tags: ["Go","Cobra","Tree-sitter","Security"], link: "/projects/gitaegis" },
+  { title: "Deneb", desc: "Full-stack personal finance tracker with Google ADK multi-agent backend, Telegram bot, and Tauri/Svelte mobile app.", tags: ["Python","Google ADK","Svelte 5","Tauri 2"], link: "/projects/expense-tracker" },
+  { title: "Big Data IoT Pipeline", desc: "Real-time data ingestion with Kafka and PySpark. Custom UDFs for anomaly detection on IoT streams.", tags: ["PySpark","Kafka","MongoDB","Matplotlib"], link: "/projects/iot-pipeline" },
+  { title: "Skilltune", desc: "Browser extension powered by Langchain-based agentic system to enable users to adjust their resume based on certain job posting.", tags:["Opencode", "Python", "JavaScript", "Langchain", "DeepSeek"], link:"/projects/skilltune"}
 ];
 ---
 
 <BaseLayout title="Projects | Steve Jevon Rahardjo" page="projects">
-  <h1 class="text-xl md:text-2xl font-bold tracking-tight mb-2">Selected <span class="text-[var(--accent)]">Work</span></h1>
-  <p class="text-sm text-[var(--muted-foreground)] mb-12">Things I've built and shipped.</p>
+  <h1 class="text-2xl md:text-3xl font-bold tracking-tight mb-2">Selected work</h1>
+  <p class="text-sm text-[var(--muted-foreground)] mb-12">Five projects across search, security, and data.</p>
 
-  <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 mb-16">
-    {projects.map((p) => (
-      <a href={p.link} target="_blank" rel="noopener"
-        class="group p-6 border border-[var(--border)] bg-[var(--surface)] no-underline transition-colors duration-150 hover:border-[var(--accent)]/40">
-        <h3 class="text-sm font-bold m-0 text-[var(--text)] group-hover:text-[var(--accent)] transition-colors">{p.title}</h3>
-        <p class="text-xs text-[var(--muted-foreground)] mt-2 leading-relaxed">{p.desc}</p>
-        <div class="flex flex-wrap gap-1.5 mt-4">
-          {p.tags.map(t => <span class="text-[11px] font-medium px-2 py-0.5 border border-[var(--border)] text-[var(--muted-foreground)]">{t}</span>)}
-        </div>
-        <div class="mt-4">
-          <span class="text-[11px] font-semibold text-[var(--accent)] group-hover:underline underline-offset-2">{p.blog ? "Read blog →" : "Source →"}</span>
-        </div>
-      </a>
+  <ol class="border-t border-[var(--border)] mb-16">
+    {projects.map((p, i) => (
+      <li class="border-b border-[var(--border)]">
+        <a href={p.link} class="group grid grid-cols-[2.5rem_1fr] md:grid-cols-[4rem_1fr_auto] gap-x-4 md:gap-x-8 gap-y-2 py-6 md:py-8 items-baseline no-underline">
+          <span class="font-mono text-xs text-[var(--muted-foreground)]">{String(i + 1).padStart(2, "0")}</span>
+          <div>
+            <h3 class="m-0 text-base md:text-lg font-bold text-[var(--text)] group-hover:text-[var(--accent)] transition-colors">{p.title}</h3>
+            <p class="mt-1.5 text-xs md:text-sm text-[var(--muted-foreground)] leading-relaxed max-w-[60ch]">{p.desc}</p>
+            <div class="flex flex-wrap gap-1.5 mt-3">
+              {p.tags.map(t => <span class="font-mono text-[10px] px-2 py-0.5 border border-[var(--border)] text-[var(--muted-foreground)]">{t}</span>)}
+            </div>
+          </div>
+          <span class="font-mono text-[var(--border)] group-hover:text-[var(--accent)] transition-colors justify-self-end hidden md:block">&#8594;</span>
+        </a>
+      </li>
     ))}
-  </div>
+  </ol>
 
   <div class="border border-[var(--border)] overflow-hidden">
     <GhCalendar client:visible />

@@ -2,15 +2,44 @@
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import ProjectOverlay from "../../components/ProjectOverlay.astro";
 
-const summary = `Designed and shipped Deneb end-to-end: a multi-agent Google ADK backend — five collaborating agents (root, saver, retriever, bank, visualizer) exposed through a Telegram bot on Cloud Run with MongoDB storage — and a Tauri 2 + Svelte 5 mobile app. I handled expense capture from text, photos, PDFs, and voice, natural-language querying of expenses, bank reconciliation, automated chart generation, and an iOS-style dashboard with biometric lock.`;
+const summary = `Deneb is a full-stack personal finance tracker. A Telegram bot receives the input. The bot reads text, photos, PDFs, and voice notes. A root agent routes each request to a specialist agent. The agents save and search expenses in MongoDB. The visualizer agent generates charts with Matplotlib.`;
+
+const features = [
+  "The root agent routes each request to a specialist agent.",
+  "The saver agent stores expenses in MongoDB.",
+  "The retriever agent searches expenses with filters.",
+  "The visualizer agent generates charts with Matplotlib.",
+  "The bank agent reconciles expenses with bank statements.",
+  "A YOLO model crops receipt photos for text recognition.",
+];
+
+const workflow = [
+  "Send a message or a file to the Telegram bot.",
+  "Let the root agent route the request.",
+  "Read the expense that the saver agent recorded.",
+  "Ask the bot to show or search your expenses.",
+  "Ask the bot to generate a chart.",
+];
+
+const stack = [
+  "Backend: Python 3.13, Google ADK, aiogram",
+  "Database: MongoDB, Beanie, Motor",
+  "Models: Gemini 2.5 Flash, Gemini 3 Flash Preview",
+  "Visualization: Matplotlib, Pandas",
+  "OCR: YOLO, ONNX Runtime",
+  "Observability: AgentOps",
+];
 ---
 
-<BaseLayout title="Deneb | Steve Jevon Rahardjo" description="Full-stack personal finance tracker — Multi-agent ADK backend + Tauri/Svelte mobile app">
+<BaseLayout title="Deneb | Steve Jevon Rahardjo" description="Full-stack personal finance tracker — Multi-agent ADK backend + Telegram bot">
   <ProjectOverlay
     title="Deneb"
-    tagline="Full-stack personal finance tracker — multi-agent AI backend meets a mobile-first Tauri app"
+    tagline="A multi-agent AI backend behind a Telegram bot"
     summary={summary}
-    tags={["Google ADK","Python","Tauri 2","Svelte 5","MongoDB","Telegram Bot","Cloud Run"]}
+    tags={["Google ADK","Python","aiogram","MongoDB","Telegram Bot","Matplotlib"]}
+    features={features}
+    workflow={workflow}
+    stack={stack}
     github="https://github.com/steverahardjo/adk_exp_tracker"
   />
 </BaseLayout>

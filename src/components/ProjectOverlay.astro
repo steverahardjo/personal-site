@@ -5,9 +5,12 @@ export interface Props {
   summary: string;
   tags: string[];
   github?: string;
+  features?: string[];
+  workflow?: string[];
+  stack?: string[];
 }
 
-const { title, tagline, summary, tags, github } = Astro.props;
+const { title, tagline, summary, tags, github, features, workflow, stack } = Astro.props;
 ---
 
 <section class="relative overflow-hidden border border-[var(--border)] bg-[var(--surface-low)]">
@@ -64,6 +67,46 @@ const { title, tagline, summary, tags, github } = Astro.props;
           rel="noopener noreferrer"
           class="inline-block mt-8 text-xs font-medium px-4 py-2 border border-[var(--border)] text-[var(--accent)] no-underline transition-colors hover:border-[var(--accent)]"
         >View on GitHub &rarr;</a>
+      )}
+
+      {features && features.length > 0 && (
+        <div class="mt-10 pt-8 border-t border-[var(--border)]">
+          <h2 class="text-xs font-bold tracking-[0.2em] uppercase text-[var(--muted-foreground)] mb-4">Features</h2>
+          <ul class="m-0 pl-5 space-y-2">
+            {features.map(f => (
+              <li class="text-sm leading-relaxed text-[var(--muted-foreground)]">{f}</li>
+            ))}
+          </ul>
+        </div>
+      )}
+
+      {workflow && workflow.length > 0 && (
+        <div class="mt-10 pt-8 border-t border-[var(--border)]">
+          <h2 class="text-xs font-bold tracking-[0.2em] uppercase text-[var(--muted-foreground)] mb-4">How it works</h2>
+          <ol class="m-0 pl-5 space-y-2 list-decimal">
+            {workflow.map(s => (
+              <li class="text-sm leading-relaxed text-[var(--muted-foreground)]">{s}</li>
+            ))}
+          </ol>
+        </div>
+      )}
+
+      {stack && stack.length > 0 && (
+        <div class="mt-10 pt-8 border-t border-[var(--border)]">
+          <h2 class="text-xs font-bold tracking-[0.2em] uppercase text-[var(--muted-foreground)] mb-4">Tech stack</h2>
+          <ul class="m-0 space-y-2">
+            {stack.map(s => {
+              const i = s.indexOf(":");
+              const layer = i >= 0 ? s.slice(0, i) : s;
+              const items = i >= 0 ? s.slice(i + 1).trim() : "";
+              return (
+                <li class="text-sm leading-relaxed text-[var(--muted-foreground)]">
+                  <span class="font-medium text-[var(--text)]">{layer}:</span>{" "}{items}
+                </li>
+              );
+            })}
+          </ul>
+        </div>
       )}
     </div>
   </div>
