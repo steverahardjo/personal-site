@@ -5,8 +5,6 @@ pubDate: 2026-03-10
 tags: ['Go', 'PostgreSQL', 'QR Code', 'WhatsApp API', 'JWT']
 ---
 
-# QR Invite: Event Management with Go and QR Codes
-
 QR Invite is a backend system for managing event invitations through QR codes. Guests receive invites via WhatsApp or email, view their invite with a generated QR code, and admins scan the QR code at the door to mark attendance.
 
 ## Flow

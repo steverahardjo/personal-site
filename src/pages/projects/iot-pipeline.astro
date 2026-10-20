@@ -1,0 +1,43 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import ProjectOverlay from "../../components/ProjectOverlay.astro";
+
+const summary = `The pipeline reads IoT sensor data in real time. Kafka carries the sensor streams. PySpark processes the streams with custom user-defined functions (UDFs). The UDFs detect anomalies in the data. MongoDB stores the processed data. Matplotlib shows the results in charts.`;
+
+const features = [
+  "Kafka streams the raw sensor data.",
+  "PySpark processes the stream with custom user-defined functions.",
+  "The functions detect anomalies in temperature, humidity, and pressure.",
+  "Window functions compute rolling statistics.",
+  "MongoDB stores the processed data.",
+  "Matplotlib updates the charts when new data arrives.",
+];
+
+const workflow = [
+  "Start the sensor simulator to publish data to Kafka.",
+  "Let PySpark read the raw stream.",
+  "Let the functions detect anomalies.",
+  "Let the pipeline write the data to MongoDB.",
+  "Watch the charts update in real time.",
+];
+
+const stack = [
+  "Streaming: Apache Kafka",
+  "Processing: PySpark, Spark Structured Streaming",
+  "Storage: MongoDB",
+  "Visualization: Matplotlib",
+];
+---
+
+<BaseLayout title="Big Data IoT Pipeline | Steve Jevon Rahardjo" description="Real-time data ingestion with Kafka and PySpark for IoT sensor streams." page="projects">
+  <ProjectOverlay
+    title="Big Data IoT Pipeline"
+    tagline="Real-time IoT data processing with Kafka and PySpark"
+    summary={summary}
+    tags={["PySpark","Kafka","MongoDB","Matplotlib"]}
+    features={features}
+    workflow={workflow}
+    stack={stack}
+    github="https://github.com/steverahardjo/AWAS_traffic_detector"
+  />
+</BaseLayout>

@@ -5,8 +5,6 @@ pubDate: 2026-01-15
 tags: ['RAG', 'LLM', 'Python', 'Final Year Project']
 ---
 
-# Building a RAG System for Patent Analysis
-
 This article covers my Final Year Project developing a patent document analyzer using Retrieval-Augmented Generation (RAG) and Large Language Models.
 
 ## Overview

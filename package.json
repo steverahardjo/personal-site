@@ -11,23 +11,16 @@
     "lint:fix": "eslint . --fix"
   },
   "dependencies": {
-    "@astrojs/react": "^6.0.2",
     "@astrojs/sitemap": "^3.7.3",
     "@fontsource-variable/jetbrains-mono": "^5.2.8",
     "@fontsource-variable/libre-baskerville": "^5.3.0",
     "@tailwindcss/vite": "^4.2.2",
     "astro": "^7.2.0",
-    "react": "^19.2.4",
-    "react-dom": "^19.2.4",
-    "react-github-calendar": "^5.0.5",
     "tailwindcss": "^4.2.2"
   },
   "devDependencies": {
     "@eslint/js": "9",
-    "@types/react": "^19.2.14",
-    "@types/react-dom": "^19.2.3",
     "eslint": "9",
-    "eslint-plugin-react": "^7.37.5",
     "globals": "^17.5.0",
     "typescript-eslint": "^8.58.2"
   }

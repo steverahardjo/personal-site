@@ -5,8 +5,6 @@ pubDate: 2026-08-08
 tags: ['Bun', 'React', 'GitHub API', 'Shiki', 'TypeScript']
 ---
 
-# Granarium: A Read-Only GitHub Frontend with Dev-Tool Aesthetic
-
 Granarium is a hyper-performant, stylish alternative to browsing repos on github.com. It consumes the GitHub REST API, renders repos, files, commits, and pull requests with server-proxied API calls and a Pierre Computer Company–inspired design language.
 
 **No backend. No database.** Pure Bun + React + GitHub API.

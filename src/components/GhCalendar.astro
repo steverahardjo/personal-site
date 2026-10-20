@@ -1,0 +1,300 @@
+---
+export interface Props {
+  username?: string;
+}
+
+const { username = "steverahardjo" } = Astro.props;
+const profileUrl = `https://github.com/${username}`;
+---
+
+<section
+  data-gh-calendar
+  data-username={username}
+  aria-label={`GitHub contribution activity for @${username}`}
+  aria-busy="true"
+  class="rounded-xl border border-[var(--border)] p-5 md:p-6"
+  style="background: var(--surface);"
+>
+  <div class="mb-4 flex items-baseline justify-between gap-4">
+    <h2 class="eyebrow m-0">GitHub activity</h2>
+    <p class="m-0 font-mono text-xs text-[var(--muted-foreground)]" data-gh-total aria-live="polite">&mdash;</p>
+  </div>
+
+  <div class="gh-cal__scroll" data-gh-grid>
+    <div class="gh-cal__skeleton" aria-hidden="true"></div>
+  </div>
+
+  <div class="mt-4 flex flex-wrap items-center justify-between gap-3">
+    <a
+      href={profileUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="font-mono text-[11px] text-[var(--muted-foreground)] no-underline transition-colors hover:text-[var(--accent)]"
+    >@{username}</a>
+    <div class="gh-cal__legend" aria-hidden="true">
+      <span>Less</span>
+      <i class="gh-cal__cell gh-cal__cell--l0"></i>
+      <i class="gh-cal__cell gh-cal__cell--l1"></i>
+      <i class="gh-cal__cell gh-cal__cell--l2"></i>
+      <i class="gh-cal__cell gh-cal__cell--l3"></i>
+      <i class="gh-cal__cell gh-cal__cell--l4"></i>
+      <span>More</span>
+    </div>
+  </div>
+</section>
+
+<style is:global>
+  [data-gh-calendar] .gh-cal__scroll {
+    min-height: 109px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding-bottom: 2px;
+    scrollbar-width: thin;
+  }
+
+  [data-gh-calendar] .gh-cal__scroll svg {
+    display: block;
+  }
+
+  [data-gh-calendar] .gh-cal__skeleton {
+    height: 109px;
+    border-radius: 4px;
+    background: linear-gradient(
+      90deg,
+      var(--surface-low) 25%,
+      color-mix(in srgb, var(--surface-low) 55%, var(--border)) 37%,
+      var(--surface-low) 63%
+    );
+    background-size: 400% 100%;
+    animation: gh-cal-shimmer 1.5s ease infinite;
+  }
+
+  [data-gh-calendar] .gh-cal__cell {
+    fill: var(--surface-low);
+    background: var(--surface-low);
+  }
+
+  [data-gh-calendar] .gh-cal__cell--l1 {
+    fill: color-mix(in srgb, var(--accent) 26%, var(--surface-low));
+    background: color-mix(in srgb, var(--accent) 26%, var(--surface-low));
+  }
+
+  [data-gh-calendar] .gh-cal__cell--l2 {
+    fill: color-mix(in srgb, var(--accent) 48%, var(--surface-low));
+    background: color-mix(in srgb, var(--accent) 48%, var(--surface-low));
+  }
+
+  [data-gh-calendar] .gh-cal__cell--l3 {
+    fill: color-mix(in srgb, var(--accent) 72%, var(--surface-low));
+    background: color-mix(in srgb, var(--accent) 72%, var(--surface-low));
+  }
+
+  [data-gh-calendar] .gh-cal__cell--l4 {
+    fill: var(--accent);
+    background: var(--accent);
+  }
+
+  [data-gh-calendar] svg .gh-cal__cell {
+    stroke: color-mix(in srgb, var(--border) 70%, transparent);
+    stroke-width: 1;
+  }
+
+  [data-gh-calendar] .gh-cal__month {
+    font-family: "JetBrains Mono Variable", "JetBrains Mono", ui-monospace, monospace;
+    font-size: 9px;
+    fill: var(--muted-foreground);
+  }
+
+  [data-gh-calendar] .gh-cal__legend {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+    font-family: "JetBrains Mono Variable", "JetBrains Mono", ui-monospace, monospace;
+    font-size: 10px;
+    color: var(--muted-foreground);
+  }
+
+  [data-gh-calendar] .gh-cal__legend .gh-cal__cell {
+    display: inline-block;
+    width: 9px;
+    height: 9px;
+    border-radius: 2px;
+  }
+
+  @keyframes gh-cal-shimmer {
+    0% {
+      background-position: 100% 0;
+    }
+    100% {
+      background-position: 0 0;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    [data-gh-calendar] .gh-cal__skeleton {
+      animation: none;
+    }
+  }
+</style>
+
+<script>
+  const ENDPOINT = "https://github-contributions-api.jogruber.de/v4/";
+  const SVG_NS = "http://www.w3.org/2000/svg";
+  const CELL = 11;
+  const STEP = 14;
+  const LABEL_HEIGHT = 14;
+  const DEFAULT_USERNAME = "steverahardjo";
+
+  interface Contribution {
+    date: string;
+    count: number;
+    level: number;
+  }
+
+  interface Payload {
+    total?: { lastYear?: number };
+    contributions?: Contribution[];
+  }
+
+  function formatDate(iso: string): string {
+    return new Date(`${iso}T00:00:00Z`).toLocaleDateString("en-US", {
+      month: "short",
+      day: "numeric",
+      year: "numeric",
+      timeZone: "UTC",
+    });
+  }
+
+  function render(el: HTMLElement, data: Contribution[], total: number): void {
+    const grid = el.querySelector<HTMLElement>("[data-gh-grid]");
+    const totalEl = el.querySelector<HTMLElement>("[data-gh-total]");
+    if (!grid) return;
+
+    const first = new Date(`${data[0].date}T00:00:00Z`);
+    const offset = first.getUTCDay();
+    const columns = Math.ceil((offset + data.length) / 7);
+    const width = columns * STEP - (STEP - CELL);
+    const height = LABEL_HEIGHT + 7 * STEP - (STEP - CELL);
+
+    const svg = document.createElementNS(SVG_NS, "svg");
+    svg.setAttribute("viewBox", `0 0 ${width} ${height}`);
+    svg.setAttribute("width", String(width));
+    svg.setAttribute("height", String(height));
+    svg.setAttribute("role", "img");
+    svg.setAttribute("aria-label", `GitHub contributions in the last year: ${total}`);
+
+    let lastMonth = -1;
+    data.forEach((day, index) => {
+      const date = new Date(`${day.date}T00:00:00Z`);
+      const month = date.getUTCMonth();
+      if (month === lastMonth) return;
+      lastMonth = month;
+      if (date.getUTCDate() > 7) return;
+      const label = document.createElementNS(SVG_NS, "text");
+      label.setAttribute("x", String(Math.floor((offset + index) / 7) * STEP));
+      label.setAttribute("y", "8");
+      label.setAttribute("class", "gh-cal__month");
+      label.textContent = date.toLocaleDateString("en-US", { month: "short", timeZone: "UTC" });
+      svg.appendChild(label);
+    });
+
+    const cells = document.createDocumentFragment();
+    data.forEach((day, index) => {
+      const position = offset + index;
+      const rect = document.createElementNS(SVG_NS, "rect");
+      rect.setAttribute("x", String(Math.floor(position / 7) * STEP));
+      rect.setAttribute("y", String(LABEL_HEIGHT + (position % 7) * STEP));
+      rect.setAttribute("width", String(CELL));
+      rect.setAttribute("height", String(CELL));
+      rect.setAttribute("rx", "2");
+      const level = Math.max(0, Math.min(4, Number(day.level) || 0));
+      rect.setAttribute("class", `gh-cal__cell gh-cal__cell--l${level}`);
+
+      const title = document.createElementNS(SVG_NS, "title");
+      title.textContent = `${day.count} contribution${day.count === 1 ? "" : "s"} on ${formatDate(day.date)}`;
+      rect.appendChild(title);
+      cells.appendChild(rect);
+    });
+    svg.appendChild(cells);
+
+    grid.replaceChildren(svg);
+    if (totalEl) {
+      totalEl.textContent = `${total.toLocaleString("en-US")} contributions in the last year`;
+    }
+    el.setAttribute("aria-busy", "false");
+  }
+
+  function showError(el: HTMLElement): void {
+    const grid = el.querySelector<HTMLElement>("[data-gh-grid]");
+    const totalEl = el.querySelector<HTMLElement>("[data-gh-total]");
+    if (totalEl) totalEl.textContent = "Unavailable";
+    if (!grid) {
+      el.setAttribute("aria-busy", "false");
+      return;
+    }
+
+    const message = document.createElement("p");
+    message.className = "m-0 py-6 text-center text-xs text-[var(--muted-foreground)]";
+    message.append("Couldn't load GitHub activity. ");
+
+    const link = document.createElement("a");
+    link.href = `https://github.com/${el.dataset.username ?? DEFAULT_USERNAME}`;
+    link.target = "_blank";
+    link.rel = "noopener noreferrer";
+    link.className = "text-[var(--accent)] underline";
+    link.textContent = "View on GitHub";
+    message.appendChild(link);
+
+    grid.replaceChildren(message);
+    el.setAttribute("aria-busy", "false");
+  }
+
+  async function load(el: HTMLElement): Promise<void> {
+    if (el.dataset.loaded === "true") return;
+    el.dataset.loaded = "true";
+
+    const username = el.dataset.username ?? DEFAULT_USERNAME;
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 10000);
+    try {
+      const response = await fetch(`${ENDPOINT}${encodeURIComponent(username)}?y=last`, {
+        headers: { Accept: "application/json" },
+        signal: controller.signal,
+      });
+      if (!response.ok) throw new Error(`HTTP ${response.status}`);
+
+      const payload = (await response.json()) as Payload;
+      if (!Array.isArray(payload.contributions) || payload.contributions.length === 0) {
+        throw new Error("No contribution data");
+      }
+
+      const total =
+        payload.total?.lastYear ??
+        payload.contributions.reduce((sum, day) => sum + (Number(day.count) || 0), 0);
+      render(el, payload.contributions, total);
+    } catch {
+      showError(el);
+    } finally {
+      clearTimeout(timeout);
+    }
+  }
+
+  const sections = Array.from(document.querySelectorAll<HTMLElement>("[data-gh-calendar]"));
+  if (sections.length > 0) {
+    if ("IntersectionObserver" in window) {
+      const observer = new IntersectionObserver(
+        (entries, instance) => {
+          for (const entry of entries) {
+            if (!entry.isIntersecting) continue;
+            instance.unobserve(entry.target);
+            void load(entry.target as HTMLElement);
+          }
+        },
+        { rootMargin: "200px 0px" },
+      );
+      sections.forEach((section) => observer.observe(section));
+    } else {
+      sections.forEach((section) => void load(section));
+    }
+  }
+</script>

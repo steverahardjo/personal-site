@@ -5,8 +5,6 @@ pubDate: 2026-05-15
 tags: ['Chrome Extension', 'LangChain', 'Typst', 'React', 'DeepSeek']
 ---
 
-# Skilltune: Agentic Resume Tailoring via Chrome Extension
-
 Skilltune is a Chrome extension that reads job postings in the browser, analyzes them with AI agents, and generates a tailored `.typ` (Typst) resume compiled to PDF — all without leaving the page.
 
 ## How It Works

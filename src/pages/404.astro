@@ -2,7 +2,11 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
-<BaseLayout title="404 | Page Not Found">
+<BaseLayout
+  title="404 | Page Not Found"
+  description="The page you are looking for does not exist."
+  noindex
+>
   <div class="text-center py-20">
     <h1 class="text-4xl font-bold text-[var(--accent)] m-0">404</h1>
     <p class="text-sm text-[var(--muted-foreground)] mt-3" id="joke404"></p>

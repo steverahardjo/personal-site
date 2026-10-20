@@ -1,0 +1,45 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import ProjectOverlay from "../../components/ProjectOverlay.astro";
+
+const summary = `Skilltune is a Chrome extension. It reads job postings in the browser. It captures the page text and the user resume. AI agents analyze the job posting. They extract the job title, skills, and requirements. They generate a tailored resume in Typst format.`;
+
+const features = [
+  "It captures the job posting text in the browser.",
+  "It extracts the job title, skills, and requirements.",
+  "It scores the resume against the job posting.",
+  "It generates a tailored resume in Typst format.",
+  "It compiles the resume to a PDF file.",
+  "It logs each application to a CSV file.",
+];
+
+const workflow = [
+  "Enter your resume path in the onboarding screen.",
+  "Open a job posting page in the browser.",
+  "Click Scan to capture the page.",
+  "Click Analyze to extract the job details.",
+  "Click Write to generate the tailored resume.",
+  "Download the compiled PDF.",
+];
+
+const stack = [
+  "Extension: React, Chrome MV3, TypeScript",
+  "Backend: Python, FastAPI, LangChain",
+  "Model: DeepSeek",
+  "Scoring: scikit-learn, TF-IDF",
+  "Resume format: Typst",
+];
+---
+
+<BaseLayout title="Skilltune | Steve Jevon Rahardjo" description="A Chrome extension that tailors resumes to job postings with LangChain agents." page="projects">
+  <ProjectOverlay
+    title="Skilltune"
+    tagline="Agentic resume tailoring through a Chrome extension"
+    summary={summary}
+    tags={["Chrome Extension","LangChain","Typst","React","DeepSeek"]}
+    features={features}
+    workflow={workflow}
+    stack={stack}
+    github="https://github.com/steverahardjo/resume_adjuster"
+  />
+</BaseLayout>

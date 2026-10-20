@@ -5,8 +5,6 @@ pubDate: 2026-02-01
 tags: ['Google ADK', 'AI Agents', 'MCP', 'Python']
 ---
 
-# Multi-Agent Systems with Google ADK
-
 This article explores agent orchestration patterns using Google's Agent Development Kit (ADK) and the Model Context Protocol (MCP) for building intelligent financial workflows.
 
 ## Overview

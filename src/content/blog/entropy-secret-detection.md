@@ -5,8 +5,6 @@ pubDate: 2025-10-05
 tags: ['Go', 'Security', 'CLI', 'GitAegis']
 ---
 
-# Secret Detection Using Entropy Analysis
-
 This article explains how Shannon entropy calculation helps identify API keys and tokens in source code, and how I built GitAegis, a Go CLI tool for detecting secrets before commit.
 
 ## Overview

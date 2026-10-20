@@ -5,8 +5,6 @@ pubDate: 2025-11-20
 tags: ['PySpark', 'Kafka', 'MongoDB', 'Data Engineering']
 ---
 
-# Real-Time IoT Data Processing with Kafka and PySpark
-
 ## Overview
 
 IoT systems generate massive amounts of data that need to be processed in real-time. This project implements a complete data pipeline from sensor ingestion to visualization.

@@ -1,0 +1,43 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import ProjectOverlay from "../../components/ProjectOverlay.astro";
+
+const summary = `GitAegis is a Go command line tool. It scans source code for API keys, tokens, and sensitive data. It uses Shannon entropy analysis and regular expressions. It parses code with tree-sitter for higher accuracy. The tool runs before a commit to prevent secret leaks. It writes the results to a JSON file.`;
+
+const features = [
+  "It uses Shannon entropy analysis to find high-entropy strings.",
+  "It matches known secrets with regular expressions.",
+  "It parses source code with tree-sitter.",
+  "It scans files in parallel with Go goroutines.",
+  "It runs before a commit through a Git pre-hook.",
+  "It writes the scan results to a JSON log.",
+];
+
+const workflow = [
+  "Install GitAegis from the release binary.",
+  "Run `gitaegis scan .` to scan the current folder.",
+  "Read the findings that the tool prints.",
+  "Run `gitaegis ignore` to update the .gitignore file.",
+  "Run `gitaegis init --prehook` to add a pre-commit check.",
+];
+
+const stack = [
+  "Language: Go",
+  "CLI: Cobra",
+  "Parsing: tree-sitter",
+  "Shell: Bash, Git hooks",
+];
+---
+
+<BaseLayout title="GitAegis | Steve Jevon Rahardjo" description="Go CLI security engine detecting secrets via Shannon entropy and tree-sitter parsing." page="projects">
+  <ProjectOverlay
+    title="GitAegis"
+    tagline="A Go CLI security engine for secret detection"
+    summary={summary}
+    tags={["Go","Cobra","Tree-sitter","Security","CLI"]}
+    features={features}
+    workflow={workflow}
+    stack={stack}
+    github="https://github.com/steverahardjo/gitaegis"
+  />
+</BaseLayout>

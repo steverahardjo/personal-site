@@ -5,8 +5,6 @@ pubDate: 2026-04-20
 tags: ['Python', 'MCP', 'LLM Agents', 'Tool Sandbox', 'Human-in-the-Loop']
 ---
 
-# exp_site: Building an Agentic Tool Library from Scratch
-
 exp_site is a Python library for building LLM agents with sandboxed tool execution, human-in-the-loop (HIL) channels, Model Context Protocol (MCP) connectivity, and deliberate customization mode.
 
 ## Core Concepts

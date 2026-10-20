@@ -1,0 +1,148 @@
+---
+const themes = [
+  { id: "original", label: "Original", color: "#a41c1a", description: "Warm earth tones" },
+  { id: "tokyo-midnight", label: "Tokyo Midnight", color: "#7aa2f7", description: "Neon blue nightscape" },
+  { id: "dracula", label: "Dracula", color: "#bd93f9", description: "Purple twilight haze" },
+  { id: "blood-moon", label: "Blood Moon", color: "#dc143c", description: "Black void & crimson" },
+] as const;
+
+const gradient = themes.map((t) => t.color).join(", ");
+---
+
+<div data-theme-picker class="fixed bottom-6 right-6 z-50">
+  <div data-theme-backdrop hidden class="fixed inset-0 z-40 bg-black/30 backdrop-blur-sm"></div>
+
+  <div class="relative z-50">
+    <div
+      id="theme-panel"
+      data-theme-panel
+      role="group"
+      aria-label="Theme palette"
+      hidden
+      class="absolute bottom-16 right-0 w-56 rounded-xl border shadow-lg overflow-hidden"
+      style="background: var(--surface); border-color: var(--border); box-shadow: var(--shadow-lg);"
+    >
+      <p class="px-4 py-3 m-0 text-xs font-semibold tracking-wide uppercase border-b text-[var(--muted-foreground)] border-[var(--border)]">
+        Palette
+      </p>
+      {themes.map((t) => (
+        <button
+          type="button"
+          data-theme-option={t.id}
+          data-active="false"
+          aria-pressed="false"
+          class="flex w-full items-center gap-3 px-4 py-3 text-sm transition-colors hover:brightness-110 cursor-pointer"
+        >
+          <span
+            class="theme-dot h-4 w-4 shrink-0 rounded-full border-2 border-transparent"
+            style={`background-color:${t.color}; box-shadow: 0 0 8px ${t.color}40;`}
+          ></span>
+          <span class="flex flex-col items-start text-left">
+            <span class="text-sm font-medium leading-tight text-[var(--text)]">{t.label}</span>
+            <span class="text-[11px] leading-tight text-[var(--muted-foreground)]">{t.description}</span>
+          </span>
+        </button>
+      ))}
+    </div>
+
+    <button
+      type="button"
+      data-theme-toggle
+      aria-controls="theme-panel"
+      aria-expanded="false"
+      aria-label="Switch theme palette"
+      class="h-11 w-11 rounded-full border-2 cursor-pointer transition-transform duration-300 hover:scale-110 active:scale-95"
+      style={`background: conic-gradient(from 0deg, ${gradient}); border-color: var(--border); box-shadow: var(--shadow-md);`}
+    ></button>
+  </div>
+</div>
+
+<style>
+  [data-theme-option][data-active="true"] {
+    background: color-mix(in srgb, var(--accent) 12%, transparent);
+  }
+  [data-theme-option][data-active="true"] .theme-dot {
+    border-color: var(--text);
+  }
+</style>
+
+<script>
+  (function () {
+    const root = document.querySelector<HTMLElement>("[data-theme-picker]");
+    if (!root || root.dataset.bound === "true") return;
+    root.dataset.bound = "true";
+
+    const toggle = root.querySelector<HTMLButtonElement>("[data-theme-toggle]");
+    const panel = root.querySelector<HTMLElement>("[data-theme-panel]");
+    const backdrop = root.querySelector<HTMLElement>("[data-theme-backdrop]");
+    const options = Array.from(root.querySelectorAll<HTMLButtonElement>("[data-theme-option]"));
+    if (!toggle || !panel || !backdrop) return;
+
+    const STORAGE_KEY = "theme-palette";
+    const valid = new Set(options.map((option) => option.dataset.themeOption));
+
+    const setActive = (id: string) => {
+      options.forEach((option) => {
+        const active = option.dataset.themeOption === id;
+        option.dataset.active = active ? "true" : "false";
+        option.setAttribute("aria-pressed", active ? "true" : "false");
+      });
+    };
+
+    const setOpen = (open: boolean) => {
+      panel.hidden = !open;
+      backdrop.hidden = !open;
+      toggle.setAttribute("aria-expanded", open ? "true" : "false");
+      toggle.setAttribute("aria-label", open ? "Close theme palette" : "Switch theme palette");
+      if (open) {
+        const current = options.find((option) => option.dataset.active === "true");
+        current?.focus();
+      }
+    };
+
+    const apply = (id: string) => {
+      document.documentElement.setAttribute("data-theme", id);
+      setActive(id);
+      try {
+        localStorage.setItem(STORAGE_KEY, id);
+      } catch {
+        /* storage can be unavailable in private mode */
+      }
+    };
+
+    let stored = "original";
+    try {
+      const value = localStorage.getItem(STORAGE_KEY);
+      if (value && valid.has(value)) stored = value;
+    } catch {
+      /* use the default theme */
+    }
+    setActive(stored);
+
+    toggle.addEventListener("click", () => setOpen(panel.hidden));
+
+    backdrop.addEventListener("click", () => {
+      setOpen(false);
+      toggle.focus();
+    });
+
+    options.forEach((option) => {
+      option.addEventListener("click", () => {
+        apply(option.dataset.themeOption ?? "original");
+        setOpen(false);
+        toggle.focus();
+      });
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && !panel.hidden) {
+        setOpen(false);
+        toggle.focus();
+      }
+    });
+
+    document.addEventListener("pointerdown", (event) => {
+      if (!panel.hidden && !root.contains(event.target as Node)) setOpen(false);
+    });
+  })();
+</script>

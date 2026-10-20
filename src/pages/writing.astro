@@ -14,7 +14,7 @@ posts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
     <ol class="border-t border-[var(--border)]">
       {posts.map(post => (
         <li class="border-b border-[var(--border)]">
-          <a href={`/blog/${post.id}`} class="group grid grid-cols-1 md:grid-cols-[9rem_1fr] gap-x-8 gap-y-1 py-6 no-underline">
+          <a href={`/blog/${post.id}/`} data-astro-prefetch class="group grid grid-cols-1 md:grid-cols-[9rem_1fr] gap-x-8 gap-y-1 py-6 no-underline">
             <time class="font-mono text-xs text-[var(--muted-foreground)]">
               {new Date(post.data.pubDate).toLocaleDateString("en-US",{year:"numeric",month:"short",day:"numeric"})}
             </time>
